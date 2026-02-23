@@ -1,0 +1,862 @@
+[
+    {
+        "Nazwa_Cwiczenia": "Wyciskanie sztangi na ławce poziomej",
+        "Partia_Glowna": "Klatka piersiowa (całość)",
+        "Partia_Pomocnicza": "Triceps, Naramienny (przód)",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Wyciskanie",
+        "Sprzet": "Sztanga",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Opuszczanie sztangi do mostka, dynamiczne wyciskanie. Łopatki ściągnięte."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wyciskanie hantli na skosie dodatnim",
+        "Partia_Glowna": "Klatka piersiowa (góra)",
+        "Partia_Pomocnicza": "Naramienny (przód), Triceps",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Wyciskanie",
+        "Sprzet": "Hantle",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Wyciskanie na ławce 30-45°. Większy zakres ruchu niż sztanga."
+    },
+    {
+        "Nazwa_Cwiczenia": "Pompki na poręczach (Dipsy)",
+        "Partia_Glowna": "Klatka piersiowa (dół)",
+        "Partia_Pomocnicza": "Triceps, Naramienny",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Wypychanie",
+        "Sprzet": "Poręcze",
+        "Trudnosc": "Wysoki",
+        "Krótki opis techniki": "Opuszczanie tułowia na poręczach z pochyleniem ciała do przodu."
+    },
+    {
+        "Nazwa_Cwiczenia": "Rozpiętki z hantlami na ławce poziomej",
+        "Partia_Glowna": "Klatka piersiowa (izolacja)",
+        "Partia_Pomocnicza": "Naramienny (przód)",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Rozpiętki",
+        "Sprzet": "Hantle",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Ruch po łuku (obejmowanie drzewa). Stały kąt ugięcia łokci."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wyciskanie na maszynie typu Hammer",
+        "Partia_Glowna": "Klatka piersiowa",
+        "Partia_Pomocnicza": "-",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Wyciskanie",
+        "Sprzet": "Maszyna",
+        "Trudnosc": "Niski",
+        "Krótki opis techniki": "Wyciskanie siedząc na maszynie. Bezpieczna praca z dużym ciężarem."
+    },
+    {
+        "Nazwa_Cwiczenia": "Krzyżowanie linek wyciągu górnego (Brama)",
+        "Partia_Glowna": "Klatka piersiowa (środek)",
+        "Partia_Pomocnicza": "-",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Ściąganie",
+        "Sprzet": "Wyciąg",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Ściąganie rączek wyciągu przed siebie stojąc. Stałe napięcie mięśnia."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wyciskanie sztangi na skosie ujemnym",
+        "Partia_Glowna": "Klatka piersiowa (dół)",
+        "Partia_Pomocnicza": "Triceps",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Wyciskanie",
+        "Sprzet": "Sztanga",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Wyciskanie głową w dół. Mniejsza praca barków, silny angaż dołu."
+    },
+    {
+        "Nazwa_Cwiczenia": "Pompki klasyczne",
+        "Partia_Glowna": "Klatka piersiowa",
+        "Partia_Pomocnicza": "Triceps, Core",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Pompka",
+        "Sprzet": "Masa własna",
+        "Trudnosc": "Niski",
+        "Krótki opis techniki": "Podpor przodem, ciało proste. Zginanie ramion, klatka nad ziemię."
+    },
+    {
+        "Nazwa_Cwiczenia": "Przenoszenie hantla za głowę (Pullover)",
+        "Partia_Glowna": "Klatka piersiowa",
+        "Partia_Pomocnicza": "Najszerszy grzbietu, Zębaty",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Przenoszenie",
+        "Sprzet": "Hantle",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Opuszczanie hantla za głowę na lekko ugiętych, zablokowanych ramionach."
+    },
+    {
+        "Nazwa_Cwiczenia": "Maszyna typu Butterfly (Rozpiętki)",
+        "Partia_Glowna": "Klatka piersiowa (środek)",
+        "Partia_Pomocnicza": "-",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Przywodzenie",
+        "Sprzet": "Maszyna",
+        "Trudnosc": "Niski",
+        "Krótki opis techniki": "Przywodzenie ramion do środka siedząc. Czysta izolacja klatki."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wyciskanie hantli chwytem młotkowym",
+        "Partia_Glowna": "Klatka piersiowa (środek)",
+        "Partia_Pomocnicza": "Triceps",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Wyciskanie",
+        "Sprzet": "Hantle",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Hantle złączone, wyciskanie wąsko, stały docisk hantli do siebie."
+    },
+    {
+        "Nazwa_Cwiczenia": "Landmine Press (Wyciskanie półsztangi)",
+        "Partia_Glowna": "Klatka piersiowa (góra)",
+        "Partia_Pomocnicza": "Naramienny",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Wypychanie",
+        "Sprzet": "Sztanga",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Wypychanie końca sztangi jednorącz/oburącz stojąc. Ruch po skosie."
+    },
+    {
+        "Nazwa_Cwiczenia": "Pompki z nogami na podwyższeniu",
+        "Partia_Glowna": "Klatka piersiowa (góra)",
+        "Partia_Pomocnicza": "Naramienny",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Pompka",
+        "Sprzet": "Podwyższenie",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Stopy wyżej niż dłonie. Przenosi ciężar ciała na górę klatki."
+    },
+    {
+        "Nazwa_Cwiczenia": "Svend Press",
+        "Partia_Glowna": "Klatka piersiowa",
+        "Partia_Pomocnicza": "-",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Ściskanie",
+        "Sprzet": "Talerz",
+        "Trudnosc": "Niski",
+        "Krótki opis techniki": "Ściskanie talerza dłońmi i wypychanie go w przód (ruch wyciskania)."
+    },
+    {
+        "Nazwa_Cwiczenia": "Gilotynowe wyciskanie sztangi",
+        "Partia_Glowna": "Klatka piersiowa (góra)",
+        "Partia_Pomocnicza": "-",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Wyciskanie",
+        "Sprzet": "Sztanga",
+        "Trudnosc": "Wysoki",
+        "Krótki opis techniki": "Opuszczanie sztangi do szyi szerokim chwytem. Mocne rozciągnięcie."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wyciskanie żołnierskie (OHP)",
+        "Partia_Glowna": "Naramienny (przód/bok)",
+        "Partia_Pomocnicza": "Triceps, Zębaty przedni",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Wyciskanie",
+        "Sprzet": "Sztanga",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Wyciskanie sztangi nad głowę stojąc. Brzuch i pośladki mocno napięte."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wyciskanie hantli siedząc",
+        "Partia_Glowna": "Naramienny (przód/bok)",
+        "Partia_Pomocnicza": "Triceps",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Wyciskanie",
+        "Sprzet": "Hantle",
+        "Trudnosc": "Niski",
+        "Krótki opis techniki": "Wyciskanie hantli nad głowę na ławce z oparciem (kąt 90°). Plecy proste."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wznosy hantli bokiem",
+        "Partia_Glowna": "Naramienny (bok)",
+        "Partia_Pomocnicza": "Czworoboczny (kaptur)",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Unoszenie",
+        "Sprzet": "Hantle",
+        "Trudnosc": "Niski",
+        "Krótki opis techniki": "Unoszenie hantli na boki do wysokości barków. Łokcie lekko ugięte."
+    },
+    {
+        "Nazwa_Cwiczenia": "Arnoldki (Wyciskanie Arnolda)",
+        "Partia_Glowna": "Naramienny (całość)",
+        "Partia_Pomocnicza": "Triceps",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Wyciskanie z rotacją",
+        "Sprzet": "Hantle",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Wyciskanie z rotacją nadgarstków (start podchwytem, koniec nachwytem)."
+    },
+    {
+        "Nazwa_Cwiczenia": "Face Pull (Przyciąganie do twarzy)",
+        "Partia_Glowna": "Naramienny (tył)",
+        "Partia_Pomocnicza": "Stożek rotatorów, Czworoboczny",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Przyciąganie",
+        "Sprzet": "Wyciąg",
+        "Trudnosc": "Niski",
+        "Krótki opis techniki": "Przyciąganie liny wyciągu w kierunku czoła. Łokcie szeroko na zewnątrz."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wznosy hantli w opadzie tułowia",
+        "Partia_Glowna": "Naramienny (tył)",
+        "Partia_Pomocnicza": "Czworoboczny, Rombowate",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Unoszenie",
+        "Sprzet": "Hantle",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Unoszenie hantli na boki w głębokim pochyleniu. Ruch jak \"odwrotne skrzydła\"."
+    },
+    {
+        "Nazwa_Cwiczenia": "Podciąganie sztangi wzdłuż tułowia",
+        "Partia_Glowna": "Naramienny (bok)",
+        "Partia_Pomocnicza": "Czworoboczny, Biceps",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Podciąganie",
+        "Sprzet": "Sztanga",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Unoszenie sztangi blisko ciała do mostka. Chwyt szerszy niż barki."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wznosy hantli w przód",
+        "Partia_Glowna": "Naramienny (przód)",
+        "Partia_Pomocnicza": "Klatka piersiowa (góra)",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Unoszenie",
+        "Sprzet": "Hantle",
+        "Trudnosc": "Niski",
+        "Krótki opis techniki": "Naprzemienne unoszenie hantli przed siebie do wysokości oczu."
+    },
+    {
+        "Nazwa_Cwiczenia": "Odwrotne rozpiętki na maszynie",
+        "Partia_Glowna": "Naramienny (tył)",
+        "Partia_Pomocnicza": "Czworoboczny, Rombowate",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Odwodzenie",
+        "Sprzet": "Maszyna",
+        "Trudnosc": "Niski",
+        "Krótki opis techniki": "Odwodzenie ramion w tył siedząc klatką do oparcia maszyny (Reverse Fly)."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wznosy linki wyciągu bokiem jednorącz",
+        "Partia_Glowna": "Naramienny (bok)",
+        "Partia_Pomocnicza": "Czworoboczny (kaptur)",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Unoszenie",
+        "Sprzet": "Wyciąg",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Unoszenie linki wyciągu dolnego bokiem. Stałe napięcie mięśnia."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wyciskanie sztangi zza karku",
+        "Partia_Glowna": "Naramienny (bok/przód)",
+        "Partia_Pomocnicza": "Triceps",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Wyciskanie",
+        "Sprzet": "Sztanga",
+        "Trudnosc": "Wysoki",
+        "Krótki opis techniki": "Opuszczanie sztangi za głowę do linii uszu. Wymaga dużej mobilności."
+    },
+    {
+        "Nazwa_Cwiczenia": "Pompki typu Pike (Szczupak)",
+        "Partia_Glowna": "Naramienny (przód)",
+        "Partia_Pomocnicza": "Triceps, Zębaty przedni",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Wypychanie",
+        "Sprzet": "Masa własna",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Pompki z biodrami uniesionymi wysoko w górę (ciało w kształcie litery V)."
+    },
+    {
+        "Nazwa_Cwiczenia": "Y-Raise na ławce skośnej",
+        "Partia_Glowna": "Naramienny (bok/tył)",
+        "Partia_Pomocnicza": "Czworoboczny (dolny)",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Unoszenie",
+        "Sprzet": "Hantle",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Leżąc przodem na skosie, unoszenie rąk w górę w kształt litery Y."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wyciskanie hantla jednorącz stojąc",
+        "Partia_Glowna": "Naramienny (całość)",
+        "Partia_Pomocnicza": "Triceps, Mięśnie brzucha (core)",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Wyciskanie",
+        "Sprzet": "Hantle",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Wyciskanie jedną ręką. Druga ręka stabilizuje tułów (praca core)."
+    },
+    {
+        "Nazwa_Cwiczenia": "Unoszenie talerza w przód (Bus Driver)",
+        "Partia_Glowna": "Naramienny (przód)",
+        "Partia_Pomocnicza": "Mięśnie głębokie",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Unoszenie/Rotacja",
+        "Sprzet": "Talerz",
+        "Trudnosc": "Niski",
+        "Krótki opis techniki": "Trzymanie talerza oburącz przed sobą i skręcanie nim (jak kierownicą)."
+    },
+    {
+        "Nazwa_Cwiczenia": "Martwy ciąg klasyczny",
+        "Partia_Glowna": "Prostowniki grzbietu, Całe plecy",
+        "Partia_Pomocnicza": "Pośladkowy, Dwugłowy uda, Przedramię",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Hip Hinge (Zawias biodrowy)",
+        "Sprzet": "Sztanga",
+        "Trudnosc": "Wysoki",
+        "Krótki opis techniki": "Neutralny kręgosłup, sztanga prowadzona po nogach, ruch inicjowany z biodra, napięcie brzucha."
+    },
+    {
+        "Nazwa_Cwiczenia": "Podciąganie na drążku nachwytem",
+        "Partia_Glowna": "Najszerszy grzbietu (szerokość)",
+        "Partia_Pomocnicza": "Biceps, Naramienny (tył), Obły",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Ciągnięcie pionowe",
+        "Sprzet": "Drążek",
+        "Trudnosc": "Wysoki",
+        "Krótki opis techniki": "Pełny zwis, depresja łopatek przed ruchem, łokcie prowadzone do bioder, brak bujania."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wiosłowanie sztangą w opadzie",
+        "Partia_Glowna": "Najszerszy grzbietu (grubość), Czworoboczny",
+        "Partia_Pomocnicza": "Biceps, Prostowniki grzbietu, Naramienny (tył)",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Ciągnięcie poziome",
+        "Sprzet": "Sztanga",
+        "Trudnosc": "Wysoki",
+        "Krótki opis techniki": "Tułów pod kątem 45-90°, plecy proste, przyciąganie sztangi do dolnej części brzucha."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wiosłowanie hantlem jednorącz",
+        "Partia_Glowna": "Najszerszy grzbietu",
+        "Partia_Pomocnicza": "Biceps, Naramienny (tył)",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Ciągnięcie poziome",
+        "Sprzet": "Hantle",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Podparcie na ławce, tułów równolegle do podłogi, ruch hantla po łuku w stronę biodra."
+    },
+    {
+        "Nazwa_Cwiczenia": "Ściąganie drążka wyciągu górnego do klatki",
+        "Partia_Glowna": "Najszerszy grzbietu",
+        "Partia_Pomocnicza": "Biceps, Obły większy",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Ciągnięcie pionowe",
+        "Sprzet": "Wyciąg",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Tułów lekko odchylony, ściągnięcie łopatek w dół, drążek do górnej części klatki, łokcie pod nadgarstkami."
+    },
+    {
+        "Nazwa_Cwiczenia": "Przyciąganie linki wyciągu dolnego siedząc",
+        "Partia_Glowna": "Czworoboczny (środek), Najszerszy",
+        "Partia_Pomocnicza": "Biceps, Naramienny (tył)",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Ciągnięcie poziome",
+        "Sprzet": "Wyciąg",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Klatka wypięta, brak nadmiernego odchylania tułowia, mocna retrakcja łopatek w końcowej fazie."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wiosłowanie półsztangą T-Bar",
+        "Partia_Glowna": "Najszerszy grzbietu (środek/grubość)",
+        "Partia_Pomocnicza": "Biceps, Czworoboczny, Prostowniki",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Ciągnięcie poziome",
+        "Sprzet": "Maszyna/Sztanga",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Stabilna pozycja nóg, plecy proste, przyciąganie ciężaru do klatki/brzucha, unikanie pędu."
+    },
+    {
+        "Nazwa_Cwiczenia": "Narciarz / Ściąganie linek na prostych rękach",
+        "Partia_Glowna": "Najszerszy grzbietu (izolacja)",
+        "Partia_Pomocnicza": "Triceps (głowa długa), Obły",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Wyprost w stawie ramiennym",
+        "Sprzet": "Wyciąg",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Pochylenie tułowia, łokcie minimalnie ugięte i zablokowane, ruch samym stawem barkowym do bioder."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wiosłowanie Pendlay",
+        "Partia_Glowna": "Najszerszy grzbietu, Czworoboczny",
+        "Partia_Pomocnicza": "Prostowniki, Biceps",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Ciągnięcie poziome",
+        "Sprzet": "Sztanga",
+        "Trudnosc": "Wysoki",
+        "Krótki opis techniki": "Tułów równolegle do podłogi, każdy ruch startuje z \"martwego punktu\" na ziemi, eksplozywna faza koncentryczna."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wiosłowanie na maszynie z podparciem klatki",
+        "Partia_Glowna": "Najszerszy grzbietu lub Czworoboczny (zależnie od chwytu)",
+        "Partia_Pomocnicza": "Biceps, Naramienny (tył)",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Ciągnięcie poziome",
+        "Sprzet": "Maszyna",
+        "Trudnosc": "Niski",
+        "Krótki opis techniki": "Klatka mocno przywarta do oparcia, pełne rozciągnięcie mięśni, spięcie łopatek bez ruchu tułowiem."
+    },
+    {
+        "Nazwa_Cwiczenia": "Przyciąganie linki do twarzy",
+        "Partia_Glowna": "Naramienny (tył), Stożek rotatorów",
+        "Partia_Pomocnicza": "Czworoboczny (góra/środek)",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Rotacja zewnętrzna/Przyciąganie",
+        "Sprzet": "Wyciąg",
+        "Trudnosc": "Niski",
+        "Krótki opis techniki": "Linka na wysokości oczu, łokcie wysoko, dłonie ciągną poza uszy, focus na retrakcji i rotacji barku."
+    },
+    {
+        "Nazwa_Cwiczenia": "Szrugsy ze sztangą",
+        "Partia_Glowna": "Czworoboczny (część zstępująca/góra)",
+        "Partia_Pomocnicza": "Dźwigacz łopatki",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Elewacja łopatek",
+        "Sprzet": "Sztanga",
+        "Trudnosc": "Niski",
+        "Krótki opis techniki": "Ramiona proste, ruch wyłącznie góra-dół barkami, bez kręcenia kółek, przytrzymanie spięcia na górze."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wiosłowanie jednorącz półsztangą",
+        "Partia_Glowna": "Najszerszy grzbietu, Obły",
+        "Partia_Pomocnicza": "Biceps, Przedramię",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Ciągnięcie poziome",
+        "Sprzet": "Sztanga (Landmine)",
+        "Trudnosc": "Wysoki",
+        "Krótki opis techniki": "Chwyt za gruby koniec sztangi, biodro wyżej niż bark, łokieć prowadzony szeroko dla maksymalnego rozciągnięcia."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wyprosty tułowia na ławce rzymskiej",
+        "Partia_Glowna": "Prostowniki grzbietu",
+        "Partia_Pomocnicza": "Pośladkowy, Dwugłowy uda",
+        "Typ ćwiczenia": "Akcesoryjne",
+        "Typ_Ruchu": "Wyprost tułowia",
+        "Sprzet": "Ławka rzymska",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Jeśli cel to plecy: prostowanie do linii ciała, bez przeprostu. Jeśli pośladki: zaokrąglone plecy."
+    },
+    {
+        "Nazwa_Cwiczenia": "Ściąganie drążka podchwytem",
+        "Partia_Glowna": "Najszerszy grzbietu (dolna część)",
+        "Partia_Pomocnicza": "Biceps (mocne zaangażowanie)",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Ciągnięcie pionowe",
+        "Sprzet": "Wyciąg",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Chwyt na szerokość barków, łokcie prowadzone blisko ciała, skupienie na dopięciu dołu najszerszego."
+    },
+    {
+        "Nazwa_Cwiczenia": "Przysiady ze sztangą na plecach",
+        "Partia_Glowna": "Czworogłowy uda, Pośladkowy",
+        "Partia_Pomocnicza": "Prostowniki grzbietu, Przywodziciele",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Przysiad (Knee Dominant)",
+        "Sprzet": "Sztanga",
+        "Trudnosc": "Wysoki",
+        "Krótki opis techniki": "Sztanga na czworobocznym, stopy stabilnie, kolana w linii palców, biodra schodzą poniżej kolan."
+    },
+    {
+        "Nazwa_Cwiczenia": "Przysiady ze sztangą z przodu",
+        "Partia_Glowna": "Czworogłowy uda",
+        "Partia_Pomocnicza": "Pośladkowy, Prostowniki grzbietu (góra)",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Przysiad (Knee Dominant)",
+        "Sprzet": "Sztanga",
+        "Trudnosc": "Wysoki",
+        "Krótki opis techniki": "Sztanga na przedniej części barków, tułów pionowo, głęboki siad, mocna praca brzucha."
+    },
+    {
+        "Nazwa_Cwiczenia": "Rumuński martwy ciąg",
+        "Partia_Glowna": "Dwugłowy uda, Pośladkowy",
+        "Partia_Pomocnicza": "Prostowniki grzbietu, Przedramię",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Hip Hinge (Zawias biodrowy)",
+        "Sprzet": "Sztanga",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Nogi minimalnie ugięte, ruch tylko w biodrze (wypychanie w tył), sztanga blisko nóg, plecy proste."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wypychanie ciężaru na suwnicy",
+        "Partia_Glowna": "Czworogłowy uda",
+        "Partia_Pomocnicza": "Pośladkowy, Przywodziciele",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Wypychanie (Knee Dominant)",
+        "Sprzet": "Maszyna",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Plecy i biodra przyklejone, stopy na środku platformy, nie blokujemy kolan w pełnym wyproście."
+    },
+    {
+        "Nazwa_Cwiczenia": "Przysiady bułgarskie",
+        "Partia_Glowna": "Czworogłowy uda, Pośladkowy",
+        "Partia_Pomocnicza": "Dwugłowy uda, Łydki",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Przysiad jednonóż",
+        "Sprzet": "Hantle/Sztanga",
+        "Trudnosc": "Wysoki",
+        "Krótki opis techniki": "Jedna noga z tyłu na podwyższeniu, tułów lekko pochylony, kolano nogi wykrocznej nie ucieka do środka."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wykroki chodzone z hantlami",
+        "Partia_Glowna": "Czworogłowy uda, Pośladkowy",
+        "Partia_Pomocnicza": "Dwugłowy uda, Łydki",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Wykrok",
+        "Sprzet": "Hantle",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Długi krok, tułów pionowo, kolano tylnej nogi dotyka lekko podłogi, dynamiczne wstanie."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wznosy bioder ze sztangą",
+        "Partia_Glowna": "Pośladkowy wielki",
+        "Partia_Pomocnicza": "Dwugłowy uda, Czworogłowy",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Wyprost biodra (Bridge)",
+        "Sprzet": "Sztanga, Ławka",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Oparcie łopatek o ławkę, sztanga na biodrach, mocne spięcie pośladków w górze, broda do klatki."
+    },
+    {
+        "Nazwa_Cwiczenia": "Przysiady z hantlem (kielichowe)",
+        "Partia_Glowna": "Czworogłowy uda",
+        "Partia_Pomocnicza": "Pośladkowy, Prostowniki grzbietu",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Przysiad (Knee Dominant)",
+        "Sprzet": "Hantel/Kettlebell",
+        "Trudnosc": "Niski",
+        "Krótki opis techniki": "Hantel trzymany przy mostku, łokcie wąsko, głęboki siad, idealne do nauki wzorca przysiadu."
+    },
+    {
+        "Nazwa_Cwiczenia": "Uginanie nóg na maszynie leżąc",
+        "Partia_Glowna": "Dwugłowy uda",
+        "Partia_Pomocnicza": "Półścięgnisty, Półbłoniasty",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Zgięcie kolana",
+        "Sprzet": "Maszyna",
+        "Trudnosc": "Niski",
+        "Krótki opis techniki": "Biodra przyklejone do ławki, ruch pełny do pośladka, powolna faza opuszczania (ekscentryczna)."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wyprosty nóg na maszynie siedząc",
+        "Partia_Glowna": "Czworogłowy uda",
+        "Partia_Pomocnicza": "Brak",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Wyprost kolana",
+        "Sprzet": "Maszyna",
+        "Trudnosc": "Niski",
+        "Krótki opis techniki": "Plecy oparte, ruch do pełnego wyprostu, przytrzymanie napięcia w górze, palce stóp na siebie."
+    },
+    {
+        "Nazwa_Cwiczenia": "Dzień dobry ze sztangą",
+        "Partia_Glowna": "Dwugłowy uda, Prostowniki grzbietu",
+        "Partia_Pomocnicza": "Pośladkowy",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Hip Hinge (Zawias biodrowy)",
+        "Sprzet": "Sztanga",
+        "Trudnosc": "Wysoki",
+        "Krótki opis techniki": "Sztanga jak do przysiadu, ruch wypychania bioder w tył przy prostych plecach, tułów prawie równolegle do ziemi."
+    },
+    {
+        "Nazwa_Cwiczenia": "Żuraw (Opad tułowia klęcząc)",
+        "Partia_Glowna": "Dwugłowy uda",
+        "Partia_Pomocnicza": "Pośladkowy, Łydki",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Zgięcie kolana (Ekscentryka)",
+        "Sprzet": "Masa ciała/Drabinka",
+        "Trudnosc": "Bardzo Wysoki",
+        "Krótki opis techniki": "Klęk, pięty zablokowane, powolne opuszczanie tułowia do ziemi samą siłą nóg. Król prewencji kontuzji."
+    },
+    {
+        "Nazwa_Cwiczenia": "Przysiady na maszynie Hack",
+        "Partia_Glowna": "Czworogłowy uda (zewnętrzna część)",
+        "Partia_Pomocnicza": "Pośladkowy",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Przysiad (Knee Dominant)",
+        "Sprzet": "Maszyna",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Plecy oparte o oparcie, stopy nieco wysunięte w przód, głęboki ruch, stabilizacja tułowia."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wspięcia na palce stojąc",
+        "Partia_Glowna": "Trójgłowy łydki (brzusiec)",
+        "Partia_Pomocnicza": "-",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Zgięcie podeszwowe",
+        "Sprzet": "Maszyna/Sztanga",
+        "Trudnosc": "Niski",
+        "Krótki opis techniki": "Kolana proste, pełne rozciągnięcie pięty w dół, mocne spięcie na palcach w górze."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wspięcia na palce siedząc",
+        "Partia_Glowna": "Mięsień płaszczkowaty łydki",
+        "Partia_Pomocnicza": "-",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Zgięcie podeszwowe",
+        "Sprzet": "Maszyna",
+        "Trudnosc": "Niski",
+        "Krótki opis techniki": "Kolana ugięte pod kątem 90 stopni (wyłącza brzuchaty łydki), praca samym stawem skokowym."
+    },
+    {
+        "Nazwa_Cwiczenia": "Uginanie ramion ze sztangą stojąc",
+        "Partia_Glowna": "Biceps (obie głowy)",
+        "Partia_Pomocnicza": "Przedramię, Naramienny (przód)",
+        "Typ ćwiczenia": "Wielostawowe (częściowo)",
+        "Typ_Ruchu": "Zgięcie łokcia",
+        "Sprzet": "Sztanga",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Łokcie przy żebrach, brak bujania tułowiem, pełny wyprost, dopięcie u góry. Król masy."
+    },
+    {
+        "Nazwa_Cwiczenia": "Uginanie ramion z hantlami z supinacją",
+        "Partia_Glowna": "Biceps (funkcja odwracania)",
+        "Partia_Pomocnicza": "Ramienny, Przedramię",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Zgięcie + Rotacja",
+        "Sprzet": "Hantle",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Start chwytem młotkowym, w trakcie ruchu rotacja nadgarstka na zewnątrz (mały palec do góry)."
+    },
+    {
+        "Nazwa_Cwiczenia": "Uginanie młotkowe z hantlami",
+        "Partia_Glowna": "Ramienny, Ramienno-promieniowy",
+        "Partia_Pomocnicza": "Biceps (głowa długa)",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Zgięcie łokcia",
+        "Sprzet": "Hantle",
+        "Trudnosc": "Niski",
+        "Krótki opis techniki": "Chwyt neutralny (kciuk w górę), łokieć nieruchomo, celuje w szerokość ramienia z boku."
+    },
+    {
+        "Nazwa_Cwiczenia": "Uginanie na modlitewniku (Sztanga/Maszyna)",
+        "Partia_Glowna": "Biceps (głowa krótka)",
+        "Partia_Pomocnicza": "Ramienny",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Zgięcie łokcia",
+        "Sprzet": "Modlitewnik",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Pacha mocno wparta w oparcie, ramię z przodu ciała, pełny wyprost (ostrożnie z ciężarem)."
+    },
+    {
+        "Nazwa_Cwiczenia": "Uginanie hantlami na ławce skośnej",
+        "Partia_Glowna": "Biceps (głowa długa - rozciągnięcie)",
+        "Partia_Pomocnicza": "Przedramię",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Zgięcie łokcia",
+        "Sprzet": "Ławka/Hantle",
+        "Trudnosc": "Wysoki",
+        "Krótki opis techniki": "Ławka 45-60 stopni, ramiona zwisają za tułowiem, maksymalne rozciągnięcie mięśnia na dole."
+    },
+    {
+        "Nazwa_Cwiczenia": "Uginanie pająkowe na ławce skośnej",
+        "Partia_Glowna": "Biceps (głowa krótka - szczyt)",
+        "Partia_Pomocnicza": "Ramienny",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Zgięcie łokcia",
+        "Sprzet": "Ławka/Sztanga",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Leżenie przodem na ławce skośnej, ramiona pionowo w dół, izolacja totalna (brak pomocy tułowia)."
+    },
+    {
+        "Nazwa_Cwiczenia": "Uginanie ze sztangą nachwytem",
+        "Partia_Glowna": "Ramienno-promieniowy (przedramię)",
+        "Partia_Pomocnicza": "Ramienny, Biceps",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Zgięcie łokcia",
+        "Sprzet": "Sztanga",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Dłonie z góry, łokcie przy ciele, mniejszy ciężar, palący ból przedramion."
+    },
+    {
+        "Nazwa_Cwiczenia": "Uginanie koncentryczne z hantlem",
+        "Partia_Glowna": "Biceps (szczyt/wierzchołek)",
+        "Partia_Pomocnicza": "Ramienny",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Zgięcie łokcia",
+        "Sprzet": "Hantel",
+        "Trudnosc": "Niski",
+        "Krótki opis techniki": "Siedząc, łokieć oparty o wewnętrzną stronę uda, pełna kontrola, brak pomocy barkiem."
+    },
+    {
+        "Nazwa_Cwiczenia": "Uginanie ramion na wyciągu dolnym stojąc",
+        "Partia_Glowna": "Biceps (stałe napięcie)",
+        "Partia_Pomocnicza": "Przedramię",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Zgięcie łokcia",
+        "Sprzet": "Wyciąg",
+        "Trudnosc": "Niski",
+        "Krótki opis techniki": "Stały opór w całym zakresie ruchu, łokcie stabilnie, dobre na koniec treningu (pompa)."
+    },
+    {
+        "Nazwa_Cwiczenia": "Uginanie ramion na bramie (linki górne)",
+        "Partia_Glowna": "Biceps (głowa krótka)",
+        "Partia_Pomocnicza": "Przedramię",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Zgięcie łokcia",
+        "Sprzet": "Wyciąg (Brama)",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Pozycja \"Herkulesa\", ramiona odwiedzione, zginanie pięści w stronę uszu, mocne dopięcie."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wyciskanie sztangi wąskim chwytem",
+        "Partia_Glowna": "Triceps (wszystkie głowy)",
+        "Partia_Pomocnicza": "Klatka, Naramienny (przód)",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Wypychanie",
+        "Sprzet": "Sztanga",
+        "Trudnosc": "Wysoki",
+        "Krótki opis techniki": "Chwyt na szerokość barków, łokcie prowadzone blisko tułowia, opuszczanie do mostka. Buduje siłę."
+    },
+    {
+        "Nazwa_Cwiczenia": "Pompki na poręczach (Dipy)",
+        "Partia_Glowna": "Triceps, Klatka (dół)",
+        "Partia_Pomocnicza": "Naramienny (przód)",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Wypychanie",
+        "Sprzet": "Poręcze",
+        "Trudnosc": "Wysoki",
+        "Krótki opis techniki": "Tułów pionowo (dla tricepsa), łokcie wąsko przy ciele, nie schodzimy poniżej komfortu barków."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wyciskanie francuskie sztangą leżąc",
+        "Partia_Glowna": "Triceps (głowa długa i przyśrodkowa)",
+        "Partia_Pomocnicza": "Naramienny",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Wyprost łokcia",
+        "Sprzet": "Sztanga łamana",
+        "Trudnosc": "Wysoki",
+        "Krótki opis techniki": "Sztanga opuszczana do czoła lub za głowę (większe rozciągnięcie), łokcie celują w sufit."
+    },
+    {
+        "Nazwa_Cwiczenia": "Prostowanie ramion z linką wyciągu górnego",
+        "Partia_Glowna": "Triceps (głowa boczna)",
+        "Partia_Pomocnicza": "Anconeus (Łokciowy)",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Wyprost łokcia",
+        "Sprzet": "Wyciąg",
+        "Trudnosc": "Niski",
+        "Krótki opis techniki": "Tułów lekko pochylony, łokcie przyklejone do żeber, na dole rozchylenie linki na zewnątrz."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wyciskanie francuskie hantlem oburącz siedząc",
+        "Partia_Glowna": "Triceps (głowa długa - rozciągnięcie)",
+        "Partia_Pomocnicza": "Naramienny, Brzuch (stabilizacja)",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Wyprost łokcia",
+        "Sprzet": "Hantel",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Hantel za głową, łokcie blisko uszu (nie rozchodzą się na boki), pełne rozciągnięcie na dole."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wyciskanie JM (JM Press)",
+        "Partia_Glowna": "Triceps (głowa boczna/przyśrodkowa)",
+        "Partia_Pomocnicza": "Naramienny",
+        "Typ ćwiczenia": "Hybrydowe",
+        "Typ_Ruchu": "Wypychanie/Wyprost",
+        "Sprzet": "Sztanga",
+        "Trudnosc": "Bardzo Wysoki",
+        "Krótki opis techniki": "Połączenie wyciskania wąsko i francuskiego. Opuszczanie sztangi w kierunku szyi/brody."
+    },
+    {
+        "Nazwa_Cwiczenia": "Prostowanie ramienia jednorącz podchwytem",
+        "Partia_Glowna": "Triceps (głowa przyśrodkowa)",
+        "Partia_Pomocnicza": "Przedramię",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Wyprost łokcia",
+        "Sprzet": "Wyciąg",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Chwyt odwrotny (dłoń do góry), izoluje często pomijaną głowę przyśrodkową (przy łokciu)."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wyprosty ramienia z hantlem w opadzie",
+        "Partia_Glowna": "Triceps (maksymalne spięcie)",
+        "Partia_Pomocnicza": "Naramienny (tył)",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Wyprost łokcia",
+        "Sprzet": "Hantel",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Tułów poziomo, ramię równolegle do podłogi, ruch tylko przedramieniem, pauza na wyproście."
+    },
+    {
+        "Nazwa_Cwiczenia": "Prostowanie ramion z linką wyciągu zza głowy",
+        "Partia_Glowna": "Triceps (głowa długa)",
+        "Partia_Pomocnicza": "Brzuch",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Wyprost łokcia",
+        "Sprzet": "Wyciąg",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Ustawienie tyłem do wyciągu, linka nad głową, łokcie stabilne, ruch w przód. Stałe napięcie."
+    },
+    {
+        "Nazwa_Cwiczenia": "Pompki odwrotne w oparciu o ławkę",
+        "Partia_Glowna": "Triceps",
+        "Partia_Pomocnicza": "Naramienny (przód)",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Wypychanie",
+        "Sprzet": "Ławka",
+        "Trudnosc": "Niski",
+        "Krótki opis techniki": "Dłonie na krawędzi ławki, plecy blisko krawędzi, łokcie wąsko. Uwaga na barki przy schodzeniu nisko."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wyjazdy z kółkiem (Ab Wheel)",
+        "Partia_Glowna": "Prosty brzucha (całość)",
+        "Partia_Pomocnicza": "Najszerszy grzbietu, Triceps",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Anty-wyprost (Anti-Extension)",
+        "Sprzet": "Kółko/Sztanga",
+        "Trudnosc": "Bardzo Wysoki",
+        "Krótki opis techniki": "Ruch inicjowany z biodra, plecy zaokrąglone (\"koci grzbiet\"), pośladki mocno spięte, brak załamania w lędźwiach."
+    },
+    {
+        "Nazwa_Cwiczenia": "Wznosy nóg w zwisie na drążku",
+        "Partia_Glowna": "Prosty brzucha (część dolna)",
+        "Partia_Pomocnicza": "Zginacze bioder, Przedramię",
+        "Typ ćwiczenia": "Wielostawowe",
+        "Typ_Ruchu": "Zgięcie biodra i kręgosłupa",
+        "Sprzet": "Drążek",
+        "Trudnosc": "Wysoki",
+        "Krótki opis techniki": "Podwijanie miednicy (\"ogon pod siebie\"), kolana do klatki piersiowej, unikanie bujania tułowiem, wolny powrót."
+    },
+    {
+        "Nazwa_Cwiczenia": "Allahy (Skłony tułowia na wyciągu klęcząc)",
+        "Partia_Glowna": "Prosty brzucha (część górna)",
+        "Partia_Pomocnicza": "Zębate przednie",
+        "Typ ćwiczenia": "Izolowane",
+        "Typ_Ruchu": "Zgięcie kręgosłupa",
+        "Sprzet": "Wyciąg górny",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Biodra nieruchomo nad kolanami, \"zwijanie\" kręgosłupa w łuk (głowa do kolan), wydech przy spięciu."
+    },
+    {
+        "Nazwa_Cwiczenia": "Pallof Press (Wypychanie linki przed klatkę)",
+        "Partia_Glowna": "Skośne brzucha, Poprzeczny",
+        "Partia_Pomocnicza": "Obręcz barkowa",
+        "Typ ćwiczenia": "Stabilizacyjne",
+        "Typ_Ruchu": "Anty-rotacja (Anti-Rotation)",
+        "Sprzet": "Wyciąg/Guma",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Stojąc bokiem do wyciągu, wypchnięcie rąk przed mostek i utrzymanie ich nieruchomo. Walka z siłą skręcającą tułów."
+    },
+    {
+        "Nazwa_Cwiczenia": "Spacer z walizką (Suitcase Carry)",
+        "Partia_Glowna": "Czworoboczny lędźwi, Skośne",
+        "Partia_Pomocnicza": "Przedramię, Czworoboczny",
+        "Typ ćwiczenia": "Funkcjonalne",
+        "Typ_Ruchu": "Anty-zgięcie boczne",
+        "Sprzet": "Hantel/Kettlebell",
+        "Trudnosc": "Średni",
+        "Krótki opis techniki": "Chód z ciężarem w jednej ręce. Tułów idealnie prosto (nie przechylamy się na bok), barki w jednej linii."
+    },
+    {
+        "Nazwa_Cwiczenia": "Martwy Robak (Dead Bug)",
+        "Partia_Glowna": "Poprzeczny brzucha (gorset)",
+        "Partia_Pomocnicza": "Zginacze bioder",
+        "Typ ćwiczenia": "Stabilizacyjne",
+        "Typ_Ruchu": "Dysocjacja kończyn",
+        "Sprzet": "Mata (Masa ciała)",
+        "Trudnosc": "Niski/Średni",
+        "Krótki opis techniki": "Leżenie tyłem, odcinek lędźwiowy wbity w matę (brak prześwitu!). Naprzemienne opuszczanie ręki i nogi bez odrywania pleców."
+    }
+]

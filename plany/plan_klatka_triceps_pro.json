@@ -1,0 +1,56 @@
+{
+    "nazwa_planu": "Push Day: Klatka + Triceps (Zygzakowanie)",
+    "objetosc_calkowita": "15 serii roboczych",
+    "metodyka": {
+        "przerwy": "3-5 minut dla serii roboczych",
+        "intensywnosc": "Czyste załamanie techniczne (zero niechlujnych powtórzeń)",
+        "progresja": "Double Progression (powtórzenia -> ciężar)"
+    },
+    "cwiczenia": [
+        {
+            "kolejnosc": 1,
+            "nazwa": "Wyciskanie na maszynie typu Hammer",
+            "partia": "Klatka piersiowa",
+            "serie": 3,
+            "powtorzenia": "6-8",
+            "uwagi": "Priorytet stabilizacji. Pauza 1s w pełnym skurczu.",
+            "tempo": "3-1-1-1"
+        },
+        {
+            "kolejnosc": 2,
+            "nazwa": "Prostowanie ramienia jednorącz podchwytem",
+            "partia": "Triceps",
+            "serie": 3,
+            "powtorzenia": "10-12",
+            "uwagi": "Wykonuj w pozycji siedzącej (zgodnie z wytycznymi). Pełna kontrola fazy ekscentrycznej.",
+            "tempo": "3-0-1-2"
+        },
+        {
+            "kolejnosc": 3,
+            "nazwa": "Wyciskanie hantli na skosie dodatnim",
+            "partia": "Klatka piersiowa",
+            "serie": 3,
+            "powtorzenia": "8-10",
+            "uwagi": "Kąt ławki ustawiony na dokładnie 30°. Nie blokuj łokci na górze.",
+            "tempo": "3-0-1-0"
+        },
+        {
+            "kolejnosc": 4,
+            "nazwa": "Wyciskanie francuskie hantlem oburącz siedząc",
+            "partia": "Triceps",
+            "serie": 3,
+            "powtorzenia": "10-12",
+            "uwagi": "Mocne rozciągnięcie głowy długiej tricepsa. Stabilny tułów.",
+            "tempo": "4-0-1-0"
+        },
+        {
+            "kolejnosc": 5,
+            "nazwa": "Maszyna typu Butterfly (Rozpiętki)",
+            "partia": "Klatka piersiowa",
+            "serie": 3,
+            "powtorzenia": "10-12",
+            "uwagi": "Zatrzymanie izometryczne (2s) w pełnym skurczu (klatka do środka).",
+            "tempo": "3-0-1-2"
+        }
+    ]
+}

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Szablon Planu Dietetycznego</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+        
+        @page {
+            size: A4;
+            margin: 15mm 0;
+        }
+
+        html, body {
+            height: auto;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            box-sizing: border-box;
+        }
+
+        .watermark-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+        }
+
+        .watermark-container img {
+            width: 70%;
+            opacity: 0.07;
+        }
+
+        .table-container {
+            width: 92%;
+            max-width: 850px;
+            margin-bottom: 12px;
+            page-break-inside: avoid;
+        }
+
+        .header {
+            text-align: center;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+            border-bottom: 1px solid #c5a059;
+            padding-bottom: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: transparent;
+            page-break-inside: avoid;
+        }
+
+        th {
+            background-color: #3b312b !important;
+            color: #d4af37 !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 6px;
+            text-align: center;
+            border: 1px solid #c5a059;
+            font-size: 10px;
+        }
+
+        th:first-child {
+            text-align: left;
+            width: 45%;
+        }
+
+        td {
+            padding: 8px 8px;
+            border: 1px solid #e0e0e0;
+            background-color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+            font-size: 11.5px;
+        }
+
+        td:first-child {
+            text-align: left;
+        }
+
+        .summary-row td {
+            font-weight: 600;
+            background-color: rgba(197, 160, 89, 0.15);
+        }
+
+        .notes {
+            font-size: 10.5px;
+            font-style: italic;
+            color: #555;
+            margin-top: 4px;
+            padding: 6px 10px;
+            background: rgba(249, 249, 249, 0.4);
+            border-left: 3px solid #c5a059;
+            page-break-inside: avoid;
+            min-height: 20px;
+        }
+
+        .info-box {
+            width: 92%;
+            max-width: 850px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-around;
+            font-size: 12px;
+            background: #3b312b;
+            color: #d4af37;
+            padding: 8px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="watermark-container">
+        <img src="logop.png" alt="Watermark">
+    </div>
+
+    <div class="header" style="font-size: 24px; border: none; margin-bottom: 5px;">PLAN DIETETYCZNY</div>
+    
+    <div class="info-box">
+        <span>WAGA: 0 KG</span>
+        <span>WZROST: 0 CM</span>
+        <span>CEL: 0 KCAL</span>
+    </div>
+
+    <!-- POSIŁEK 1 -->
+    <div class="table-container">
+        <div class="header">Posiłek 1</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Produkt</th>
+                    <th style="width: 10%">Waga (g)</th>
+                    <th style="width: 10%">B (g)</th>
+                    <th style="width: 10%">T (g)</th>
+                    <th style="width: 10%">W (g)</th>
+                    <th style="width: 12%">Kcal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr class="summary-row">
+                    <td>SUMA:</td><td></td><td></td><td></td><td></td><td></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="notes">Notatki: </div>
+    </div>
+
+    <!-- POSIŁEK 2 -->
+    <div class="table-container">
+        <div class="header">Posiłek 2</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Produkt</th>
+                    <th style="width: 10%">Waga (g)</th>
+                    <th style="width: 10%">B (g)</th>
+                    <th style="width: 10%">T (g)</th>
+                    <th style="width: 10%">W (g)</th>
+                    <th style="width: 12%">Kcal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr class="summary-row">
+                    <td>SUMA:</td><td></td><td></td><td></td><td></td><td></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="notes">Notatki: </div>
+    </div>
+
+    <!-- POSIŁEK 3 -->
+    <div class="table-container">
+        <div class="header">Posiłek 3</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Produkt</th>
+                    <th style="width: 10%">Waga (g)</th>
+                    <th style="width: 10%">B (g)</th>
+                    <th style="width: 10%">T (g)</th>
+                    <th style="width: 10%">W (g)</th>
+                    <th style="width: 12%">Kcal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr class="summary-row">
+                    <td>SUMA:</td><td></td><td></td><td></td><td></td><td></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="notes">Notatki: </div>
+    </div>
+
+    <!-- POSIŁEK 4 -->
+    <div class="table-container">
+        <div class="header">Posiłek 4</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Produkt</th>
+                    <th style="width: 10%">Waga (g)</th>
+                    <th style="width: 10%">B (g)</th>
+                    <th style="width: 10%">T (g)</th>
+                    <th style="width: 10%">W (g)</th>
+                    <th style="width: 12%">Kcal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr class="summary-row">
+                    <td>SUMA:</td><td></td><td></td><td></td><td></td><td></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="notes">Notatki: </div>
+    </div>
+
+    <!-- PODSUMOWANIE DNIA -->
+    <div class="table-container" style="margin-top: 10px; border-top: 2px solid #3b312b; padding-top: 10px;">
+        <div class="header" style="font-size: 22px;">PODSUMOWANIE DNIA</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 25%">Białko (B)</th>
+                    <th style="width: 25%">Tłuszcze (T)</th>
+                    <th style="width: 25%">Węglowodany (W)</th>
+                    <th style="width: 25%">Kalorie (Kcal)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="font-size: 18px; font-weight: 600;">
+                    <td>0 g</td>
+                    <td>0 g</td>
+                    <td>0 g</td>
+                    <td>0 kcal</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

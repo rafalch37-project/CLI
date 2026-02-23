@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Plan Dietetyczny - Przykładowy</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+        
+        @page {
+            size: A4;
+            margin: 15mm 0; /* Marginesy dla każdej strony wydruku */
+        }
+
+        html, body {
+            height: auto; /* Zmienione z 100% na auto dla lepszego przepływu stron */
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between; /* Rozłożenie elementów na całej wysokości strony */
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            box-sizing: border-box;
+        }
+
+        .watermark-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+        }
+
+        .watermark-container img {
+            width: 70%;
+            opacity: 0.07;
+        }
+
+        .table-container {
+            width: 92%;
+            max-width: 850px;
+            margin-bottom: 12px;
+            page-break-inside: avoid;
+        }
+
+        .header {
+            text-align: center;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+            border-bottom: 1px solid #c5a059;
+            padding-bottom: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: transparent;
+            page-break-inside: avoid;
+        }
+
+        th {
+            background-color: #3b312b !important;
+            color: #d4af37 !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 6px;
+            text-align: center;
+            border: 1px solid #c5a059;
+            font-size: 10px;
+        }
+
+        th:first-child {
+            text-align: left;
+            width: 45%;
+        }
+
+        td {
+            padding: 8px 8px;
+            border: 1px solid #e0e0e0;
+            background-color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+            font-size: 11.5px;
+        }
+
+        td:first-child {
+            text-align: left;
+        }
+
+        .summary-row td {
+            font-weight: 600;
+            background-color: rgba(197, 160, 89, 0.15);
+        }
+
+        .notes {
+            font-size: 10.5px;
+            font-style: italic;
+            color: #555;
+            margin-top: 4px;
+            padding: 6px 10px;
+            background: rgba(249, 249, 249, 0.4);
+            border-left: 3px solid #c5a059;
+            page-break-inside: avoid;
+        }
+
+        .info-box {
+            width: 92%;
+            max-width: 850px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-around;
+            font-size: 12px;
+            background: #3b312b;
+            color: #d4af37;
+            padding: 8px 0;
+            border-radius: 5px;
+        }
+
+        @media print {
+            .watermark { position: absolute; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="watermark-container">
+        <img src="../szablony/logop.png" alt="Watermark">
+    </div>
+
+    <div class="header" style="font-size: 24px; border: none; margin-bottom: 5px;">PLAN DIETETYCZNY - PRÓBA</div>
+    <div class="info-box">
+        <span>WAGA: 90 KG</span>
+        <span>WZROST: 188 CM</span>
+        <span>CEL: ZERO KALORYCZNE (3088 KCAL)</span>
+    </div>
+
+    <!-- POSIŁEK 1 -->
+    <div class="table-container">
+        <div class="header">Posiłek 1: Śniadanie energetyczne</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Produkt</th>
+                    <th style="width: 10%">Waga (g)</th>
+                    <th style="width: 10%">B (g)</th>
+                    <th style="width: 10%">T (g)</th>
+                    <th style="width: 10%">W (g)</th>
+                    <th style="width: 12%">Kcal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Płatki owsiane górskie</td><td>120</td><td>14.3</td><td>8.6</td><td>74.9</td><td>454.8</td></tr>
+                <tr><td>Skyr naturalny</td><td>200</td><td>24.0</td><td>0.0</td><td>8.0</td><td>130.0</td></tr>
+                <tr><td>Borówki amerykańskie</td><td>150</td><td>1.1</td><td>0.5</td><td>21.6</td><td>85.5</td></tr>
+                <tr><td>Orzechy włoskie</td><td>20</td><td>3.0</td><td>13.0</td><td>2.7</td><td>130.8</td></tr>
+                <tr class="summary-row">
+                    <td>SUMA:</td><td>490</td><td>42.4</td><td>22.1</td><td>107.2</td><td>801.1</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="notes">Płatki ugotuj na wodzie, wymieszaj ze skyrem i owocami. Posyp posiekanymi orzechami.</div>
+    </div>
+
+    <!-- POSIŁEK 2 -->
+    <div class="table-container">
+        <div class="header">Posiłek 2: Obiad (Przedtreningowy)</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Produkt</th>
+                    <th style="width: 10%">Waga (g)</th>
+                    <th style="width: 10%">B (g)</th>
+                    <th style="width: 10%">T (g)</th>
+                    <th style="width: 10%">W (g)</th>
+                    <th style="width: 12%">Kcal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Ryż basmati (suchy)</td><td>120</td><td>9.7</td><td>1.3</td><td>90.0</td><td>417.6</td></tr>
+                <tr><td>Pierś z kurczaka (surowa)</td><td>200</td><td>43.0</td><td>2.6</td><td>0.0</td><td>198.0</td></tr>
+                <tr><td>Brokuł (surowy)</td><td>200</td><td>5.6</td><td>0.8</td><td>13.2</td><td>68.0</td></tr>
+                <tr><td>Oliwa z oliwek</td><td>10</td><td>0.0</td><td>10.0</td><td>0.0</td><td>88.4</td></tr>
+                <tr class="summary-row">
+                    <td>SUMA:</td><td>530</td><td>58.3</td><td>14.7</td><td>103.2</td><td>772.0</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="notes">Kurczaka grilluj bez tłuszczu. Ryż ugotuj. Oliwa do polania warzyw po przygotowaniu.</div>
+    </div>
+
+    <!-- POSIŁEK 3 -->
+    <div class="table-container">
+        <div class="header">Posiłek 3: Kolacja (Potreningowa)</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Produkt</th>
+                    <th style="width: 10%">Waga (g)</th>
+                    <th style="width: 10%">B (g)</th>
+                    <th style="width: 10%">T (g)</th>
+                    <th style="width: 10%">W (g)</th>
+                    <th style="width: 12%">Kcal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Makaron pełnoziarnisty (suchy)</td><td>120</td><td>16.8</td><td>3.0</td><td>78.0</td><td>417.6</td></tr>
+                <tr><td>Mięso mielone z indyka (chude)</td><td>180</td><td>33.7</td><td>7.6</td><td>0.0</td><td>210.6</td></tr>
+                <tr><td>Pomidor</td><td>250</td><td>2.3</td><td>0.5</td><td>9.8</td><td>45.0</td></tr>
+                <tr><td>Cebula</td><td>50</td><td>0.6</td><td>0.1</td><td>4.7</td><td>20.0</td></tr>
+                <tr class="summary-row">
+                    <td>SUMA:</td><td>600</td><td>53.4</td><td>11.2</td><td>92.5</td><td>693.2</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="notes">Mięso podsmaż z cebulą na patelni teflonowej. Dodaj pokrojone pomidory i duś do powstania sosu. Podawaj z makaronem.</div>
+    </div>
+
+    <!-- POSIŁEK 4 -->
+    <div class="table-container">
+        <div class="header">Posiłek 4: Ostatni posiłek (Regeneracyjny)</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Produkt</th>
+                    <th style="width: 10%">Waga (g)</th>
+                    <th style="width: 10%">B (g)</th>
+                    <th style="width: 10%">T (g)</th>
+                    <th style="width: 10%">W (g)</th>
+                    <th style="width: 12%">Kcal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Twaróg półtłusty</td><td>150</td><td>28.1</td><td>7.1</td><td>5.6</td><td>199.5</td></tr>
+                <tr><td>Masło orzechowe (100% orzeszków)</td><td>35</td><td>8.8</td><td>17.2</td><td>5.6</td><td>205.8</td></tr>
+                <tr><td>Banan</td><td>150</td><td>1.5</td><td>0.5</td><td>34.2</td><td>133.5</td></tr>
+                <tr><td>Jabłko</td><td>150</td><td>0.3</td><td>0.5</td><td>20.7</td><td>78.0</td></tr>
+                <tr class="summary-row">
+                    <td>SUMA:</td><td>485</td><td>38.7</td><td>25.3</td><td>66.1</td><td>616.8</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="notes">Twaróg wymieszaj z masłem orzechowym. Podawaj z pokrojonymi owocami.</div>
+    </div>
+
+    <!-- PODSUMOWANIE DNIA -->
+    <div class="table-container" style="margin-top: 10px; border-top: 2px solid #3b312b; padding-top: 10px;">
+        <div class="header" style="font-size: 22px;">PODSUMOWANIE DNIA</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 25%">Białko (B)</th>
+                    <th style="width: 25%">Tłuszcze (T)</th>
+                    <th style="width: 25%">Węglowodany (W)</th>
+                    <th style="width: 25%">Kalorie (Kcal)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="font-size: 18px; font-weight: 600;">
+                    <td>192.8 g</td>
+                    <td>73.3 g</td>
+                    <td>369.0 g</td>
+                    <td>2883.1 kcal</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="notes" style="text-align: center; border: none;">Podaż kcal jest nieco niższa od założonej (ok. 200 kcal), co stanowi bezpieczny margines na warzywa nieliczone w planie oraz przyprawy.</div>
+    </div>
+
+</body>
+</html>

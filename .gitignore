@@ -1,0 +1,14 @@
+# Dane i pliki tymczasowe
+*.csv
+!src/produkty.csv
+!baza_cwiczen.csv
+*.log
+*.tmp
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# PDFy (jeśli nie chcesz ich w repo)
+Arni_12.02.pdf

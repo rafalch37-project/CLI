@@ -1,0 +1,1026 @@
+[
+    {
+        "Nazwa": "Pierś z kurczaka (surowa)",
+        "Kategoria": "MIĘSO I DRÓB",
+        "Kcal": 99,
+        "Bialko": 21.5,
+        "Tluszcz": 1.3,
+        "Weglowodany": 0
+    },
+    {
+        "Nazwa": "Mięso z ud kurczaka (bez skóry)",
+        "Kategoria": "MIĘSO I DRÓB",
+        "Kcal": 125,
+        "Bialko": 19.3,
+        "Tluszcz": 5.3,
+        "Weglowodany": 0
+    },
+    {
+        "Nazwa": "Pierś z indyka (surowa)",
+        "Kategoria": "MIĘSO I DRÓB",
+        "Kcal": 84,
+        "Bialko": 19.2,
+        "Tluszcz": 0.7,
+        "Weglowodany": 0
+    },
+    {
+        "Nazwa": "Polędwica wołowa (surowa)",
+        "Kategoria": "MIĘSO I DRÓB",
+        "Kcal": 113,
+        "Bialko": 20.1,
+        "Tluszcz": 3.6,
+        "Weglowodany": 0
+    },
+    {
+        "Nazwa": "Rostbef wołowy",
+        "Kategoria": "MIĘSO I DRÓB",
+        "Kcal": 152,
+        "Bialko": 21.4,
+        "Tluszcz": 7.3,
+        "Weglowodany": 0
+    },
+    {
+        "Nazwa": "Schab wieprzowy (bez kości)",
+        "Kategoria": "MIĘSO I DRÓB",
+        "Kcal": 152,
+        "Bialko": 23.6,
+        "Tluszcz": 6.4,
+        "Weglowodany": 0
+    },
+    {
+        "Nazwa": "Polędwiczka wieprzowa",
+        "Kategoria": "MIĘSO I DRÓB",
+        "Kcal": 143,
+        "Bialko": 21,
+        "Tluszcz": 6.5,
+        "Weglowodany": 0
+    },
+    {
+        "Nazwa": "Mięso mielone z indyka (chude)",
+        "Kategoria": "MIĘSO I DRÓB",
+        "Kcal": 117,
+        "Bialko": 18.7,
+        "Tluszcz": 4.2,
+        "Weglowodany": 0
+    },
+    {
+        "Nazwa": "Cielęcina (chuda, surowa)",
+        "Kategoria": "MIĘSO I DRÓB",
+        "Kcal": 106,
+        "Bialko": 20,
+        "Tluszcz": 3,
+        "Weglowodany": 0
+    },
+    {
+        "Nazwa": "Mięso z kaczki (bez skóry)",
+        "Kategoria": "MIĘSO I DRÓB",
+        "Kcal": 135,
+        "Bialko": 19,
+        "Tluszcz": 6,
+        "Weglowodany": 0
+    },
+    {
+        "Nazwa": "Królik (surowy)",
+        "Kategoria": "MIĘSO I DRÓB",
+        "Kcal": 114,
+        "Bialko": 21.8,
+        "Tluszcz": 2.3,
+        "Weglowodany": 0
+    },
+    {
+        "Nazwa": "Halibut (świeży)",
+        "Kategoria": "MIĘSO I DRÓB",
+        "Kcal": 91,
+        "Bialko": 18.6,
+        "Tluszcz": 1.3,
+        "Weglowodany": 0
+    },
+    {
+        "Nazwa": "Sardynki w wodzie (z puszki)",
+        "Kategoria": "MIĘSO I DRÓB",
+        "Kcal": 90,
+        "Bialko": 16,
+        "Tluszcz": 3,
+        "Weglowodany": 0
+    },
+    {
+        "Nazwa": "Tofu (twarde)",
+        "Kategoria": "MIĘSO I DRÓB",
+        "Kcal": 144,
+        "Bialko": 15.8,
+        "Tluszcz": 8.7,
+        "Weglowodany": 2.8
+    },
+    {
+        "Nazwa": "Tempeh",
+        "Kategoria": "MIĘSO I DRÓB",
+        "Kcal": 193,
+        "Bialko": 18.5,
+        "Tluszcz": 10.8,
+        "Weglowodany": 9.4
+    },
+    {
+        "Nazwa": "Łosoś atlantycki (świeży)",
+        "Kategoria": "RYBY I OWOCE MORZA",
+        "Kcal": 208,
+        "Bialko": 20,
+        "Tluszcz": 13,
+        "Weglowodany": 0
+    },
+    {
+        "Nazwa": "Dorsz (świeży)",
+        "Kategoria": "RYBY I OWOCE MORZA",
+        "Kcal": 77,
+        "Bialko": 17.7,
+        "Tluszcz": 0.7,
+        "Weglowodany": 0
+    },
+    {
+        "Nazwa": "Pstrąg tęczowy (świeży)",
+        "Kategoria": "RYBY I OWOCE MORZA",
+        "Kcal": 119,
+        "Bialko": 19.9,
+        "Tluszcz": 4.3,
+        "Weglowodany": 0
+    },
+    {
+        "Nazwa": "Tuńczyk w wodzie (z puszki, odsączony)",
+        "Kategoria": "RYBY I OWOCE MORZA",
+        "Kcal": 96,
+        "Bialko": 21,
+        "Tluszcz": 1,
+        "Weglowodany": 0
+    },
+    {
+        "Nazwa": "Makrela wędzona",
+        "Kategoria": "RYBY I OWOCE MORZA",
+        "Kcal": 228,
+        "Bialko": 20.7,
+        "Tluszcz": 16.1,
+        "Weglowodany": 0
+    },
+    {
+        "Nazwa": "Śledź (świeży)",
+        "Kategoria": "RYBY I OWOCE MORZA",
+        "Kcal": 162,
+        "Bialko": 16.3,
+        "Tluszcz": 10.7,
+        "Weglowodany": 0
+    },
+    {
+        "Nazwa": "Krewetki (gotowane)",
+        "Kategoria": "RYBY I OWOCE MORZA",
+        "Kcal": 99,
+        "Bialko": 24,
+        "Tluszcz": 0.3,
+        "Weglowodany": 0.2
+    },
+    {
+        "Nazwa": "Jaja kurze (całe)",
+        "Kategoria": "NABIAŁ I JAJA",
+        "Kcal": 143,
+        "Bialko": 12.5,
+        "Tluszcz": 9.7,
+        "Weglowodany": 0.6
+    },
+    {
+        "Nazwa": "Białka jaj kurzych",
+        "Kategoria": "NABIAŁ I JAJA",
+        "Kcal": 49,
+        "Bialko": 10.9,
+        "Tluszcz": 0.2,
+        "Weglowodany": 0.7
+    },
+    {
+        "Nazwa": "Twaróg chudy",
+        "Kategoria": "NABIAŁ I JAJA",
+        "Kcal": 86,
+        "Bialko": 18,
+        "Tluszcz": 0,
+        "Weglowodany": 3.5
+    },
+    {
+        "Nazwa": "Twaróg półtłusty",
+        "Kategoria": "NABIAŁ I JAJA",
+        "Kcal": 133,
+        "Bialko": 18.7,
+        "Tluszcz": 4.7,
+        "Weglowodany": 3.7
+    },
+    {
+        "Nazwa": "Skyr naturalny",
+        "Kategoria": "NABIAŁ I JAJA",
+        "Kcal": 65,
+        "Bialko": 12,
+        "Tluszcz": 0,
+        "Weglowodany": 4
+    },
+    {
+        "Nazwa": "Jogurt naturalny (2%)",
+        "Kategoria": "NABIAŁ I JAJA",
+        "Kcal": 60,
+        "Bialko": 4.3,
+        "Tluszcz": 2,
+        "Weglowodany": 6.2
+    },
+    {
+        "Nazwa": "Kefir (2%)",
+        "Kategoria": "NABIAŁ I JAJA",
+        "Kcal": 51,
+        "Bialko": 3.4,
+        "Tluszcz": 2,
+        "Weglowodany": 4.7
+    },
+    {
+        "Nazwa": "Mleko spożywcze (2%)",
+        "Kategoria": "NABIAŁ I JAJA",
+        "Kcal": 50,
+        "Bialko": 3.4,
+        "Tluszcz": 2,
+        "Weglowodany": 4.9
+    },
+    {
+        "Nazwa": "Mleko spożywcze (3.2%)",
+        "Kategoria": "NABIAŁ I JAJA",
+        "Kcal": 61,
+        "Bialko": 3.3,
+        "Tluszcz": 3.2,
+        "Weglowodany": 4.8
+    },
+    {
+        "Nazwa": "Ser żółty Gouda",
+        "Kategoria": "NABIAŁ I JAJA",
+        "Kcal": 356,
+        "Bialko": 24.9,
+        "Tluszcz": 27.4,
+        "Weglowodany": 2.2
+    },
+    {
+        "Nazwa": "Ser Mozzarella (w zalewie)",
+        "Kategoria": "NABIAŁ I JAJA",
+        "Kcal": 243,
+        "Bialko": 22,
+        "Tluszcz": 17,
+        "Weglowodany": 2
+    },
+    {
+        "Nazwa": "Ser Mozzarella light",
+        "Kategoria": "NABIAŁ I JAJA",
+        "Kcal": 165,
+        "Bialko": 19,
+        "Tluszcz": 9,
+        "Weglowodany": 1.5
+    },
+    {
+        "Nazwa": "Ser Feta",
+        "Kategoria": "NABIAŁ I JAJA",
+        "Kcal": 264,
+        "Bialko": 14.2,
+        "Tluszcz": 21.2,
+        "Weglowodany": 4
+    },
+    {
+        "Nazwa": "Ser Parmezan",
+        "Kategoria": "NABIAŁ I JAJA",
+        "Kcal": 431,
+        "Bialko": 38.5,
+        "Tluszcz": 28.6,
+        "Weglowodany": 4.1
+    },
+    {
+        "Nazwa": "Ser Cheddar",
+        "Kategoria": "NABIAŁ I JAJA",
+        "Kcal": 402,
+        "Bialko": 25,
+        "Tluszcz": 33,
+        "Weglowodany": 1.3
+    },
+    {
+        "Nazwa": "Ser Ricotta",
+        "Kategoria": "NABIAŁ I JAJA",
+        "Kcal": 174,
+        "Bialko": 11.3,
+        "Tluszcz": 13,
+        "Weglowodany": 3
+    },
+    {
+        "Nazwa": "Ser Camembert",
+        "Kategoria": "NABIAŁ I JAJA",
+        "Kcal": 299,
+        "Bialko": 19.8,
+        "Tluszcz": 24.3,
+        "Weglowodany": 0.5
+    },
+    {
+        "Nazwa": "Serek wiejski (lekki)",
+        "Kategoria": "NABIAŁ I JAJA",
+        "Kcal": 81,
+        "Bialko": 11,
+        "Tluszcz": 3,
+        "Weglowodany": 2.5
+    },
+    {
+        "Nazwa": "Napój sojowy (niesłodzony)",
+        "Kategoria": "NABIAŁ I JAJA",
+        "Kcal": 33,
+        "Bialko": 3.3,
+        "Tluszcz": 1.8,
+        "Weglowodany": 1.6
+    },
+    {
+        "Nazwa": "Napój migdałowy (niesłodzony)",
+        "Kategoria": "NABIAŁ I JAJA",
+        "Kcal": 15,
+        "Bialko": 0.6,
+        "Tluszcz": 1.2,
+        "Weglowodany": 0.3
+    },
+    {
+        "Nazwa": "Płatki owsiane górskie",
+        "Kategoria": "ZBOŻA, KASZE I STRĄCZKI",
+        "Kcal": 379,
+        "Bialko": 11.9,
+        "Tluszcz": 7.2,
+        "Weglowodany": 62.4
+    },
+    {
+        "Nazwa": "Płatki jaglane",
+        "Kategoria": "ZBOŻA, KASZE I STRĄCZKI",
+        "Kcal": 360,
+        "Bialko": 10.5,
+        "Tluszcz": 3,
+        "Weglowodany": 69
+    },
+    {
+        "Nazwa": "Ryż basmati (suchy)",
+        "Kategoria": "ZBOŻA, KASZE I STRĄCZKI",
+        "Kcal": 348,
+        "Bialko": 8.1,
+        "Tluszcz": 1.1,
+        "Weglowodany": 75
+    },
+    {
+        "Nazwa": "Ryż brązowy (suchy)",
+        "Kategoria": "ZBOŻA, KASZE I STRĄCZKI",
+        "Kcal": 354,
+        "Bialko": 7.1,
+        "Tluszcz": 1.9,
+        "Weglowodany": 76.8
+    },
+    {
+        "Nazwa": "Ryż biały (suchy)",
+        "Kategoria": "ZBOŻA, KASZE I STRĄCZKI",
+        "Kcal": 344,
+        "Bialko": 6.7,
+        "Tluszcz": 0.7,
+        "Weglowodany": 78.9
+    },
+    {
+        "Nazwa": "Kasza gryczana (sucha)",
+        "Kategoria": "ZBOŻA, KASZE I STRĄCZKI",
+        "Kcal": 336,
+        "Bialko": 12.6,
+        "Tluszcz": 3.1,
+        "Weglowodany": 69.3
+    },
+    {
+        "Nazwa": "Kasza jaglana (sucha)",
+        "Kategoria": "ZBOŻA, KASZE I STRĄCZKI",
+        "Kcal": 346,
+        "Bialko": 10.5,
+        "Tluszcz": 2.9,
+        "Weglowodany": 68.4
+    },
+    {
+        "Nazwa": "Kasza pęczak (sucha)",
+        "Kategoria": "ZBOŻA, KASZE I STRĄCZKI",
+        "Kcal": 334,
+        "Bialko": 8.4,
+        "Tluszcz": 2,
+        "Weglowodany": 69.5
+    },
+    {
+        "Nazwa": "Komosa ryżowa / Quinoa (sucha)",
+        "Kategoria": "ZBOŻA, KASZE I STRĄCZKI",
+        "Kcal": 368,
+        "Bialko": 14.1,
+        "Tluszcz": 6,
+        "Weglowodany": 64.1
+    },
+    {
+        "Nazwa": "Makaron pszenny (suchy)",
+        "Kategoria": "ZBOŻA, KASZE I STRĄCZKI",
+        "Kcal": 350,
+        "Bialko": 12,
+        "Tluszcz": 1.5,
+        "Weglowodany": 70
+    },
+    {
+        "Nazwa": "Makaron pełnoziarnisty (suchy)",
+        "Kategoria": "ZBOŻA, KASZE I STRĄCZKI",
+        "Kcal": 348,
+        "Bialko": 14,
+        "Tluszcz": 2.5,
+        "Weglowodany": 65
+    },
+    {
+        "Nazwa": "Ziemniaki (surowe)",
+        "Kategoria": "ZBOŻA, KASZE I STRĄCZKI",
+        "Kcal": 77,
+        "Bialko": 1.9,
+        "Tluszcz": 0.1,
+        "Weglowodany": 17.5
+    },
+    {
+        "Nazwa": "Bataty (surowe)",
+        "Kategoria": "ZBOŻA, KASZE I STRĄCZKI",
+        "Kcal": 86,
+        "Bialko": 1.6,
+        "Tluszcz": 0.1,
+        "Weglowodany": 20.1
+    },
+    {
+        "Nazwa": "Soczewica czerwona (sucha)",
+        "Kategoria": "ZBOŻA, KASZE I STRĄCZKI",
+        "Kcal": 327,
+        "Bialko": 25.4,
+        "Tluszcz": 1.1,
+        "Weglowodany": 53
+    },
+    {
+        "Nazwa": "Ciecierzyca (sucha)",
+        "Kategoria": "ZBOŻA, KASZE I STRĄCZKI",
+        "Kcal": 364,
+        "Bialko": 19.3,
+        "Tluszcz": 6,
+        "Weglowodany": 60.6
+    },
+    {
+        "Nazwa": "Fasola czerwona (z puszki, odsączona)",
+        "Kategoria": "ZBOŻA, KASZE I STRĄCZKI",
+        "Kcal": 85,
+        "Bialko": 5.5,
+        "Tluszcz": 0.2,
+        "Weglowodany": 15
+    },
+    {
+        "Nazwa": "Chleb żytni na zakwasie",
+        "Kategoria": "ZBOŻA, KASZE I STRĄCZKI",
+        "Kcal": 213,
+        "Bialko": 5.9,
+        "Tluszcz": 1.7,
+        "Weglowodany": 47
+    },
+    {
+        "Nazwa": "Kuskus (suchy)",
+        "Kategoria": "ZBOŻA, KASZE I STRĄCZKI",
+        "Kcal": 376,
+        "Bialko": 12.8,
+        "Tluszcz": 0.6,
+        "Weglowodany": 77.4
+    },
+    {
+        "Nazwa": "Kasza bulgur (sucha)",
+        "Kategoria": "ZBOŻA, KASZE I STRĄCZKI",
+        "Kcal": 342,
+        "Bialko": 12.3,
+        "Tluszcz": 1.3,
+        "Weglowodany": 75.9
+    },
+    {
+        "Nazwa": "Amarantus (ziarna suche)",
+        "Kategoria": "ZBOŻA, KASZE I STRĄCZKI",
+        "Kcal": 371,
+        "Bialko": 13.6,
+        "Tluszcz": 7,
+        "Weglowodany": 65
+    },
+    {
+        "Nazwa": "Wafle ryżowe (naturalne)",
+        "Kategoria": "ZBOŻA, KASZE I STRĄCZKI",
+        "Kcal": 387,
+        "Bialko": 8.2,
+        "Tluszcz": 2.8,
+        "Weglowodany": 81.5
+    },
+    {
+        "Nazwa": "Groszek zielony (świeży/mrożony)",
+        "Kategoria": "ZBOŻA, KASZE I STRĄCZKI",
+        "Kcal": 81,
+        "Bialko": 5.4,
+        "Tluszcz": 0.4,
+        "Weglowodany": 14.5
+    },
+    {
+        "Nazwa": "Fasola biała (sucha)",
+        "Kategoria": "ZBOŻA, KASZE I STRĄCZKI",
+        "Kcal": 333,
+        "Bialko": 23.4,
+        "Tluszcz": 0.8,
+        "Weglowodany": 60.3
+    },
+    {
+        "Nazwa": "Bób (surowy)",
+        "Kategoria": "ZBOŻA, KASZE I STRĄCZKI",
+        "Kcal": 88,
+        "Bialko": 7.9,
+        "Tluszcz": 0.5,
+        "Weglowodany": 17.6
+    },
+    {
+        "Nazwa": "Oliwa z oliwek",
+        "Kategoria": "TŁUSZCZE, ORZECHY I NASIONA",
+        "Kcal": 884,
+        "Bialko": 0,
+        "Tluszcz": 100,
+        "Weglowodany": 0
+    },
+    {
+        "Nazwa": "Olej rzepakowy",
+        "Kategoria": "TŁUSZCZE, ORZECHY I NASIONA",
+        "Kcal": 884,
+        "Bialko": 0,
+        "Tluszcz": 100,
+        "Weglowodany": 0
+    },
+    {
+        "Nazwa": "Masło (82%)",
+        "Kategoria": "TŁUSZCZE, ORZECHY I NASIONA",
+        "Kcal": 748,
+        "Bialko": 0.7,
+        "Tluszcz": 82.5,
+        "Weglowodany": 0.7
+    },
+    {
+        "Nazwa": "Migdały",
+        "Kategoria": "TŁUSZCZE, ORZECHY I NASIONA",
+        "Kcal": 579,
+        "Bialko": 21.1,
+        "Tluszcz": 49.9,
+        "Weglowodany": 21.5
+    },
+    {
+        "Nazwa": "Orzechy włoskie",
+        "Kategoria": "TŁUSZCZE, ORZECHY I NASIONA",
+        "Kcal": 654,
+        "Bialko": 15.2,
+        "Tluszcz": 65.2,
+        "Weglowodany": 13.7
+    },
+    {
+        "Nazwa": "Orzechy nerkowca",
+        "Kategoria": "TŁUSZCZE, ORZECHY I NASIONA",
+        "Kcal": 553,
+        "Bialko": 18.2,
+        "Tluszcz": 43.8,
+        "Weglowodany": 30.2
+    },
+    {
+        "Nazwa": "Orzechy laskowe",
+        "Kategoria": "TŁUSZCZE, ORZECHY I NASIONA",
+        "Kcal": 628,
+        "Bialko": 14.9,
+        "Tluszcz": 60.7,
+        "Weglowodany": 16.7
+    },
+    {
+        "Nazwa": "Masło orzechowe (100% orzeszków)",
+        "Kategoria": "TŁUSZCZE, ORZECHY I NASIONA",
+        "Kcal": 588,
+        "Bialko": 25,
+        "Tluszcz": 49,
+        "Weglowodany": 16
+    },
+    {
+        "Nazwa": "Pestki dyni",
+        "Kategoria": "TŁUSZCZE, ORZECHY I NASIONA",
+        "Kcal": 559,
+        "Bialko": 28.8,
+        "Tluszcz": 45.8,
+        "Weglowodany": 14.7
+    },
+    {
+        "Nazwa": "Nasiona słonecznika",
+        "Kategoria": "TŁUSZCZE, ORZECHY I NASIONA",
+        "Kcal": 584,
+        "Bialko": 20.7,
+        "Tluszcz": 51.4,
+        "Weglowodany": 20
+    },
+    {
+        "Nazwa": "Siemię lniane",
+        "Kategoria": "TŁUSZCZE, ORZECHY I NASIONA",
+        "Kcal": 534,
+        "Bialko": 18.2,
+        "Tluszcz": 42.1,
+        "Weglowodany": 28.8
+    },
+    {
+        "Nazwa": "Nasiona chia",
+        "Kategoria": "TŁUSZCZE, ORZECHY I NASIONA",
+        "Kcal": 486,
+        "Bialko": 16.5,
+        "Tluszcz": 30.7,
+        "Weglowodany": 42.1
+    },
+    {
+        "Nazwa": "Awokado (surowe)",
+        "Kategoria": "TŁUSZCZE, ORZECHY I NASIONA",
+        "Kcal": 160,
+        "Bialko": 2,
+        "Tluszcz": 14.6,
+        "Weglowodany": 8.5
+    },
+    {
+        "Nazwa": "Pistacje (bez łupin)",
+        "Kategoria": "TŁUSZCZE, ORZECHY I NASIONA",
+        "Kcal": 562,
+        "Bialko": 20.2,
+        "Tluszcz": 45.3,
+        "Weglowodany": 27.2
+    },
+    {
+        "Nazwa": "Orzechy makadamia",
+        "Kategoria": "TŁUSZCZE, ORZECHY I NASIONA",
+        "Kcal": 718,
+        "Bialko": 7.9,
+        "Tluszcz": 75.8,
+        "Weglowodany": 13.8
+    },
+    {
+        "Nazwa": "Orzechy brazylijskie",
+        "Kategoria": "TŁUSZCZE, ORZECHY I NASIONA",
+        "Kcal": 659,
+        "Bialko": 14.3,
+        "Tluszcz": 67.1,
+        "Weglowodany": 11.7
+    },
+    {
+        "Nazwa": "Sezam (nasiona)",
+        "Kategoria": "TŁUSZCZE, ORZECHY I NASIONA",
+        "Kcal": 573,
+        "Bialko": 17.7,
+        "Tluszcz": 49.7,
+        "Weglowodany": 23.4
+    },
+    {
+        "Nazwa": "Nasiona konopi (łuskane)",
+        "Kategoria": "TŁUSZCZE, ORZECHY I NASIONA",
+        "Kcal": 553,
+        "Bialko": 31.6,
+        "Tluszcz": 48.8,
+        "Weglowodany": 8.7
+    },
+    {
+        "Nazwa": "Tahini (pasta sezamowa)",
+        "Kategoria": "TŁUSZCZE, ORZECHY I NASIONA",
+        "Kcal": 595,
+        "Bialko": 17,
+        "Tluszcz": 53.8,
+        "Weglowodany": 21.2
+    },
+    {
+        "Nazwa": "Oliwki zielone (w zalewie)",
+        "Kategoria": "TŁUSZCZE, ORZECHY I NASIONA",
+        "Kcal": 145,
+        "Bialko": 1,
+        "Tluszcz": 15.3,
+        "Weglowodany": 3.8
+    },
+    {
+        "Nazwa": "Brokuł (surowy)",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 34,
+        "Bialko": 2.8,
+        "Tluszcz": 0.4,
+        "Weglowodany": 6.6
+    },
+    {
+        "Nazwa": "Kalafior (surowy)",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 25,
+        "Bialko": 1.9,
+        "Tluszcz": 0.2,
+        "Weglowodany": 4.9
+    },
+    {
+        "Nazwa": "Pomidor",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 18,
+        "Bialko": 0.9,
+        "Tluszcz": 0.2,
+        "Weglowodany": 3.9
+    },
+    {
+        "Nazwa": "Ogórek",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 14,
+        "Bialko": 0.6,
+        "Tluszcz": 0.1,
+        "Weglowodany": 2.9
+    },
+    {
+        "Nazwa": "Papryka czerwona",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 31,
+        "Bialko": 1,
+        "Tluszcz": 0.3,
+        "Weglowodany": 6
+    },
+    {
+        "Nazwa": "Cebula",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 40,
+        "Bialko": 1.1,
+        "Tluszcz": 0.1,
+        "Weglowodany": 9.3
+    },
+    {
+        "Nazwa": "Czosnek",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 149,
+        "Bialko": 6.3,
+        "Tluszcz": 0.5,
+        "Weglowodany": 33
+    },
+    {
+        "Nazwa": "Marchew (surowa)",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 41,
+        "Bialko": 0.9,
+        "Tluszcz": 0.2,
+        "Weglowodany": 9.5
+    },
+    {
+        "Nazwa": "Cukinia",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 17,
+        "Bialko": 1.2,
+        "Tluszcz": 0.1,
+        "Weglowodany": 3.1
+    },
+    {
+        "Nazwa": "Szpinak (świeży)",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 23,
+        "Bialko": 2.8,
+        "Tluszcz": 0.4,
+        "Weglowodany": 3.6
+    },
+    {
+        "Nazwa": "Pieczarki",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 22,
+        "Bialko": 3.1,
+        "Tluszcz": 0.3,
+        "Weglowodany": 3.2
+    },
+    {
+        "Nazwa": "Banan",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 89,
+        "Bialko": 1,
+        "Tluszcz": 0.3,
+        "Weglowodany": 22.8
+    },
+    {
+        "Nazwa": "Jabłko",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 52,
+        "Bialko": 0.2,
+        "Tluszcz": 0.3,
+        "Weglowodany": 13.8
+    },
+    {
+        "Nazwa": "Gruszka",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 57,
+        "Bialko": 0.3,
+        "Tluszcz": 0.1,
+        "Weglowodany": 15.2
+    },
+    {
+        "Nazwa": "Maliny (świeże/mrożone)",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 52,
+        "Bialko": 1.2,
+        "Tluszcz": 0.6,
+        "Weglowodany": 11.9
+    },
+    {
+        "Nazwa": "Borówki amerykańskie",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 57,
+        "Bialko": 0.7,
+        "Tluszcz": 0.3,
+        "Weglowodany": 14.4
+    },
+    {
+        "Nazwa": "Truskawki (świeże/mrożone)",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 32,
+        "Bialko": 0.6,
+        "Tluszcz": 0.3,
+        "Weglowodany": 7.6
+    },
+    {
+        "Nazwa": "Pomarańcza",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 47,
+        "Bialko": 0.9,
+        "Tluszcz": 0.2,
+        "Weglowodany": 11.7
+    },
+    {
+        "Nazwa": "Kiwi",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 61,
+        "Bialko": 1.1,
+        "Tluszcz": 0.5,
+        "Weglowodany": 14.6
+    },
+    {
+        "Nazwa": "Szparagi (surowe)",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 20,
+        "Bialko": 2.2,
+        "Tluszcz": 0.1,
+        "Weglowodany": 3.9
+    },
+    {
+        "Nazwa": "Brukselka (surowa)",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 43,
+        "Bialko": 3.4,
+        "Tluszcz": 0.3,
+        "Weglowodany": 9
+    },
+    {
+        "Nazwa": "Kapusta biała (surowa)",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 25,
+        "Bialko": 1.3,
+        "Tluszcz": 0.1,
+        "Weglowodany": 5.8
+    },
+    {
+        "Nazwa": "Kapusta kiszona",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 19,
+        "Bialko": 0.9,
+        "Tluszcz": 0.1,
+        "Weglowodany": 4.3
+    },
+    {
+        "Nazwa": "Jarmuż (surowy)",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 49,
+        "Bialko": 4.3,
+        "Tluszcz": 0.9,
+        "Weglowodany": 8.8
+    },
+    {
+        "Nazwa": "Por",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 61,
+        "Bialko": 1.5,
+        "Tluszcz": 0.3,
+        "Weglowodany": 14.2
+    },
+    {
+        "Nazwa": "Seler korzeniowy",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 42,
+        "Bialko": 1.5,
+        "Tluszcz": 0.3,
+        "Weglowodany": 9.2
+    },
+    {
+        "Nazwa": "Seler naciowy",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 14,
+        "Bialko": 0.7,
+        "Tluszcz": 0.2,
+        "Weglowodany": 3
+    },
+    {
+        "Nazwa": "Rzodkiewka",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 16,
+        "Bialko": 0.7,
+        "Tluszcz": 0.1,
+        "Weglowodany": 3.4
+    },
+    {
+        "Nazwa": "Burak (surowy)",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 43,
+        "Bialko": 1.6,
+        "Tluszcz": 0.2,
+        "Weglowodany": 9.6
+    },
+    {
+        "Nazwa": "Bakłażan",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 25,
+        "Bialko": 1,
+        "Tluszcz": 0.2,
+        "Weglowodany": 5.9
+    },
+    {
+        "Nazwa": "Fasolka szparagowa",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 31,
+        "Bialko": 1.8,
+        "Tluszcz": 0.2,
+        "Weglowodany": 7
+    },
+    {
+        "Nazwa": "Dynia (surowa)",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 26,
+        "Bialko": 1,
+        "Tluszcz": 0.1,
+        "Weglowodany": 6.5
+    },
+    {
+        "Nazwa": "Grejpfrut",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 42,
+        "Bialko": 0.8,
+        "Tluszcz": 0.1,
+        "Weglowodany": 10.7
+    },
+    {
+        "Nazwa": "Brzoskwinia",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 39,
+        "Bialko": 0.9,
+        "Tluszcz": 0.3,
+        "Weglowodany": 9.5
+    },
+    {
+        "Nazwa": "Śliwka",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 46,
+        "Bialko": 0.7,
+        "Tluszcz": 0.3,
+        "Weglowodany": 11.4
+    },
+    {
+        "Nazwa": "Winogrona (jasne)",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 69,
+        "Bialko": 0.7,
+        "Tluszcz": 0.2,
+        "Weglowodany": 18.1
+    },
+    {
+        "Nazwa": "Ananas (świeży)",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 50,
+        "Bialko": 0.5,
+        "Tluszcz": 0.1,
+        "Weglowodany": 13.1
+    },
+    {
+        "Nazwa": "Mango",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 60,
+        "Bialko": 0.8,
+        "Tluszcz": 0.4,
+        "Weglowodany": 15
+    },
+    {
+        "Nazwa": "Granat",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 83,
+        "Bialko": 1.7,
+        "Tluszcz": 1.2,
+        "Weglowodany": 18.7
+    },
+    {
+        "Nazwa": "Arbuz",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 30,
+        "Bialko": 0.6,
+        "Tluszcz": 0.2,
+        "Weglowodany": 7.6
+    },
+    {
+        "Nazwa": "Wiśnie",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 50,
+        "Bialko": 1,
+        "Tluszcz": 0.3,
+        "Weglowodany": 12.2
+    },
+    {
+        "Nazwa": "Czereśnie",
+        "Kategoria": "WARZYWA I OWOCE",
+        "Kcal": 63,
+        "Bialko": 1.1,
+        "Tluszcz": 0.2,
+        "Weglowodany": 16
+    }
+]

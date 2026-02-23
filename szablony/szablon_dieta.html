@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Szablon Planu Dietetycznego</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+        
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 100%;
+            position: relative;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            box-sizing: border-box;
+            padding: 20mm 0;
+        }
+
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 110%;
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .table-container {
+            width: 90%;
+            max-width: 850px;
+            margin-bottom: 20px;
+        }
+
+        .header {
+            text-align: center;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: transparent;
+        }
+
+        th {
+            background-color: #3b312b !important;
+            color: #d4af37 !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #c5a059;
+            font-size: 11px;
+        }
+
+        th:first-child {
+            text-align: left;
+            width: 40%;
+        }
+
+        td {
+            padding: 12px 10px;
+            border: 1px solid #e0e0e0;
+            background-color: rgba(255, 255, 255, 0.4);
+            text-align: center;
+            font-size: 13px;
+        }
+
+        td:first-child {
+            text-align: left;
+        }
+
+        .macro-col {
+            width: 10%;
+        }
+
+        .kcal-col {
+            width: 12%;
+        }
+
+        .summary-row td {
+            font-weight: 600;
+            background-color: rgba(197, 160, 89, 0.1);
+        }
+
+        @media print {
+            .watermark { position: absolute; }
+        }
+    </style>
+</head>
+<body>
+
+    <img src="logop.png" alt="Watermark" class="watermark">
+
+    <!-- POSIŁEK 1 -->
+    <div class="table-container">
+        <div class="header">POSIŁEK 1</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Produkt</th>
+                    <th class="macro-col">Ilość (g)</th>
+                    <th class="macro-col">B (g)</th>
+                    <th class="macro-col">T (g)</th>
+                    <th class="macro-col">W (g)</th>
+                    <th class="kcal-col">Kcal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr class="summary-row">
+                    <td>SUMA:</td><td></td><td></td><td></td><td></td><td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- POSIŁEK 2 -->
+    <div class="table-container">
+        <div class="header">POSIŁEK 2</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Produkt</th>
+                    <th class="macro-col">Ilość (g)</th>
+                    <th class="macro-col">B (g)</th>
+                    <th class="macro-col">T (g)</th>
+                    <th class="macro-col">W (g)</th>
+                    <th class="kcal-col">Kcal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr class="summary-row">
+                    <td>SUMA:</td><td></td><td></td><td></td><td></td><td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- PODSUMOWANIE DNIA -->
+    <div class="table-container" style="margin-top: 30px; border-top: 2px solid #3b312b; padding-top: 20px;">
+        <div class="header" style="font-size: 24px;">PODSUMOWANIE DNIA</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 25%">Białko</th>
+                    <th style="width: 25%">Tłuszcze</th>
+                    <th style="width: 25%">Węglowodany</th>
+                    <th style="width: 25%">Kalorie</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="font-size: 18px; font-weight: 600;">
+                    <td>0 g</td>
+                    <td>0 g</td>
+                    <td>0 g</td>
+                    <td>0 kcal</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
