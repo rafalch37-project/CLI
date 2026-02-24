@@ -1,0 +1,122 @@
+[
+  {
+    "pytanie": "Imię i nazwisko",
+    "odpowiedz": NaN,
+    "znaczenie": "Identyfikacja klienta."
+  },
+  {
+    "pytanie": "Wiek",
+    "odpowiedz": NaN,
+    "znaczenie": "Kontekst ogólny, ocena zdolności do regeneracji."
+  },
+  {
+    "pytanie": "Waga (kg)",
+    "odpowiedz": NaN,
+    "znaczenie": "Wyliczanie zapotrzebowania kalorycznego."
+  },
+  {
+    "pytanie": "Wzrost (cm)",
+    "odpowiedz": NaN,
+    "znaczenie": "Wyliczanie BMI."
+  },
+  {
+    "pytanie": "Płeć",
+    "odpowiedz": NaN,
+    "znaczenie": "Określenie domyślnych priorytetów i predyspozycji."
+  },
+  {
+    "pytanie": "Aktywność ",
+    "odpowiedz": NaN,
+    "znaczenie": NaN
+  },
+  {
+    "pytanie": "Czy masz kontuzje lub przeciwskazania? (Opisz)",
+    "odpowiedz": NaN,
+    "znaczenie": "Kluczowe dla bezpieczeństwa. Odrzucanie niebezpiecznych ćwiczeń."
+  },
+  {
+    "pytanie": "Główny cel treningowy",
+    "odpowiedz": NaN,
+    "znaczenie": "Wpływa na dobór typu ćwiczeń (wielostawowe vs izolowane)."
+  },
+  {
+    "pytanie": "Twój poziom zaawansowania ",
+    "odpowiedz": NaN,
+    "znaczenie": "Filtruje kolumnę 'Trudnosc' w bazie."
+  },
+  {
+    "pytanie": "Ile dni w tygodniu możesz trenować?",
+    "odpowiedz": NaN,
+    "znaczenie": "Decyduje o podziale planu (np. Split, FBW)."
+  },
+  {
+    "pytanie": "Ile średnio minut ma trwać trening?",
+    "odpowiedz": NaN,
+    "znaczenie": "Decyduje o objętości (liczbie ćwiczeń)."
+  },
+  {
+    "pytanie": "PRIORYTETY SYLWETKOWE (Wybierz max 3)",
+    "odpowiedz": NaN,
+    "znaczenie": "Algorytm dobierze więcej ćwiczeń z bazy dla tych partii."
+  },
+  {
+    "pytanie": "Priorytet 1:",
+    "odpowiedz": NaN,
+    "znaczenie": "Filtrowanie kolumny 'Partia_Glowna' dla Priorytetu 1"
+  },
+  {
+    "pytanie": "Priorytet 2:",
+    "odpowiedz": NaN,
+    "znaczenie": "Filtrowanie kolumny 'Partia_Glowna' dla Priorytetu 2"
+  },
+  {
+    "pytanie": "Priorytet 3:",
+    "odpowiedz": NaN,
+    "znaczenie": "Filtrowanie kolumny 'Partia_Glowna' dla Priorytetu 3"
+  },
+  {
+    "pytanie": "DOSTĘPNY SPRZĘT (Zaznacz Tak/Nie)",
+    "odpowiedz": NaN,
+    "znaczenie": "Bezpośrednie filtrowanie dostępności sprzętu z bazy."
+  },
+  {
+    "pytanie": "Dostęp: Sztanga",
+    "odpowiedz": "Tak",
+    "znaczenie": "Filtrowanie kolumny 'Sprzet' dla opcji: Sztanga"
+  },
+  {
+    "pytanie": "Dostęp: Hantle",
+    "odpowiedz": "Tak",
+    "znaczenie": "Filtrowanie kolumny 'Sprzet' dla opcji: Hantle"
+  },
+  {
+    "pytanie": "Dostęp: Maszyna",
+    "odpowiedz": "Tak",
+    "znaczenie": "Filtrowanie kolumny 'Sprzet' dla opcji: Maszyna"
+  },
+  {
+    "pytanie": "Dostęp: Wyciąg",
+    "odpowiedz": "Tak",
+    "znaczenie": "Filtrowanie kolumny 'Sprzet' dla opcji: Wyciąg"
+  },
+  {
+    "pytanie": "Dostęp: Poręcze",
+    "odpowiedz": "Tak",
+    "znaczenie": "Filtrowanie kolumny 'Sprzet' dla opcji: Poręcze"
+  },
+  {
+    "pytanie": "Dostęp: Drążek",
+    "odpowiedz": "Tak",
+    "znaczenie": "Filtrowanie kolumny 'Sprzet' dla opcji: Drążek"
+  },
+  {
+    "pytanie": "Dostęp: Ławka",
+    "odpowiedz": "Tak",
+    "znaczenie": "Filtrowanie kolumny 'Sprzet' dla opcji: Ławka"
+  },
+  {
+    "pytanie": "Dostęp: Talerz",
+    "odpowiedz": "Tak",
+    "znaczenie": "Filtrowanie kolumny 'Sprzet' dla opcji: Talerz"
+  }
+]
