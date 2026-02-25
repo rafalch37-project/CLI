@@ -1,0 +1,105 @@
+[
+  {
+    "nazwa_sesji": "Dzień 1: PUSH (Klatka, Barki, Triceps)",
+    "cwiczenia": [
+      {
+        "nazwa": "Wyciskanie sztangi na ławce poziomej",
+        "partia": "Klatka piersiowa (całość)",
+        "serie": 4,
+        "powtorzenia": "6-10",
+        "tempo": "3-1-1-0",
+        "notatki": "Opuszczanie sztangi do mostka, dynamiczne wyciskanie. Łopatki ściągnięte."
+      },
+      {
+        "nazwa": "Wyciskanie hantli na skosie dodatnim",
+        "partia": "Klatka piersiowa (góra)",
+        "serie": 4,
+        "powtorzenia": "6-10",
+        "tempo": "3-1-1-0",
+        "notatki": "Wyciskanie na ławce 30-45°. Większy zakres ruchu niż sztanga."
+      },
+      {
+        "nazwa": "Wyciskanie żołnierskie (OHP)",
+        "partia": "Naramienny (przód/bok)",
+        "serie": 3,
+        "powtorzenia": "6-10",
+        "tempo": "3-1-1-0",
+        "notatki": "Wyciskanie sztangi nad głowę stojąc. Brzuch i pośladki mocno napięte."
+      },
+      {
+        "nazwa": "Wyciskanie hantli siedząc",
+        "partia": "Naramienny (przód/bok)",
+        "serie": 3,
+        "powtorzenia": "6-10",
+        "tempo": "3-1-1-0",
+        "notatki": "Wyciskanie hantli nad głowę na ławce z oparciem (kąt 90°). Plecy proste."
+      },
+      {
+        "nazwa": "Wyciskanie sztangi wąskim chwytem",
+        "partia": "Triceps (wszystkie głowy)",
+        "serie": 3,
+        "powtorzenia": "6-10",
+        "tempo": "3-1-1-0",
+        "notatki": "Chwyt na szerokość barków, łokcie prowadzone blisko tułowia, opuszczanie do mostka. Buduje siłę."
+      }
+    ]
+  },
+  {
+    "nazwa_sesji": "Dzień 2: PULL (Plecy, Tył barku, Biceps)",
+    "cwiczenia": [
+      {
+        "nazwa": "Martwy ciąg klasyczny",
+        "partia": "Prostowniki grzbietu, Całe plecy",
+        "serie": 4,
+        "powtorzenia": "6-10",
+        "tempo": "3-1-1-0",
+        "notatki": "Neutralny kręgosłup, sztanga prowadzona po nogach, ruch inicjowany z biodra, napięcie brzucha."
+      },
+      {
+        "nazwa": "Podciąganie na drążku nachwytem",
+        "partia": "Najszerszy grzbietu (szerokość)",
+        "serie": 3,
+        "powtorzenia": "6-10",
+        "tempo": "3-1-1-0",
+        "notatki": "Pełny zwis, depresja łopatek przed ruchem, łokcie prowadzone do bioder, brak bujania."
+      },
+      {
+        "nazwa": "Uginanie ramion ze sztangą stojąc",
+        "partia": "Biceps (obie głowy)",
+        "serie": 3,
+        "powtorzenia": "10-12",
+        "tempo": "3-1-1-0",
+        "notatki": "Łokcie przy żebrach, brak bujania tułowiem, pełny wyprost, dopięcie u góry. Król masy."
+      }
+    ]
+  },
+  {
+    "nazwa_sesji": "Dzień 3: LEGS (Nogi, Brzuch)",
+    "cwiczenia": [
+      {
+        "nazwa": "Przysiady ze sztangą na plecach",
+        "partia": "Czworogłowy uda, Pośladkowy",
+        "serie": 3,
+        "powtorzenia": "6-10",
+        "tempo": "3-1-1-0",
+        "notatki": "Sztanga na czworobocznym, stopy stabilnie, kolana w linii palców, biodra schodzą poniżej kolan."
+      },
+      {
+        "nazwa": "Rumuński martwy ciąg",
+        "partia": "Dwugłowy uda, Pośladkowy",
+        "serie": 3,
+        "powtorzenia": "6-10",
+        "tempo": "3-1-1-0",
+        "notatki": "Nogi minimalnie ugięte, ruch tylko w biodrze (wypychanie w tył), sztanga blisko nóg, plecy proste."
+      },
+      {
+        "nazwa": "Wznosy nóg w zwisie na drążku",
+        "partia": "Prosty brzucha (część dolna)",
+        "serie": 3,
+        "powtorzenia": "6-10",
+        "tempo": "3-1-1-0",
+        "notatki": "Podwijanie miednicy (\"ogon pod siebie\"), kolana do klatki piersiowej, unikanie bujania tułowiem, wolny powrót."
+      }
+    ]
+  }
+]

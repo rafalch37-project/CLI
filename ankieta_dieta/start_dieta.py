@@ -3,13 +3,19 @@ import json
 import os
 
 def run_pipeline():
+    # Ścieżki relatywne do folderu ze skryptem
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    ankieta_xlsx_path = os.path.join(base_dir, '..', 'ankieta.xlsx')
+    ankieta_json_path = os.path.join(base_dir, 'ankieta_j.json')
+    output_json_path = os.path.join(base_dir, 'gotowe_dane_klienta.json')
+
     print("1. Pobieranie danych (Excel lub JSON)...")
     ankieta = []
     
     # Próba odczytu z Excela
     try:
-        if os.path.exists('ankieta.xlsx'):
-            df = pd.read_excel('ankieta.xlsx')
+        if os.path.exists(ankieta_xlsx_path):
+            df = pd.read_excel(ankieta_xlsx_path)
             mapping = {'Pytanie / Kategoria': 'pytanie', 'Odpowiedź klienta': 'odpowiedz'}
             df = df.rename(columns=mapping)
             ankieta = df.to_dict(orient='records')
@@ -17,15 +23,15 @@ def run_pipeline():
             # Sprawdzenie czy Excel nie jest pusty (czy Waga ma wartość)
             test_val = next((item['odpowiedz'] for item in ankieta if "Waga" in str(item.get('pytanie', ''))), None)
             if pd.isna(test_val) or test_val is None:
-                print("   [!] Excel jest pusty, pobieram dane z ankieta_j.json...")
-                with open('ankieta_j.json', 'r', encoding='utf-8') as f:
+                print(f"   [!] Excel jest pusty, pobieram dane z {ankieta_json_path}...")
+                with open(ankieta_json_path, 'r', encoding='utf-8') as f:
                     ankieta = json.load(f)
         else:
-            with open('ankieta_j.json', 'r', encoding='utf-8') as f:
+            with open(ankieta_json_path, 'r', encoding='utf-8') as f:
                 ankieta = json.load(f)
     except Exception as e:
-        print(f"   [!] Błąd odczytu: {e}. Używam ankieta_j.json.")
-        with open('ankieta_j.json', 'r', encoding='utf-8') as f:
+        print(f"   [!] Błąd odczytu: {e}. Używam {ankieta_json_path}.")
+        with open(ankieta_json_path, 'r', encoding='utf-8') as f:
             ankieta = json.load(f)
 
     # Funkcja pomocnicza
@@ -62,7 +68,7 @@ def run_pipeline():
             "info_dodatkowe": get_ans("kontuzje")
         }
 
-        with open('gotowe_dane_klienta.json', 'w', encoding='utf-8') as f:
+        with open(output_json_path, 'w', encoding='utf-8') as f:
             json.dump(dane_final, f, indent=2, ensure_ascii=False)
 
         print(f"\n--- GOTOWE: {dane_final['imie']} ---")
