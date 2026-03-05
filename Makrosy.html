@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Makroskładniki - Przewodnik</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+        
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            position: relative;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            box-sizing: border-box;
+            padding: 20mm 0;
+        }
+
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 110%;
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .content-container {
+            width: 85%;
+            max-width: 800px;
+            z-index: 1;
+        }
+
+        .main-header {
+            text-align: center;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-size: 24px;
+            margin-bottom: 40px;
+            color: #1a1a1a;
+            border-bottom: 2px solid #c5a059;
+            padding-bottom: 10px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 10px 20px;
+            border-left: 5px solid #3b312b;
+        }
+
+        .section-title {
+            background-color: #3b312b;
+            color: #d4af37;
+            display: inline-block;
+            padding: 8px 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 15px;
+            margin-left: -20px;
+        }
+
+        .subsection-title {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-top: 15px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            text-decoration-color: #c5a059;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        li {
+            padding: 4px 0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        li b {
+            color: #3b312b;
+        }
+
+        @media print {
+            .watermark { position: absolute; }
+        }
+    </style>
+</head>
+<body>
+
+    <img src="https://raw.githubusercontent.com/rafalch37-project/CLI/main/szablony/logop.png" alt="Watermark" class="watermark">
+
+    <div class="content-container">
+        <div class="main-header">Przewodnik po Makroskładnikach</div>
+
+        <!-- BIAŁKO -->
+        <div class="section">
+            <div class="section-title">Białko</div>
+            
+            <div class="subsection-title">Chude mięsa:</div>
+            <ul>
+                <li>Pierś z kurczaka, pierś z indyka, chuda wołowina (np. polędwica, ligawa), chuda wieprzowina (schab).</li>
+            </ul>
+
+            <div class="subsection-title">Ryby i owoce morza:</div>
+            <ul>
+                <li>Tuńczyk, dorsz, mintaj, a z tłustych (które dają też tłuszcze): łosoś, makrela.</li>
+            </ul>
+
+            <div class="subsection-title">Nabiał i jaja:</div>
+            <ul>
+                <li>Jajka kurze, twaróg, serek wiejski, jogurty proteinowe/skyr, odżywka białkowa (WPC/WPI).</li>
+            </ul>
+
+            <div class="subsection-title">Roślinne:</div>
+            <ul>
+                <li>Tofu, soczewica, ciecierzyca.</li>
+            </ul>
+        </div>
+
+        <!-- WĘGLOWODANY -->
+        <div class="section">
+            <div class="section-title">Węglowodany</div>
+            
+            <div class="subsection-title">Złożone (wolniej uwalniające energię):</div>
+            <ul>
+                <li>Płatki owsiane/jaglane, ryż (basmati, parboiled, jasminowy), kasza (gryczana, jaglana, kuskus), makarony, pieczywo żytnie/razowe na zakwasie.</li>
+            </ul>
+
+            <div class="subsection-title">Szybkie i gęste objętościowo (okołotreningowo):</div>
+            <ul>
+                <li>Ziemniaki, bataty, wafle ryżowe, owoce (szczególnie banany jako szybkie źródło energii).</li>
+            </ul>
+        </div>
+
+        <!-- TŁUSZCZE -->
+        <div class="section">
+            <div class="section-title">Tłuszcze (Hormony i Zdrowie)</div>
+            
+            <div class="subsection-title">Jednonienasycone i wielonienasycone:</div>
+            <ul>
+                <li>Oliwa z oliwek (extra virgin), awokado, orzechy (włoskie, migdały, nerkowce), masło orzechowe (100% z orzechów, bez dodatków), nasiona chia, siemię lniane.</li>
+            </ul>
+
+            <div class="subsection-title">Pochodzenia zwierzęcego:</div>
+            <ul>
+                <li>Tłuste ryby morskie (źródło Omega-3), żółtka jaj.</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>

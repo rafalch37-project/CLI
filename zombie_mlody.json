@@ -1,0 +1,75 @@
+{
+  "klient": "Zombie Młody",
+  "treningi": [
+    {
+      "nazwa": "TRENING A: FBW 1",
+      "cwiczenia": [
+        {
+          "nazwa": "Przysiad z hantlem z przodu (Goblet Squat)",
+          "serie": "3",
+          "powtorzenia": "10-12",
+          "wskazowki": "Pełna kontrola miednicy, wyprostowana sylwetka. Hantel trzymasz blisko klatki piersiowej."
+        },
+        {
+          "nazwa": "Wyciskanie sztangi na ławce poziomej",
+          "serie": "3",
+          "powtorzenia": "8-10",
+          "wskazowki": "Łopatki ściągnięte, stopy wbite w podłogę. Opuszczasz sztangę z pełną kontrolą."
+        },
+        {
+          "nazwa": "Wiosłowanie hantlem w oparciu o ławkę",
+          "serie": "3",
+          "powtorzenia": "10 (na stronę)",
+          "wskazowki": "Ciągniesz hantel do biodra, nie do klatki. Oparcie ma chronić Twój odcinek lędźwiowy."
+        },
+        {
+          "nazwa": "Wyciskanie hantli nad głowę siedząc",
+          "serie": "3",
+          "powtorzenia": "10-12",
+          "wskazowki": "Oparcie ławki na 75-80 stopni (lekki skos)"
+        },
+        {
+          "nazwa": "Deska (Plank)",
+          "serie": "3",
+          "powtorzenia": "30-45 sek.",
+          "wskazowki": "Maksymalnie napięty brzuch i pośladki. Nie zapadaj się w lędźwiach."
+        }
+      ]
+    },
+    {
+      "nazwa": "TRENING B: FBW 2",
+      "cwiczenia": [
+        {
+          "nazwa": "Rumuński Martwy Ciąg (RDL) z hantlami",
+          "serie": "3",
+          "powtorzenia": "10-12",
+          "wskazowki": "Ruch zaczynasz od wypchnięcia bioder w tył. Plecy idealnie proste, szukasz rozciągania w udach."
+        },
+        {
+          "nazwa": "Wyciskanie hantli na ławce skośnej dodatniej",
+          "serie": "3",
+          "powtorzenia": "8-10",
+          "wskazowki": "Kąt ławki ok. 30 stopni. Skup się na pracy klatki"
+        },
+        {
+          "nazwa": "Ściąganie drążka wyciągu do klatki",
+          "serie": "3",
+          "powtorzenia": "10-12",
+          "wskazowki": "Drążek prowadzisz do górnej części klatki."
+        },
+        {
+          "nazwa": "Wykroki z hantlami",
+          "serie": "3",
+          "powtorzenia": "10 (na nogę)",
+          "wskazowki": "Stabilność ponad wszystko. Kolano z tyłu zatrzymuje się milimetr nad podłogą"
+        },
+        {
+          "nazwa": "Spacer farmera",
+          "serie": "3",
+          "powtorzenia": "30 metrów",
+          "wskazowki": "Proste plecy, wypięta klatka, twardy krok. Wzmacniamy chwyt i stabilizację całego ciała."
+        }
+      ]
+    }
+  ]
+}

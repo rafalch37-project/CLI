@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankieta Klienta | Premium Fitness</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --dark-brown: #3b312b;
+            --muted-gold: #c5a059;
+            --bg-card: rgba(255, 255, 255, 0.85);
+            --text-main: #333333;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f9f9f9;
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 110%;
+            opacity: 0.12;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            z-index: 1;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header-section img {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .header-section h1 {
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            font-size: 24px;
+            color: var(--dark-brown);
+            margin: 0;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-left: 5px solid var(--dark-brown);
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-title {
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .grid { grid-template-columns: 1fr; }
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            color: #666;
+        }
+
+        input[type="text"], 
+        input[type="number"], 
+        select, 
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--muted-gold);
+            background: rgba(255,255,255,0.9);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--dark-brown);
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 8px;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .checkbox-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .checkbox-item input {
+            margin-right: 10px;
+            accent-color: var(--gold);
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 100px;
+        }
+
+        .btn-submit {
+            background-color: var(--dark-brown);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 15px 40px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--gold);
+            color: var(--dark-brown);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Styl dla priorytetów - limit 3 */
+        .priority-info {
+            font-size: 11px;
+            color: #888;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <img src="https://raw.githubusercontent.com/rafalch37-project/CLI/main/szablony/logop.png" alt="Watermark" class="watermark">
+
+    <div class="container">
+        <div class="header-section">
+            <img src="https://raw.githubusercontent.com/rafalch37-project/CLI/main/szablony/logop.png" alt="Logo">
+            <h1>Ankieta Treningowa</h1>
+        </div>
+
+        <form id="ankietaForm">
+            <!-- SEKCJA 1: DANE OSOBOWE -->
+            <div class="card">
+                <div class="card-title">01. Dane Podstawowe</div>
+                <div class="grid">
+                    <div class="input-group">
+                        <label>Imię i Nazwisko</label>
+                        <input type="text" name="imie" placeholder="np. Jan Kowalski" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Płeć</label>
+                        <select name="plec" required>
+                            <option value="">Wybierz...</option>
+                            <option value="Mężczyzna">Mężczyzna</option>
+                            <option value="Kobieta">Kobieta</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Wiek</label>
+                        <input type="number" name="wiek" placeholder="lat" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Waga (kg)</label>
+                        <input type="number" name="waga" step="0.1" placeholder="kg" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Wzrost (cm)</label>
+                        <input type="number" name="wzrost" placeholder="cm" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Poziom Zaawansowania</label>
+                        <select name="poziom" required>
+                            <option value="Początkujący">Początkujący</option>
+                            <option value="Średniozaawansowany">Średniozaawansowany</option>
+                            <option value="Zaawansowany">Zaawansowany</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEKCJA 2: CEL I ZDROWIE -->
+            <div class="card">
+                <div class="card-title">02. Cel i Stan Zdrowia</div>
+                <div class="input-group">
+                    <label>Główny cel treningowy</label>
+                    <select name="cel" required>
+                        <option value="Budowa masy mięśniowej">Budowa masy mięśniowej</option>
+                        <option value="Redukcja tkanki tłuszczowej">Redukcja tkanki tłuszczowej</option>
+                        <option value="Rekonstrukcja / Poprawa sylwetki">Rekonstrukcja / Poprawa sylwetki</option>
+                        <option value="Budowa siły">Budowa siły</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Aktualna aktywność fizyczna (ilość kroków, sport, praca)</label>
+                    <textarea name="aktywnosc" rows="3" placeholder="Opisz krótko swój tydzień..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Kontuzje lub przeciwwskazania medyczne</label>
+                    <textarea name="kontuzje" rows="3" placeholder="Bóle pleców, kolan, przebyte operacje..."></textarea>
+                </div>
+            </div>
+
+            <!-- SEKCJA 3: DOSTĘPNOŚĆ -->
+            <div class="card">
+                <div class="card-title">03. Logistyka Treningu</div>
+                <div class="grid">
+                    <div class="input-group">
+                        <label>Dni treningowe w tygodniu</label>
+                        <select name="dni" required>
+                            <option value="2">2 dni</option>
+                            <option value="3" selected>3 dni</option>
+                            <option value="4">4 dni</option>
+                            <option value="5">5 dni</option>
+                            <option value="6">6 dni</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Czas trwania treningu</label>
+                        <select name="czas" required>
+                            <option value="45">do 45 min</option>
+                            <option value="60" selected>60 min</option>
+                            <option value="90">90 min</option>
+                            <option value="120">Powyżej 90 min</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEKCJA 4: PRIORYTETY -->
+            <div class="card">
+                <div class="card-title">04. Priorytety Sylwetkowe</div>
+                <div class="priority-info">Wybierz maksymalnie 3 partie, na których najbardziej Ci zależy.</div>
+                <div class="checkbox-grid" id="prioritiesContainer">
+                    <label class="checkbox-item"><input type="checkbox" name="priorytet" value="Klatka piersiowa"> Klatka</label>
+                    <label class="checkbox-item"><input type="checkbox" name="priorytet" value="Plecy"> Plecy</label>
+                    <label class="checkbox-item"><input type="checkbox" name="priorytet" value="Barki"> Barki</label>
+                    <label class="checkbox-item"><input type="checkbox" name="priorytet" value="Biceps"> Biceps</label>
+                    <label class="checkbox-item"><input type="checkbox" name="priorytet" value="Triceps"> Triceps</label>
+                    <label class="checkbox-item"><input type="checkbox" name="priorytet" value="Nogi"> Nogi</label>
+                    <label class="checkbox-item"><input type="checkbox" name="priorytet" value="Pośladki"> Pośladki</label>
+                    <label class="checkbox-item"><input type="checkbox" name="priorytet" value="Brzuch"> Brzuch</label>
+                </div>
+            </div>
+
+            <!-- SEKCJA 5: SPRZĘT -->
+            <div class="card">
+                <div class="card-title">05. Dostępny Sprzęt</div>
+                <div class="checkbox-grid">
+                    <label class="checkbox-item"><input type="checkbox" name="sprzet" value="Sztanga" checked> Sztanga</label>
+                    <label class="checkbox-item"><input type="checkbox" name="sprzet" value="Hantle" checked> Hantle</label>
+                    <label class="checkbox-item"><input type="checkbox" name="sprzet" value="Maszyny" checked> Maszyny</label>
+                    <label class="checkbox-item"><input type="checkbox" name="sprzet" value="Wyciągi" checked> Wyciągi</label>
+                    <label class="checkbox-item"><input type="checkbox" name="sprzet" value="Drążek"> Drążek</label>
+                    <label class="checkbox-item"><input type="checkbox" name="sprzet" value="Poręcze"> Poręcze</label>
+                    <label class="checkbox-item"><input type="checkbox" name="sprzet" value="Ławka" checked> Ławka</label>
+                    <label class="checkbox-item"><input type="checkbox" name="sprzet" value="Gumy"> Gumy oporowe</label>
+                </div>
+            </div>
+
+            <div class="btn-container">
+                <button type="button" class="btn-submit" onclick="generateJSON()">Zakończ i Generuj Dane</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Limit checkboxów dla priorytetów
+        const priorityCheckboxes = document.querySelectorAll('input[name="priorytet"]');
+        priorityCheckboxes.forEach(cb => {
+            cb.addEventListener('change', () => {
+                const checkedCount = document.querySelectorAll('input[name="priorytet"]:checked').length;
+                if (checkedCount > 3) {
+                    cb.checked = false;
+                    alert('Możesz wybrać maksymalnie 3 priorytety.');
+                }
+            });
+        });
+
+        function generateJSON() {
+            const form = document.getElementById('ankietaForm');
+            const formData = new FormData(form);
+            const data = {};
+
+            formData.forEach((value, key) => {
+                if (key === 'priorytet' || key === 'sprzet') {
+                    if (!data[key]) data[key] = [];
+                    data[key].push(value);
+                } else {
+                    data[key] = value;
+                }
+            });
+
+            // Dodanie daty wypełnienia
+            data.data_wypelnienia = new Date().toISOString().split('T')[0];
+
+            // Pobieranie jako plik JSON
+            const jsonString = JSON.stringify(data, null, 2);
+            const blob = new Blob([jsonString], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Ankieta_${data.imie.replace(/\s+/g, '_')}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            alert('Dane zostały wygenerowane! Prześlij pobrany plik JSON do trenera.');
+        }
+    </script>
+</body>
+</html>
