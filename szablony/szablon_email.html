@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twój Plan od Trenera</title>
+    <style>
+        /* Podstawowe style dla klientów pocztowych */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            font-family: 'Montserrat', Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        table {
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 0;
+        }
+        img {
+            border: 0;
+        }
+        .wrapper {
+            width: 100%;
+            table-layout: fixed;
+            background-color: #f4f4f4;
+            padding-bottom: 40px;
+        }
+        .main {
+            background-color: #ffffff;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 600px;
+            border-spacing: 0;
+            color: #333333;
+            border-left: 4px solid #3b312b; /* Charakterystyczna linia z Twojej marki */
+        }
+        /* Header ze złotym akcentem */
+        .header {
+            background-color: #3b312b;
+            padding: 30px;
+            text-align: center;
+        }
+        .logo {
+            width: 150px;
+            max-width: 100%;
+            height: auto;
+        }
+        /* Treść główna */
+        .content {
+            padding: 40px 30px;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+        h1 {
+            color: #d4af37; /* Twój złoty kolor */
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 20px;
+            margin-top: 0;
+        }
+        /* Stopka */
+        .footer {
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #888888;
+        }
+        .social-links a {
+            color: #3b312b;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <center class="wrapper">
+        <table class="main" width="100%">
+            <!-- LOGO HEADER -->
+            <tr>
+                <td class="header">
+                    <img src="https://raw.githubusercontent.com/rafalch37-project/CLI/main/szablony/logo_mail.png" alt="Twoja Marka" class="logo">
+                </td>
+            </tr>
+
+            <!-- CONTENT -->
+            <tr>
+                <td class="content">
+                    <h1>Cześć [IMIĘ KLIENTA]!</h1>
+                    <p>Twoje spersonalizowane plany są już gotowe do działania. Przygotowałem dla Ciebie wszystko, czego potrzebujesz, aby skutecznie ruszyć w stronę Twojego celu.</p>
+                    
+                    <p>W załączniku znajdziesz swój nowy plan. Zwróć szczególną uwagę na sekcję <strong>"Wytyczne"</strong>, gdzie opisałem najważniejsze punkty naszej strategii na najbliższy czas.</p>
+                    
+                    <p><strong>Pamiętaj o kilku zasadach:</strong></p>
+                    <ul>
+                        <li>Dokładnie notuj swoje postępy w arkuszu.</li>
+                        <li>W razie jakichkolwiek wątpliwości – pisz od razu!</li>
+                        <li>Trzymaj się założeń, a efekty przyjdą szybciej niż myślisz.</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <!-- FOOTER -->
+            <tr>
+                <td class="footer">
+                    <p>Zmieniamy sylwetkę z głową.</p>
+                    <div class="social-links">
+                        <a href="#">Instagram</a> | <a href="#">Facebook</a> | <a href="#">WWW</a>
+                    </div>
+                    <p>&copy; 2026 Twoja Marka. Wszystkie prawa zastrzeżone.</p>
+                </td>
+            </tr>
+        </table>
+    </center>
+</body>
+</html>
