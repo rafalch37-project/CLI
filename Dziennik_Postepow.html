@@ -2,6 +2,7 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Dziennik Postępów - Raport Tygodniowy</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
@@ -15,6 +16,7 @@
             height: 100%;
             margin: 0;
             padding: 0;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -30,7 +32,7 @@
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
             box-sizing: border-box;
-            padding: 15mm 0;
+            padding: 10mm 0;
         }
 
         .watermark {
@@ -38,55 +40,60 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 110%;
+            width: 90vw;
+            height: 90vh;
+            object-fit: contain;
             opacity: 0.12;
             z-index: -1;
             pointer-events: none;
         }
 
         .container {
-            width: 90%;
+            width: 95%;
             max-width: 850px;
             z-index: 1;
         }
 
         .header-main {
             text-align: center;
-            letter-spacing: 6px;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            font-size: 22px;
-            margin-bottom: 25px;
+            font-size: 18px;
+            margin-bottom: 20px;
             color: #1a1a1a;
             border-bottom: 2px solid #c5a059;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
         }
 
         .section-row {
             display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
         }
 
         .card {
             border-left: 4px solid #3b312b;
             padding: 15px;
-            margin-bottom: 20px;
-            background: rgba(255, 255, 255, 0.4);
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.6);
+            box-sizing: border-box;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
-        .card-half { flex: 1; }
-        .card-full { width: 100%; box-sizing: border-box; }
+        .card-half { flex: 1; min-width: 280px; }
+        .card-full { width: 100%; }
 
         .card-title {
             background-color: #3b312b;
             color: #d4af37;
             display: inline-block;
-            padding: 5px 15px;
+            padding: 5px 12px;
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: 600;
-            font-size: 13px;
-            margin-bottom: 15px;
+            font-size: 12px;
+            margin-bottom: 12px;
         }
 
         table {
@@ -96,15 +103,15 @@
 
         th {
             text-align: left;
-            font-size: 11px;
+            font-size: 10px;
             text-transform: uppercase;
             color: #777;
-            padding-bottom: 8px;
+            padding-bottom: 6px;
             border-bottom: 1px solid #c5a059;
         }
 
         td {
-            padding: 6px 5px;
+            padding: 5px 4px;
             border-bottom: 1px solid #eee;
             font-size: 13px;
         }
@@ -113,12 +120,12 @@
             width: 100%;
             border: 1px solid #e0e0e0;
             border-bottom: 2px solid #c5a059;
-            background: rgba(255, 255, 255, 0.8);
+            background: white;
             font-family: 'Montserrat', sans-serif;
-            font-size: 12px;
+            font-size: 14px;
             color: #333;
             outline: none;
-            padding: 4px;
+            padding: 5px;
             box-sizing: border-box;
             text-align: center;
             border-radius: 3px;
@@ -128,26 +135,29 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 8px;
+            margin-top: 10px;
+            padding-bottom: 4px;
         }
 
         .scale-label {
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 600;
-            width: 100px;
+            width: 90px;
         }
 
         .circles {
             display: flex;
-            gap: 5px;
+            gap: 3px;
         }
 
         .circle {
-            width: 16px;
-            height: 16px;
+            width: 20px;
+            height: 20px;
             border: 2px solid #3b312b;
             border-radius: 50%;
             cursor: pointer;
+            box-sizing: border-box;
+            background: white;
         }
 
         .circle.active {
@@ -157,7 +167,7 @@
 
         .photo-container {
             display: flex;
-            gap: 20px;
+            gap: 12px;
             margin-top: 10px;
         }
 
@@ -172,11 +182,12 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.8);
+            text-align: center;
         }
 
         .photo-upload-box span {
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 600;
             color: #3b312b;
             text-transform: uppercase;
@@ -190,31 +201,41 @@
             height: 100%;
             object-fit: cover;
             display: none;
+            z-index: 2;
         }
 
-        .photo-input { display: none; }
+        .photo-input { 
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+        }
 
         .notes-area {
             width: 100%;
             min-height: 80px;
-            border: 1px solid #eee;
+            border: 1px solid #ddd;
+            border-bottom: 2px solid #c5a059;
             margin-top: 10px;
-            background: rgba(255,255,255,0.6);
+            background: white;
             font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
             padding: 10px;
             box-sizing: border-box;
             outline: none;
+            resize: none;
         }
 
         .actions {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             margin-top: 20px;
+            padding-bottom: 20px;
         }
 
         .btn {
-            padding: 10px 25px;
+            padding: 10px 20px;
             font-family: 'Montserrat', sans-serif;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -222,6 +243,7 @@
             font-size: 11px;
             cursor: pointer;
             border: none;
+            border-radius: 4px;
         }
 
         .btn-print { background-color: #3b312b; color: #d4af37; }
@@ -236,14 +258,21 @@
             z-index: 1000;
             justify-content: center;
             align-items: center;
-            cursor: zoom-out;
         }
-        #modal img { max-width: 90%; max-height: 90%; border: 3px solid #d4af37; }
+        #modal img { max-width: 95%; max-height: 90%; border: 2px solid #d4af37; }
 
         @media print {
             .actions { display: none; }
             .watermark { position: absolute; }
             #modal { display: none !important; }
+            body { padding: 0; }
+            .container { width: 100%; }
+        }
+
+        @media (max-width: 600px) {
+            .card-half { min-width: 100%; }
+            .circles { gap: 2px; }
+            .circle { width: 18px; height: 18px; }
         }
     </style>
 </head>
@@ -259,7 +288,6 @@
         <div class="header-main">Dziennik Postępów: Raport Tygodniowy</div>
 
         <div class="section-row">
-            <!-- POMIARY -->
             <div class="card card-half">
                 <div class="card-title">Pomiary Sylwetki</div>
                 <table>
@@ -281,7 +309,6 @@
                 </table>
             </div>
 
-            <!-- SAMOPOCZUCIE -->
             <div class="card card-half">
                 <div class="card-title">Samopoczucie (1-10)</div>
                 <div class="scale-box"><span class="scale-label">Energia</span><div class="circles"><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div></div></div>
@@ -291,26 +318,25 @@
             </div>
         </div>
 
-        <!-- ZDJĘCIA - TERAZ PEŁNA SZEROKOŚĆ -->
         <div class="card card-full">
             <div class="card-title">Zdjęcia Sylwetki</div>
             <p style="font-size: 10px; color: #666; margin-bottom: 5px;">Kliknij pole, aby dodać zdjęcie. Kliknij zdjęcie, aby powiększyć.</p>
             <div class="photo-container">
-                <div class="photo-upload-box" id="box-przod">
-                    <span onclick="document.getElementById('img-przod').click()">Przód</span>
-                    <img id="prev-przod" onclick="openModal(this.src)">
-                    <input type="file" id="img-przod" class="photo-input" accept="image/*" onchange="previewImage(this, 'prev-przod')">
-                </div>
-                <div class="photo-upload-box" id="box-bok">
-                    <span onclick="document.getElementById('img-bok').click()">Bok</span>
-                    <img id="prev-bok" onclick="openModal(this.src)">
-                    <input type="file" id="img-bok" class="photo-input" accept="image/*" onchange="previewImage(this, 'prev-bok')">
-                </div>
-                <div class="photo-upload-box" id="box-tyl">
-                    <span onclick="document.getElementById('img-tyl').click()">Tył</span>
-                    <img id="prev-tyl" onclick="openModal(this.src)">
-                    <input type="file" id="img-tyl" class="photo-input" accept="image/*" onchange="previewImage(this, 'prev-tyl')">
-                </div>
+                <label class="photo-upload-box">
+                    <span>Przód</span>
+                    <img id="prev-przod" onclick="event.preventDefault(); event.stopPropagation(); openModal(this.src)">
+                    <input type="file" class="photo-input" accept="image/*" onchange="previewImage(this, 'prev-przod')">
+                </label>
+                <label class="photo-upload-box">
+                    <span>Bok</span>
+                    <img id="prev-bok" onclick="event.preventDefault(); event.stopPropagation(); openModal(this.src)">
+                    <input type="file" class="photo-input" accept="image/*" onchange="previewImage(this, 'prev-bok')">
+                </label>
+                <label class="photo-upload-box">
+                    <span>Tył</span>
+                    <img id="prev-tyl" onclick="event.preventDefault(); event.stopPropagation(); openModal(this.src)">
+                    <input type="file" class="photo-input" accept="image/*" onchange="previewImage(this, 'prev-tyl')">
+                </label>
             </div>
         </div>
 
@@ -321,7 +347,7 @@
 
         <div class="actions">
             <button class="btn btn-clear" onclick="window.location.reload()">Wyczyść</button>
-            <button class="btn btn-print" onclick="window.print()">Zapisz jako PDF</button>
+            <button class="btn btn-print" onclick="window.print()">Zapisz PDF</button>
         </div>
     </div>
 
@@ -343,8 +369,8 @@
                 reader.onload = function(e) {
                     preview.src = e.target.result;
                     preview.style.display = 'block';
-                    input.parentElement.querySelector('span').style.display = 'none';
-                    input.parentElement.style.border = '1px solid #eee';
+                    input.parentElement.querySelector('span').style.opacity = '0';
+                    input.parentElement.style.borderStyle = 'solid';
                 }
                 reader.readAsDataURL(input.files[0]);
             }

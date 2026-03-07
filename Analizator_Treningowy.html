@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analizator Treningowy PRO - Panel Trenera</title>
+    <!-- Biblioteka do obsługi Excela -->
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+        
+        body { font-family: 'Montserrat', sans-serif; background-color: #f4f4f4; color: #333; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        .container { width: 95%; max-width: 1100px; z-index: 1; }
+        .header-main { text-align: center; letter-spacing: 4px; text-transform: uppercase; font-size: 22px; margin-bottom: 30px; color: #1a1a1a; border-bottom: 3px solid #c5a059; padding-bottom: 10px; font-weight: 600; }
+
+        /* Sekcja wejściowa */
+        .input-box { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 30px; border-left: 5px solid #3b312b; }
+        .input-row { display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap; }
+        .input-group { flex: 1; min-width: 200px; }
+        .label-small { font-size: 10px; text-transform: uppercase; font-weight: 600; color: #777; display: block; margin-bottom: 5px; }
+        .input-text { width: 100%; border: 1px solid #ddd; padding: 8px; border-radius: 4px; font-family: 'Montserrat'; box-sizing: border-box; }
+        
+        textarea { width: 100%; height: 80px; border: 1px solid #ddd; border-radius: 4px; padding: 10px; font-family: monospace; font-size: 11px; resize: none; box-sizing: border-box; background: #fafafa; }
+
+        .btn-group { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+        .btn { padding: 10px 20px; font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; font-size: 11px; cursor: pointer; border: none; border-radius: 5px; transition: 0.2s; display: flex; align-items: center; gap: 8px; }
+        .btn-analyze { background: #3b312b; color: #d4af37; }
+        .btn-save { background: #c5a059; color: white; }
+        .btn-excel { background: #217346; color: white; } /* Kolor Excela */
+        .btn-secondary { background: #eee; color: #333; }
+
+        /* Dashboard Statystyk */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 25px; }
+        .stat-card { background: #fff; padding: 15px; border-radius: 8px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-bottom: 3px solid #c5a059; }
+        .stat-value { font-size: 22px; font-weight: 600; color: #3b312b; }
+        .stat-label { font-size: 9px; text-transform: uppercase; color: #888; letter-spacing: 1px; margin-top: 5px; }
+
+        /* Archiwum */
+        .archive-box { background: #fff; padding: 20px; border-radius: 8px; margin-top: 40px; border-top: 4px solid #3b312b; }
+        .archive-title { font-weight: 600; text-transform: uppercase; font-size: 14px; margin-bottom: 15px; display: block; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .archive-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; }
+        .archive-item { background: #f9f9f9; padding: 10px 15px; border-radius: 4px; border: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: 0.2s; }
+        .archive-item:hover { border-color: #c5a059; background: #fff; }
+        .archive-info { display: flex; flex-direction: column; }
+        .arch-name { font-weight: 600; font-size: 13px; }
+        .arch-date { font-size: 10px; color: #999; }
+        .btn-del { color: #cc0000; background: none; border: none; font-size: 16px; cursor: pointer; padding: 5px; opacity: 0.3; }
+        .btn-del:hover { opacity: 1; }
+
+        /* Raport PDF Style */
+        .workout-day-result { background: #fff; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); overflow: hidden; page-break-inside: avoid; }
+        .day-header { background: #3b312b; color: #d4af37; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .exercise-result { padding: 15px; border-bottom: 1px solid #eee; }
+        .ex-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+        .ex-name { font-weight: 600; font-size: 13px; text-transform: uppercase; }
+        table { width: 100%; border-collapse: collapse; font-size: 11px; }
+        th { text-align: left; color: #999; padding: 5px; font-weight: 400; text-transform: uppercase; font-size: 8px; border-bottom: 1px solid #eee; }
+        td { padding: 6px 5px; border-bottom: 1px solid #f9f9f9; }
+        .best-set { color: #c5a059; font-weight: 600; background: rgba(197, 160, 89, 0.05); }
+        .best-badge { font-size: 8px; background: #c5a059; color: #fff; padding: 2px 5px; border-radius: 3px; margin-left: 5px; text-transform: uppercase; vertical-align: middle; }
+
+        @media print {
+            .input-box, .archive-box, .btn-group, .btn-del { display: none !important; }
+            body { padding: 0; background: white; }
+            .container { width: 100%; }
+            .stat-card { border: 1px solid #eee; box-shadow: none; }
+            .workout-day-result { border: 1px solid #ddd; box-shadow: none; }
+        }
+    </style>
+</head>
+<body onload="loadArchive()">
+
+    <div class="container">
+        <div class="header-main">Panel Analizy Trenera</div>
+
+        <div class="input-box">
+            <div class="input-row">
+                <div class="input-group">
+                    <label class="label-small">Imię i Nazwisko Klienta</label>
+                    <input type="text" id="client-name" class="input-text" placeholder="np. Jan Kowalski">
+                </div>
+                <div class="input-group">
+                    <label class="label-small">Numer Tygodnia / Okres</label>
+                    <input type="text" id="client-week" class="input-text" placeholder="np. Tydzień 4">
+                </div>
+            </div>
+            <label class="label-small">Kod JSON od klienta</label>
+            <textarea id="json-input" placeholder="Wklej tutaj kod skopiowany z dziennika klienta..."></textarea>
+            
+            <div class="btn-group">
+                <button class="btn btn-analyze" onclick="analyzeData()">Analizuj raport</button>
+                <button class="btn btn-save" onclick="saveToArchive()" id="btn-save-arch" style="display:none">Zapisz w Archiwum</button>
+                <button class="btn btn-excel" onclick="exportToExcel()">Pobierz EXCEL</button>
+                <button class="btn btn-secondary" onclick="window.print()">Drukuj / PDF</button>
+                <button class="btn btn-secondary" onclick="clearAll()">Wyczyść</button>
+            </div>
+        </div>
+
+        <div id="dashboard" style="display:none">
+            <div id="report-title" style="text-align:center; margin-bottom:20px; font-weight:600; text-transform:uppercase; color:#3b312b; display:none"></div>
+            <div class="stats-grid">
+                <div class="stat-card"><div id="stat-workouts" class="stat-value">0</div><div class="stat-label">Treningi</div></div>
+                <div class="stat-card"><div id="stat-volume" class="stat-value">0</div><div class="stat-label">Łączny tonaż (kg)</div></div>
+                <div class="stat-card"><div id="stat-sets" class="stat-value">0</div><div class="stat-label">Serie</div></div>
+                <div class="stat-card"><div id="stat-avg-vol" class="stat-value">0</div><div class="stat-label">Śr. / Trening</div></div>
+            </div>
+        </div>
+
+        <div id="results"></div>
+
+        <div class="archive-box">
+            <span class="archive-title">Archiwum Raportów</span>
+            <div id="archive-list" class="archive-list">
+                <!-- Tu wpadną zapisane raporty -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentReportData = null;
+
+        function analyzeData() {
+            const input = document.getElementById('json-input').value;
+            if(!input) return alert("Wklej dane JSON!");
+
+            try {
+                const data = JSON.parse(input);
+                currentReportData = data;
+                processAnalysis(data);
+                document.getElementById('btn-save-arch').style.display = 'flex';
+                
+                const name = document.getElementById('client-name').value;
+                const week = document.getElementById('client-week').value;
+                if(name) {
+                    const title = document.getElementById('report-title');
+                    title.innerText = `RAPORT: ${name} - ${week}`;
+                    title.style.display = 'block';
+                }
+            } catch(e) {
+                alert("Błąd formatu! Skopiuj kod ponownie.");
+            }
+        }
+
+        function processAnalysis(data) {
+            let totalVolume = 0; let totalSets = 0;
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+            document.getElementById('dashboard').style.display = 'block';
+
+            data.forEach(day => {
+                let dayVolume = 0;
+                const dayDiv = document.createElement('div');
+                dayDiv.className = 'workout-day-result';
+                let exercisesHTML = '';
+                
+                day.cwiczenia.forEach(ex => {
+                    let exVolume = 0; let maxWeight = 0; let bestIdx = -1;
+                    ex.serie.forEach((s, i) => {
+                        const w = parseFloat(s.kg) || 0; const r = parseInt(s.powt) || 0;
+                        exVolume += (w * r); totalSets++;
+                        if(w > maxWeight) { maxWeight = w; bestIdx = i; }
+                    });
+                    dayVolume += exVolume;
+                    
+                    let setsHTML = '';
+                    ex.serie.forEach((s, i) => {
+                        const isBest = i === bestIdx && maxWeight > 0;
+                        setsHTML += `<tr><td>${i+1}</td><td class="${isBest?'best-set':''}">${s.kg} kg ${isBest ? '<span class="best-badge">Max</span>' : ''}</td><td>${s.powt}</td><td>${s.uwagi||'-'}</td><td style="text-align:right">${(parseFloat(s.kg)||0)*(parseInt(s.powt)||0)} kg</td></tr>`;
+                    });
+
+                    exercisesHTML += `<div class="exercise-result"><div class="ex-header"><span class="ex-name">${ex.nazwa}</span><span style="font-size:10px; color:#c5a059; font-weight:600">${exVolume} kg</span></div><table><thead><tr><th>S</th><th>kg</th><th>Powt.</th><th>Uwagi</th><th style="text-align:right">Tonaż</th></tr></thead><tbody>${setsHTML}</tbody></table></div>`;
+                });
+
+                dayDiv.innerHTML = `<div class="day-header"><div><span style="font-size:10px; opacity:0.8">${day.data}</span><br><strong>${day.nazwa}</strong></div><div style="text-align:right"><span style="font-size:9px">Suma:</span><br><strong>${dayVolume} kg</strong></div></div>${exercisesHTML}`;
+                resultsDiv.appendChild(dayDiv);
+                totalVolume += dayVolume;
+            });
+
+            document.getElementById('stat-workouts').innerText = data.length;
+            document.getElementById('stat-volume').innerText = totalVolume.toLocaleString();
+            document.getElementById('stat-sets').innerText = totalSets;
+            document.getElementById('stat-avg-vol').innerText = Math.round(totalVolume/data.length).toLocaleString();
+        }
+
+        function exportToExcel() {
+            if(!currentReportData) return alert("Najpierw przeanalizuj dane!");
+            
+            const rows = [];
+            currentReportData.forEach(day => {
+                day.cwiczenia.forEach(ex => {
+                    ex.serie.forEach((s, i) => {
+                        rows.push({
+                            "Data": day.data,
+                            "Nazwa Treningu": day.nazwa,
+                            "Ćwiczenie": ex.nazwa,
+                            "Nr Serii": i + 1,
+                            "Ciężar (kg)": parseFloat(s.kg) || 0,
+                            "Powtórzenia": parseInt(s.powt) || 0,
+                            "Tonaż Serii (kg)": (parseFloat(s.kg) || 0) * (parseInt(s.powt) || 0),
+                            "Uwagi": s.uwagi || ""
+                        });
+                    });
+                });
+            });
+
+            const worksheet = XLSX.utils.json_to_sheet(rows);
+            const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Raport Treningowy");
+            
+            const clientName = document.getElementById('client-name').value || "Eksport";
+            const fileName = `Raport_${clientName}_${new Date().toISOString().split('T')[0]}.xlsx`;
+            
+            XLSX.writeFile(workbook, fileName);
+        }
+
+        function saveToArchive() {
+            const name = document.getElementById('client-name').value || "Nieznany Klient";
+            const week = document.getElementById('client-week').value || "Brak info";
+            const archive = JSON.parse(localStorage.getItem('coachArchive') || '[]');
+            
+            const newEntry = {
+                id: Date.now(),
+                name: name,
+                week: week,
+                date: new Date().toLocaleDateString(),
+                rawData: document.getElementById('json-input').value
+            };
+            
+            archive.unshift(newEntry);
+            localStorage.setItem('coachArchive', JSON.stringify(archive));
+            loadArchive();
+            alert("Raport zapisany w archiwum!");
+        }
+
+        function loadArchive() {
+            const archive = JSON.parse(localStorage.getItem('coachArchive') || '[]');
+            const list = document.getElementById('archive-list');
+            list.innerHTML = '';
+            
+            archive.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'archive-item';
+                div.onclick = () => loadFromArchive(item);
+                div.innerHTML = `
+                    <div class="archive-info">
+                        <span class="arch-name">${item.name}</span>
+                        <span class="arch-date">${item.week} | ${item.date}</span>
+                    </div>
+                    <button class="btn-del" onclick="event.stopPropagation(); deleteArchive(${item.id})">×</button>
+                `;
+                list.appendChild(div);
+            });
+        }
+
+        function loadFromArchive(item) {
+            document.getElementById('client-name').value = item.name;
+            document.getElementById('client-week').value = item.week;
+            document.getElementById('json-input').value = item.rawData;
+            analyzeData();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function deleteArchive(id) {
+            if(!confirm("Usunąć ten wpis z archiwum?")) return;
+            let archive = JSON.parse(localStorage.getItem('coachArchive') || '[]');
+            archive = archive.filter(a => a.id !== id);
+            localStorage.setItem('coachArchive', JSON.stringify(archive));
+            loadArchive();
+        }
+
+        function clearAll() {
+            document.getElementById('client-name').value = '';
+            document.getElementById('client-week').value = '';
+            document.getElementById('json-input').value = '';
+            document.getElementById('results').innerHTML = '';
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('report-title').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

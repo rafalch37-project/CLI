@@ -27,16 +27,20 @@
         }
         .header {
             background-color: #3b312b;
-            padding: 40px;
+            padding: 0;
             text-align: center;
         }
         .logo {
-            width: 180px;
+            width: 100%;
+            max-width: 100%;
             height: auto;
+            display: block;
         }
         .content {
             padding: 45px 35px;
             line-height: 1.7;
+            background-color: #fefaf0; /* Jasny krem/ecru */
+            border-top: 2px solid #d4af37; /* Złota linia oddzielająca */
         }
         h1 {
             color: #d4af37;
@@ -54,9 +58,9 @@
         }
         .pillar {
             margin-bottom: 30px;
-            background: rgba(59, 49, 43, 0.03);
+            background: rgba(59, 49, 43, 0.05); /* Nieco wyraźniejszy na kremowym tle */
             padding: 20px;
-            border-bottom: 1px solid #c5a059;
+            border-bottom: 1px solid #d4af37;
         }
         .pillar-title {
             color: #3b312b;
@@ -77,7 +81,8 @@
         }
         .cta-section {
             text-align: center;
-            padding: 30px 0;
+            padding: 40px 0;
+            background-color: #fefaf0;
         }
         .button {
             background-color: #3b312b;
@@ -87,15 +92,16 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
-            border: 1px solid #c5a059;
+            border: 1px solid #d4af37;
             display: inline-block;
         }
         .footer {
-            padding: 30px;
+            padding: 35px;
             text-align: center;
             font-size: 12px;
-            color: #777;
-            background-color: #f9f9f9;
+            color: #bbbbbb;
+            background-color: #3b312b;
+            border-top: 1px solid #d4af37;
         }
         .highlight {
             color: #d4af37;
@@ -108,7 +114,7 @@
         <table class="main">
             <tr>
                 <td class="header">
-                    <img src="https://raw.githubusercontent.com/rafalch37-project/CLI/main/szablony/logop.png" alt="Logo" class="logo">
+                    <img src="https://raw.githubusercontent.com/rafalch37-project/CLI/main/szablony/logo_mail.png" alt="Logo" class="logo">
                 </td>
             </tr>
             <tr>
@@ -156,7 +162,7 @@
             </tr>
             <tr>
                 <td class="footer">
-                    <p><strong>TWOJA MARKA</strong><br>Sagę pisze się czynem, nie obietnicami.</p>
+                    <p><strong>RAFAŁ CHMIELOWSKI</strong><br>Sagę pisze się czynem, nie obietnicami.</p>
                     <p>&copy; 2026 Wszystkie prawa zastrzeżone.</p>
                 </td>
             </tr>

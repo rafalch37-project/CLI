@@ -10,7 +10,7 @@
             --gold: #d4af37;
             --dark-brown: #3b312b;
             --muted-gold: #c5a059;
-            --bg-card: rgba(255, 255, 255, 0.85);
+            --bg-card: rgba(255, 255, 255, 0.85); /* Bardziej kryjące tło */
             --text-main: #333333;
         }
 
@@ -32,7 +32,9 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 110%;
+            width: 90vw;
+            height: 90vh;
+            object-fit: contain;
             opacity: 0.12;
             z-index: -1;
             pointer-events: none;
@@ -49,11 +51,6 @@
             margin-bottom: 50px;
         }
 
-        .header-section img {
-            max-width: 200px;
-            margin-bottom: 20px;
-        }
-
         .header-section h1 {
             letter-spacing: 6px;
             text-transform: uppercase;
@@ -68,7 +65,6 @@
             padding: 30px;
             margin-bottom: 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            backdrop-filter: blur(10px);
             transition: transform 0.3s ease;
         }
 
@@ -117,7 +113,7 @@
             width: 100%;
             padding: 12px;
             border: 1px solid var(--muted-gold);
-            background: rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.9); /* Prawie pełne krycie dla czytelności */
             font-family: 'Montserrat', sans-serif;
             font-size: 14px;
             box-sizing: border-box;
@@ -193,7 +189,6 @@
 
     <div class="container">
         <div class="header-section">
-            <img src="https://raw.githubusercontent.com/rafalch37-project/CLI/main/szablony/logop.png" alt="Logo">
             <h1>Ankieta Treningowa</h1>
         </div>
 
@@ -305,13 +300,13 @@
             <div class="card">
                 <div class="card-title">05. Dostępny Sprzęt</div>
                 <div class="checkbox-grid">
-                    <label class="checkbox-item"><input type="checkbox" name="sprzet" value="Sztanga" checked> Sztanga</label>
-                    <label class="checkbox-item"><input type="checkbox" name="sprzet" value="Hantle" checked> Hantle</label>
-                    <label class="checkbox-item"><input type="checkbox" name="sprzet" value="Maszyny" checked> Maszyny</label>
-                    <label class="checkbox-item"><input type="checkbox" name="sprzet" value="Wyciągi" checked> Wyciągi</label>
+                    <label class="checkbox-item"><input type="checkbox" name="sprzet" value="Sztanga"> Sztanga</label>
+                    <label class="checkbox-item"><input type="checkbox" name="sprzet" value="Hantle"> Hantle</label>
+                    <label class="checkbox-item"><input type="checkbox" name="sprzet" value="Maszyny"> Maszyny</label>
+                    <label class="checkbox-item"><input type="checkbox" name="sprzet" value="Wyciągi"> Wyciągi</label>
                     <label class="checkbox-item"><input type="checkbox" name="sprzet" value="Drążek"> Drążek</label>
                     <label class="checkbox-item"><input type="checkbox" name="sprzet" value="Poręcze"> Poręcze</label>
-                    <label class="checkbox-item"><input type="checkbox" name="sprzet" value="Ławka" checked> Ławka</label>
+                    <label class="checkbox-item"><input type="checkbox" name="sprzet" value="Ławka"> Ławka</label>
                     <label class="checkbox-item"><input type="checkbox" name="sprzet" value="Gumy"> Gumy oporowe</label>
                 </div>
             </div>

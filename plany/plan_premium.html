@@ -27,13 +27,15 @@
             print-color-adjust: exact;
         }
 
-        /* Styl znaku wodnego - Zwiększony rozmiar */
+        /* Styl znaku wodnego - Responsywny */
         .watermark {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 120%; /* Znacznie większe logo */
+            width: 90vw;
+            height: 90vh;
+            object-fit: contain;
             opacity: 0.15; 
             z-index: -1; 
             pointer-events: none;
