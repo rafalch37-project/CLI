@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta Premium - System Kształtowania Sylwetki</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Podstawowe style dla klientów pocztowych */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            font-family: 'Montserrat', Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        table {
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 0;
+        }
+        img {
+            border: 0;
+            display: block;
+        }
+        .wrapper {
+            width: 100%;
+            table-layout: fixed;
+            background-color: #f4f4f4;
+            padding-bottom: 40px;
+            padding-top: 0; /* Usunięto górny margines */
+        }
+        .main {
+            background-color: #ffffff;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 600px; /* Standard maila */
+            border-spacing: 0;
+            color: #333333;
+            border-left: 6px solid #3b312b;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Header */
+        .header {
+            background-color: #3b312b;
+            padding: 0;
+            text-align: center;
+            line-height: 0;
+        }
+        .logo {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 35px 20px;
+            text-align: center;
+            background-color: #fefaf0;
+            border-top: 2px solid #d4af37; /* Złota linia pod logiem */
+            border-bottom: 4px solid #d4af37;
+        }
+        .hero-subtitle-box {
+            display: inline-block;
+            background-color: #3b312b;
+            border: 3px solid #d4af37;
+            padding: 25px 45px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+        .hero-subtitle {
+            font-size: 20px;
+            font-weight: 700;
+            color: #d4af37;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        /* Content */
+        .content-td {
+            padding: 40px 30px;
+            background-color: #ffffff;
+            position: relative;
+        }
+        .intro-text {
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .section-header {
+            border-bottom: 2px solid #d4af37;
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+        }
+        .section-header span {
+            color: #3b312b;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 13px;
+        }
+
+        /* Pillar */
+        .pillar {
+            margin-bottom: 30px;
+            background-color: #fefaf0;
+            padding: 20px;
+            border-left: 3px solid #d4af37;
+        }
+        .feature-title {
+            color: #3b312b;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .feature-desc {
+            font-size: 12px;
+            color: #666666;
+            margin: 0 0 15px 0;
+            line-height: 1.5;
+        }
+
+        /* PREMIUM PACKAGE BOX */
+        .premium-card {
+            margin: 40px 0;
+            border: 2px solid #d4af37;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .premium-header {
+            background-color: #3b312b;
+            padding: 15px;
+            text-align: center;
+        }
+        .premium-title {
+            color: #d4af37;
+            font-weight: 700;
+            letter-spacing: 5px;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+
+        /* Button */
+        .cta-container {
+            text-align: center;
+            padding: 40px 0;
+            background-color: #fefaf0;
+        }
+        .button {
+            background-color: #3b312b;
+            color: #d4af37 !important;
+            padding: 18px 40px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 1px solid #d4af37;
+            display: inline-block;
+            font-size: 13px;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 40px 30px;
+            text-align: center;
+            background-color: #3b312b;
+            color: #999999;
+            border-top: 2px solid #d4af37;
+        }
+        .footer-name {
+            color: #d4af37;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .footer-motto {
+            font-style: italic;
+            color: #cccccc;
+            font-size: 12px;
+            margin: 10px 0 0 0;
+        }
+    </style>
+</head>
+<body>
+    <center class="wrapper">
+        <table class="main" width="100%" cellpadding="0" cellspacing="0">
+            <!-- HEADER -->
+            <tr>
+                <td class="header">
+                    <img src="https://raw.githubusercontent.com/rafalch37-project/CLI/main/szablony/logo_mail.png" alt="Rafał Chmielowski Logo" class="logo">
+                </td>
+            </tr>
+
+            <!-- HERO -->
+            <tr>
+                <td class="hero-section">
+                    <div class="hero-subtitle-box">
+                        <p class="hero-subtitle">PROFESJONALNY SYSTEM<br>PROGRAMOWANIA SYLWETKI</p>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- CONTENT -->
+            <tr>
+                <td class="content-td">
+                    <p class="intro-text">
+                        Zapomnij o planach z generatora. Otrzymujesz system oparty na <strong>biomechanice</strong>, 
+                        <strong>matematyce metabolicznej</strong> i bezkompromisowej <strong>precyzji wykonania</strong>.
+                    </p>
+
+                    <!-- TRENING -->
+                    <div class="section-header">
+                        <span>01. PROGRAMOWANIE TRENINGOWE</span>
+                    </div>
+                    
+                    <div class="pillar">
+                        <span class="feature-title">Kontrola Tempa (3-1-1-0)</span>
+                        <p class="feature-desc">Precyzyjnie definiuję fazę rozciągnięcia i skurczu. Każde powtórzenie to świadome budowanie napięcia mechanicznego.</p>
+                        
+                        <span class="feature-title">Strategiczna Stabilizacja</span>
+                        <p class="feature-desc">Wykorzystujemy maszyny i podparcia, by 100% energii trafiło prosto w docelowy mięsień, eliminując "oszukiwanie".</p>
+                        
+                        <span class="feature-title">Koniec ze "Scrappy Reps"</span>
+                        <p class="feature-desc">Uczę Cię trenować do technicznego załamania. Tylko czyste, efektywne powtórzenia budują trwałą formę.</p>
+                    </div>
+
+                    <!-- DIETA -->
+                    <div class="section-header">
+                        <span>02. ARCHITEKTURA ŻYWIENIOWA</span>
+                    </div>
+                    
+                    <div class="pillar">
+                        <span class="feature-title">Matematyka TDEE (Mifflin-St Jeor)</span>
+                        <p class="feature-desc">Twój bilans kalorii jest obliczany na podstawie realnych parametrów i współczynnika aktywności (PAL).</p>
+                        
+                        <span class="feature-title">Nutrient Timing & Hormony</span>
+                        <p class="feature-desc">Optymalizujemy węglowodany pod treningi i dbamy o zdrowie hormonalne poprzez precyzyjną podaż tłuszczy.</p>
+                        
+                        <span class="feature-title">Gęstość Odżywcza</span>
+                        <p class="feature-desc">Dieta oparta na produktach o najwyższej biodostępności z pełną bazą mikroskładników.</p>
+                    </div>
+
+                    <!-- PREMIUM PACKAGE BOX -->
+                    <table width="100%" cellpadding="0" cellspacing="0" class="premium-card">
+                        <tr>
+                            <td class="premium-header">
+                                <span class="premium-title">STANDARD PREMIUM EXPERIENCE</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: #fefaf0; padding: 30px 25px;">
+                                <table width="100%" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td width="30" valign="top" style="color: #d4af37; font-size: 20px; font-weight: bold; line-height: 1;">&#187;</td>
+                                        <td style="padding-bottom: 20px;">
+                                            <strong style="color: #3b312b; font-size: 14px; text-transform: uppercase; display: block; margin-bottom: 5px;">Autorski Dziennik Treningowy</strong>
+                                            <p style="margin: 0; font-size: 12px; color: #555; line-height: 1.5;">Twoje centrum dowodzenia każdą sesją. Narzędzie zaprojektowane, by wyeliminować błędy i monitorować każdą serię w czasie rzeczywistym.</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="30" valign="top" style="color: #d4af37; font-size: 20px; font-weight: bold; line-height: 1;">&#187;</td>
+                                        <td style="padding-bottom: 20px;">
+                                            <strong style="color: #3b312b; font-size: 14px; text-transform: uppercase; display: block; margin-bottom: 5px;">Cotygodniowa Analiza Wyników</strong>
+                                            <p style="margin: 0; font-size: 12px; color: #555; line-height: 1.5;">Nie czekasz na efekty – my je wymuszamy. Co 7 dni analizuję Twoje postępy siłowe i sylwetkowe, wprowadzając mikro-korekty w planie.</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="30" valign="top" style="color: #d4af37; font-size: 20px; font-weight: bold; line-height: 1;">&#187;</td>
+                                        <td style="padding-bottom: 0;">
+                                            <strong style="color: #3b312b; font-size: 14px; text-transform: uppercase; display: block; margin-bottom: 5px;">Interaktywny Dziennik Postępów</strong>
+                                            <p style="margin: 0; font-size: 12px; color: #555; line-height: 1.5;">Cyfrowe odzwierciedlenie Twojej transformacji. Pomiary, waga i zdjęcia w jednym, czytelnym i motywującym systemie.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: #fefaf0; padding: 0 25px 25px 25px; text-align: center;">
+                                <p style="margin: 0; font-size: 11px; font-style: italic; color: #888; border-top: 1px solid #e0e0e0; padding-top: 15px;">
+                                    Gwarancja najwyższego standardu merytorycznego i estetycznego.
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <p style="text-align: center; font-weight: 600; font-size: 14px; margin-top: 30px; line-height: 1.8;">
+                        Dołącz do systemu, w którym każda seria i każda kaloria ma swoje uzasadnienie.<br>
+                        Czas przejść na wyższy poziom kształtowania ciała.
+                    </p>
+                </td>
+            </tr>
+
+            <!-- CTA -->
+            <tr>
+                <td class="cta-container">
+                    <a href="#" class="button">Rozpocznij Współpracę</a>
+                </td>
+            </tr>
+
+            <!-- FOOTER -->
+            <tr>
+                <td class="footer">
+                    <div class="footer-name">RAFAŁ CHMIELOWSKI</div>
+                    <p class="footer-motto">"Sagę pisze się czynem, nie obietnicami."</p>
+                    <p style="font-size: 10px; margin-top: 30px; color: #777;">© 2026 Rafał Ch. | Trener Personalny. Wszystkie prawa zastrzeżone.</p>
+                </td>
+            </tr>
+        </table>
+    </center>
+</body>
+</html>
