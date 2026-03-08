@@ -1,11 +1,59 @@
 {
   "imie": "Jan Kowalski",
-  "cel": "redukcja tkanki tłuszczowej",
   "kalorie": 2628,
-  "makro": {
-    "B": 170,
-    "T": 68,
-    "W": 334
+  "makro_target": {
+    "B": 168,
+    "T": 64,
+    "W": 345
   },
-  "info_dodatkowe": "Brak"
+  "jadlospis": [
+    {
+      "nazwa_posilku": "Posiłek 1: Omlet owsiany z borówkami",
+      "skladniki": [
+        { "Produkt": "Jaja kurze (całe)", "Ilość": "180g (3 duże sztuki)" },
+        { "Produkt": "Płatki owsiane górskie", "Ilość": "80g" },
+        { "Produkt": "Borówki amerykańskie", "Ilość": "100g" },
+        { "Produkt": "Orzechy włoskie", "Ilość": "15g" }
+      ],
+      "kcal": 680,
+      "B": 35, "T": 32, "W": 62,
+      "notatki": "Jaja roztrzep z płatkami, usmaż omlet na suchej patelni. Podaj z borówkami i orzechami."
+    },
+    {
+      "nazwa_posilku": "Posiłek 2: Kurczak w curry z ryżem (Przedtreningowy)",
+      "skladniki": [
+        { "Produkt": "Pierś z kurczaka", "Ilość": "150g" },
+        { "Produkt": "Ryż basmati", "Ilość": "100g" },
+        { "Produkt": "Oliwa z oliwek", "Ilość": "10g" },
+        { "Produkt": "Brokuł", "Ilość": "200g" }
+      ],
+      "kcal": 650,
+      "B": 42, "T": 12, "W": 88,
+      "notatki": "Ugotuj ryż. Kurczaka pokrój w kostkę, dopraw curry i podsmaż na oliwie. Podaj z gotowanym brokułem."
+    },
+    {
+      "nazwa_posilku": "Posiłek 3: Chuda ryba z batatami i owocem (Potreningowy)",
+      "skladniki": [
+        { "Produkt": "Dorsz", "Ilość": "200g" },
+        { "Produkt": "Bataty", "Ilość": "350g" },
+        { "Produkt": "Banan", "Ilość": "120g (1 sztuka)" },
+        { "Produkt": "Papryka czerwona", "Ilość": "150g" }
+      ],
+      "kcal": 640,
+      "B": 44, "T": 4, "W": 105,
+      "notatki": "Dorsza i bataty upiecz w piekarniku z ziołami. Banana zjedz jako deser bezpośrednio po treningu lub posiłku."
+    },
+    {
+      "nazwa_posilku": "Posiłek 4: Kolacja białkowo-tłuszczowa (Kanapki)",
+      "skladniki": [
+        { "Produkt": "Twaróg chudy", "Ilość": "150g" },
+        { "Produkt": "Chleb żytni na zakwasie", "Ilość": "150g" },
+        { "Produkt": "Awokado", "Ilość": "100g" },
+        { "Produkt": "Pomidor", "Ilość": "150g" }
+      ],
+      "kcal": 658,
+      "B": 47, "T": 16, "W": 90,
+      "notatki": "Twaróg wymieszaj z odrobiną jogurtu (opcjonalnie) i pomidorem. Podaj na chlebie z plastrami awokado."
+    }
+  ]
 }

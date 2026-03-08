@@ -1,122 +1,28 @@
-[
-  {
-    "pytanie": "Imię i nazwisko",
-    "odpowiedz": "Jan Kowalski",
-    "znaczenie": "Identyfikacja klienta."
-  },
-  {
-    "pytanie": "Wiek",
-    "odpowiedz": 30,
-    "znaczenie": "Kontekst ogólny, ocena zdolności do regeneracji."
-  },
-  {
-    "pytanie": "Waga (kg)",
-    "odpowiedz": 85,
-    "znaczenie": "Wyliczanie zapotrzebowania kalorycznego."
-  },
-  {
-    "pytanie": "Wzrost (cm)",
-    "odpowiedz": 180,
-    "znaczenie": "Wyliczanie BMI."
-  },
-  {
-    "pytanie": "Płeć",
-    "odpowiedz": "Mężczyzna",
-    "znaczenie": "Określenie domyślnych priorytetów i predyspozycji."
-  },
-  {
-    "pytanie": "Aktywność",
-    "odpowiedz": "Średnia aktywność (3-4 treningi)",
-    "znaczenie": null
-  },
-  {
-    "pytanie": "Czy masz kontuzje lub przeciwskazania? (Opisz)",
-    "odpowiedz": "Brak",
-    "znaczenie": "Kluczowe dla bezpieczeństwa. Odrzucanie niebezpiecznych ćwiczeń."
-  },
-  {
-    "pytanie": "Główny cel treningowy",
-    "odpowiedz": "Redukcja tkanki tłuszczowej",
-    "znaczenie": "Wpływa na dobór typu ćwiczeń (wielostawowe vs izolowane)."
-  },
-  {
-    "pytanie": "Twój poziom zaawansowania",
-    "odpowiedz": "Średniozaawansowany",
-    "znaczenie": "Filtruje kolumnę 'Trudnosc' w bazie."
-  },
-  {
-    "pytanie": "Ile dni w tygodniu możesz trenować?",
-    "odpowiedz": 3,
-    "znaczenie": "Decyduje o podziale planu (np. Split, FBW)."
-  },
-  {
-    "pytanie": "Ile średnio minut ma trwać trening?",
-    "odpowiedz": 60,
-    "znaczenie": "Decyduje o objętości (liczbie ćwiczeń)."
-  },
-  {
-    "pytanie": "PRIORYTETY SYLWETKOWE (Wybierz max 3)",
-    "odpowiedz": "Klatka, plecy",
-    "znaczenie": "Algorytm dobierze więcej ćwiczeń z bazy dla tych partii."
-  },
-  {
-    "pytanie": "Priorytet 1:",
-    "odpowiedz": "Klatka piersiowa",
-    "znaczenie": "Filtrowanie kolumny 'Partia_Glowna' dla Priorytetu 1"
-  },
-  {
-    "pytanie": "Priorytet 2:",
-    "odpowiedz": "Plecy",
-    "znaczenie": "Filtrowanie kolumny 'Partia_Glowna' dla Priorytetu 2"
-  },
-  {
-    "pytanie": "Priorytet 3:",
-    "odpowiedz": null,
-    "znaczenie": "Filtrowanie kolumny 'Partia_Glowna' dla Priorytetu 3"
-  },
-  {
-    "pytanie": "DOSTĘPNY SPRZĘT (Zaznacz Tak/Nie)",
-    "odpowiedz": null,
-    "znaczenie": "Bezpośrednie filtrowanie dostępności sprzętu z bazy."
-  },
-  {
-    "pytanie": "Dostęp: Sztanga",
-    "odpowiedz": "Tak",
-    "znaczenie": "Filtrowanie kolumny 'Sprzet' dla opcji: Sztanga"
-  },
-  {
-    "pytanie": "Dostęp: Hantle",
-    "odpowiedz": "Tak",
-    "znaczenie": "Filtrowanie kolumny 'Sprzet' dla opcji: Hantle"
-  },
-  {
-    "pytanie": "Dostęp: Maszyna",
-    "odpowiedz": "Nie",
-    "znaczenie": "Filtrowanie kolumny 'Sprzet' dla opcji: Maszyna"
-  },
-  {
-    "pytanie": "Dostęp: Wyciąg",
-    "odpowiedz": "Nie",
-    "znaczenie": "Filtrowanie kolumny 'Sprzet' dla opcji: Wyciąg"
-  },
-  {
-    "pytanie": "Dostęp: Poręcze",
-    "odpowiedz": "Tak",
-    "znaczenie": "Filtrowanie kolumny 'Sprzet' dla opcji: Poręcze"
-  },
-  {
-    "pytanie": "Dostęp: Drążek",
-    "odpowiedz": "Tak",
-    "znaczenie": "Filtrowanie kolumny 'Sprzet' dla opcji: Drążek"
-  },
-  {
-    "pytanie": "Dostęp: Ławka",
-    "odpowiedz": "Tak",
-    "znaczenie": "Filtrowanie kolumny 'Sprzet' dla opcji: Ławka"
-  },
-  {
-    "pytanie": "Dostęp: Talerz",
-    "odpowiedz": "Tak",
-    "znaczenie": "Filtrowanie kolumny 'Sprzet' dla opcji: Talerz"
-  }
-]
+{
+  "imie": "adam kowalski",
+  "plec": "Mężczyzna",
+  "wiek": "34",
+  "waga": "98",
+  "wzrost": "188",
+  "poziom": "Zaawansowany",
+  "cel": "Budowa masy mięśniowej",
+  "aktywnosc": "8000 krokow dziennie, praca siedzaca, 4 treningi w tygodniu",
+  "kontuzje": "brak",
+  "dni": "4",
+  "czas": "60",
+  "priorytet": [
+    "Biceps",
+    "Triceps"
+  ],
+  "sprzet": [
+    "Sztanga",
+    "Hantle",
+    "Maszyny",
+    "Wyciągi",
+    "Drążek",
+    "Poręcze",
+    "Ławka",
+    "Gumy"
+  ],
+  "data_wypelnienia": "2026-03-08"
+}
