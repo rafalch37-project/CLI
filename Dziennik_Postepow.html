@@ -3,25 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Dziennik Postępów - Raport Tygodniowy</title>
+    <title>Dashboard Postępów - Twój Trener</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
         
-        @page {
-            size: A4;
-            margin: 0;
-        }
-
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-        }
-
+        html, body { height: 100%; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #ffffff;
+            background-color: #f8f9fa;
             color: #333;
             display: flex;
             flex-direction: column;
@@ -29,9 +20,6 @@
             justify-content: flex-start;
             width: 100%;
             position: relative;
-            -webkit-print-color-adjust: exact;
-            print-color-adjust: exact;
-            box-sizing: border-box;
             padding: 10mm 0;
         }
 
@@ -43,16 +31,12 @@
             width: 90vw;
             height: 90vh;
             object-fit: contain;
-            opacity: 0.12;
+            opacity: 0.08;
             z-index: -1;
             pointer-events: none;
         }
 
-        .container {
-            width: 95%;
-            max-width: 850px;
-            z-index: 1;
-        }
+        #report-container { width: 95%; max-width: 900px; z-index: 1; box-sizing: border-box; background: transparent; padding: 10px; border-radius: 8px; }
 
         .header-main {
             text-align: center;
@@ -65,24 +49,20 @@
             padding-bottom: 8px;
         }
 
-        .section-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
+        .section-row { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 15px; width: 100%; }
         .card {
             border-left: 4px solid #3b312b;
             padding: 15px;
             margin-bottom: 15px;
-            background: rgba(255, 255, 255, 0.6);
+            background: #ffffff;
             box-sizing: border-box;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 4px;
+            flex: 1;
+            min-width: 350px;
         }
 
-        .card-half { flex: 1; min-width: 280px; }
-        .card-full { width: 100%; }
+        .card-full { width: 100%; flex: none; }
 
         .card-title {
             background-color: #3b312b;
@@ -94,293 +74,275 @@
             font-weight: 600;
             font-size: 12px;
             margin-bottom: 12px;
+            border-radius: 2px;
         }
 
-        table {
+        .chart-container {
             width: 100%;
-            border-collapse: collapse;
+            height: 250px;
+            margin-top: 10px;
+            position: relative;
         }
 
-        th {
-            text-align: left;
-            font-size: 10px;
-            text-transform: uppercase;
-            color: #777;
-            padding-bottom: 6px;
-            border-bottom: 1px solid #c5a059;
-        }
-
-        td {
-            padding: 5px 4px;
-            border-bottom: 1px solid #eee;
-            font-size: 13px;
-        }
+        table { width: 100%; border-collapse: collapse; }
+        th { text-align: left; font-size: 10px; text-transform: uppercase; color: #777; padding-bottom: 6px; border-bottom: 1px solid #c5a059; }
+        td { padding: 8px 4px; border-bottom: 1px solid #eee; font-size: 13px; }
 
         .input-field {
-            width: 100%;
+            width: 80px;
             border: 1px solid #e0e0e0;
             border-bottom: 2px solid #c5a059;
-            background: white;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 14px;
-            color: #333;
-            outline: none;
             padding: 5px;
-            box-sizing: border-box;
             text-align: center;
+            font-family: inherit;
             border-radius: 3px;
         }
 
-        .scale-box {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 10px;
-            padding-bottom: 4px;
-        }
-
-        .scale-label {
-            font-size: 12px;
-            font-weight: 600;
-            width: 90px;
-        }
-
-        .circles {
-            display: flex;
-            gap: 3px;
-        }
-
+        .scale-box { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; }
+        .scale-label { font-size: 12px; font-weight: 600; width: 100px; }
+        .circles { display: flex; gap: 4px; }
         .circle {
-            width: 20px;
-            height: 20px;
+            width: 22px; height: 22px;
             border: 2px solid #3b312b;
             border-radius: 50%;
             cursor: pointer;
-            box-sizing: border-box;
-            background: white;
+            transition: 0.2s;
+        }
+        .circle.active { background-color: #d4af37; border-color: #d4af37; }
+
+        .history-item {
+            border-bottom: 1px solid #eee;
+            padding: 8px 0;
+            font-size: 12px;
+        }
+        .history-notes {
+            color: #666;
+            font-style: italic;
+            margin-top: 4px;
+            font-size: 11px;
+            display: block;
         }
 
-        .circle.active {
-            background-color: #d4af37;
-            border-color: #d4af37;
-        }
-
-        .photo-container {
-            display: flex;
-            gap: 12px;
-            margin-top: 10px;
-        }
-
-        .photo-upload-box {
-            flex: 1;
-            aspect-ratio: 3/4;
-            border: 2px dashed #c5a059;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.8);
-            text-align: center;
-        }
-
-        .photo-upload-box span {
-            font-size: 10px;
-            font-weight: 600;
-            color: #3b312b;
-            text-transform: uppercase;
-        }
-
-        .photo-upload-box img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: none;
-            z-index: 2;
-        }
-
-        .photo-input { 
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            opacity: 0;
-        }
-
-        .notes-area {
-            width: 100%;
-            min-height: 80px;
-            border: 1px solid #ddd;
-            border-bottom: 2px solid #c5a059;
-            margin-top: 10px;
-            background: white;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 14px;
-            padding: 10px;
-            box-sizing: border-box;
-            outline: none;
-            resize: none;
-        }
-
-        .actions {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-            padding-bottom: 20px;
-        }
-
+        .actions { display: flex; justify-content: center; gap: 10px; margin-top: 30px; padding-bottom: 40px; flex-wrap: wrap; }
         .btn {
-            padding: 10px 20px;
+            padding: 12px 20px;
             font-family: 'Montserrat', sans-serif;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 600;
-            font-size: 11px;
+            font-size: 10px;
             cursor: pointer;
             border: none;
             border-radius: 4px;
+            transition: all 0.2s;
         }
-
-        .btn-print { background-color: #3b312b; color: #d4af37; }
-        .btn-clear { background-color: #eee; color: #666; }
-
-        /* Modal / Zoom */
-        #modal {
+        .btn:active { transform: scale(0.95); }
+        .btn-save { background-color: #27ae60; color: white; }
+        .btn-image { background-color: #3b312b; color: #d4af37; }
+        .btn-export { background-color: #d4af37; color: #3b312b; }
+        .btn-clear { background-color: #e74c3c; color: white; }
+        
+        .loading-overlay {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9);
+            background: rgba(255,255,255,0.8);
             z-index: 1000;
             justify-content: center;
             align-items: center;
-        }
-        #modal img { max-width: 95%; max-height: 90%; border: 2px solid #d4af37; }
-
-        @media print {
-            .actions { display: none; }
-            .watermark { position: absolute; }
-            #modal { display: none !important; }
-            body { padding: 0; }
-            .container { width: 100%; }
+            font-weight: 600;
         }
 
-        @media (max-width: 600px) {
-            .card-half { min-width: 100%; }
-            .circles { gap: 2px; }
-            .circle { width: 18px; height: 18px; }
-        }
+        @media (max-width: 768px) { .card-half { min-width: 100%; } .section-row { flex-wrap: wrap; } }
     </style>
 </head>
 <body>
 
-    <div id="modal" onclick="this.style.display='none'">
-        <img id="modal-img">
-    </div>
-
+    <div id="loading" class="loading-overlay">Generowanie raportu...</div>
     <img src="https://raw.githubusercontent.com/rafalch37-project/CLI/main/szablony/logop.png" alt="Watermark" class="watermark">
 
-    <div class="container">
-        <div class="header-main">Dziennik Postępów: Raport Tygodniowy</div>
+    <div id="report-container">
+        <div class="header-main">Dashboard Postępów</div>
 
         <div class="section-row">
             <div class="card card-half">
-                <div class="card-title">Pomiary Sylwetki</div>
+                <div class="card-title">Trend Wagi (kg)</div>
+                <div class="chart-container">
+                    <canvas id="weightChart"></canvas>
+                </div>
+            </div>
+            <div class="card card-half">
+                <div class="card-title">Vitals: Energia i Sen (1-10)</div>
+                <div class="chart-container">
+                    <canvas id="vitalsChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-row">
+            <div class="card card-half">
+                <div class="card-title">Dzisiejszy Wpis</div>
                 <table>
-                    <thead>
-                        <tr>
-                            <th>Partia</th>
-                            <th>Poprzednio</th>
-                            <th>Obecnie</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Waga (kg)</td><td><input type="text" class="input-field"></td><td><input type="text" class="input-field"></td></tr>
-                        <tr><td>Klatka</td><td><input type="text" class="input-field"></td><td><input type="text" class="input-field"></td></tr>
-                        <tr><td>Biceps</td><td><input type="text" class="input-field"></td><td><input type="text" class="input-field"></td></tr>
-                        <tr><td>Talia</td><td><input type="text" class="input-field"></td><td><input type="text" class="input-field"></td></tr>
-                        <tr><td>Biodra</td><td><input type="text" class="input-field"></td><td><input type="text" class="input-field"></td></tr>
-                        <tr><td>Udo</td><td><input type="text" class="input-field"></td><td><input type="text" class="input-field"></td></tr>
-                    </tbody>
+                    <tr><td>Data</td><td><input type="date" id="input-date" class="input-field" style="width: 130px;"></td></tr>
+                    <tr><td>Waga (kg)</td><td><input type="number" step="0.1" id="input-weight" class="input-field" placeholder="0.0"></td></tr>
+                    <tr><td>Pas (cm)</td><td><input type="number" step="0.1" id="input-waist" class="input-field" placeholder="0.0"></td></tr>
                 </table>
+                <div class="scale-box"><span class="scale-label">Energia (1-10)</span><div class="circles" data-metric="energy"><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div></div></div>
+                <div class="scale-box"><span class="scale-label">Sen (1-10)</span><div class="circles" data-metric="sleep"><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div></div></div>
             </div>
 
             <div class="card card-half">
-                <div class="card-title">Samopoczucie (1-10)</div>
-                <div class="scale-box"><span class="scale-label">Energia</span><div class="circles"><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div></div></div>
-                <div class="scale-box"><span class="scale-label">Sen</span><div class="circles"><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div></div></div>
-                <div class="scale-box"><span class="scale-label">Regeneracja</span><div class="circles"><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div></div></div>
-                <div class="scale-box"><span class="scale-label">Dieta</span><div class="circles"><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div></div></div>
+                <div class="card-title">Ostatnie wpisy</div>
+                <div id="history-list">Brak danych w pamięci.</div>
             </div>
         </div>
 
         <div class="card card-full">
-            <div class="card-title">Zdjęcia Sylwetki</div>
-            <p style="font-size: 10px; color: #666; margin-bottom: 5px;">Kliknij pole, aby dodać zdjęcie. Kliknij zdjęcie, aby powiększyć.</p>
-            <div class="photo-container">
-                <label class="photo-upload-box">
-                    <span>Przód</span>
-                    <img id="prev-przod" onclick="event.preventDefault(); event.stopPropagation(); openModal(this.src)">
-                    <input type="file" class="photo-input" accept="image/*" onchange="previewImage(this, 'prev-przod')">
-                </label>
-                <label class="photo-upload-box">
-                    <span>Bok</span>
-                    <img id="prev-bok" onclick="event.preventDefault(); event.stopPropagation(); openModal(this.src)">
-                    <input type="file" class="photo-input" accept="image/*" onchange="previewImage(this, 'prev-bok')">
-                </label>
-                <label class="photo-upload-box">
-                    <span>Tył</span>
-                    <img id="prev-tyl" onclick="event.preventDefault(); event.stopPropagation(); openModal(this.src)">
-                    <input type="file" class="photo-input" accept="image/*" onchange="previewImage(this, 'prev-tyl')">
-                </label>
-            </div>
-        </div>
-
-        <div class="card card-full">
-            <div class="card-title">Wnioski i Pytania</div>
-            <textarea class="notes-area" placeholder="Jak minął tydzień?"></textarea>
-        </div>
-
-        <div class="actions">
-            <button class="btn btn-clear" onclick="window.location.reload()">Wyczyść</button>
-            <button class="btn btn-print" onclick="window.print()">Zapisz PDF</button>
+            <div class="card-title">Notatki dla Trenera</div>
+            <textarea id="input-notes" style="width:100%; height:80px; border:1px solid #ddd; padding:10px; font-family:inherit; outline:none; border-bottom: 2px solid #c5a059;" placeholder="Jakieś uwagi do treningu lub diety?"></textarea>
         </div>
     </div>
 
+    <div class="actions">
+        <button class="btn btn-save" onclick="saveData()">Zapisz Dzień</button>
+        <button class="btn btn-image" onclick="takeScreenshot()">Pobierz Raport (Obraz PNG)</button>
+        <button class="btn btn-export" onclick="exportToTrainer()">Eksportuj Plik JSON</button>
+        <button class="btn btn-clear" onclick="clearData()">Resetuj Dane</button>
+    </div>
+
     <script>
-        document.querySelectorAll('.scale-box').forEach(group => {
-            const circles = group.querySelectorAll('.circle');
+        let history = JSON.parse(localStorage.getItem('fitness_history') || '[]');
+        let weightChart, vitalsChart;
+
+        document.getElementById('input-date').valueAsDate = new Date();
+
+        document.querySelectorAll('.circles').forEach(container => {
+            const circles = container.querySelectorAll('.circle');
             circles.forEach((circle, index) => {
                 circle.addEventListener('click', () => {
-                    circles.forEach(c => c.classList.remove('active'));
-                    for(let i=0; i<=index; i++) circles[i].classList.add('active');
+                    circles.forEach((c, i) => c.classList.toggle('active', i <= index));
+                    container.dataset.value = index + 1;
                 });
             });
         });
 
-        function previewImage(input, previewId) {
-            const preview = document.getElementById(previewId);
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    preview.style.display = 'block';
-                    input.parentElement.querySelector('span').style.opacity = '0';
-                    input.parentElement.style.borderStyle = 'solid';
-                }
-                reader.readAsDataURL(input.files[0]);
+        function saveData() {
+            const entry = {
+                date: document.getElementById('input-date').value,
+                weight: parseFloat(document.getElementById('input-weight').value),
+                waist: parseFloat(document.getElementById('input-waist').value),
+                energy: parseInt(document.querySelector('[data-metric="energy"]').dataset.value || 0),
+                sleep: parseInt(document.querySelector('[data-metric="sleep"]').dataset.value || 0),
+                notes: document.getElementById('input-notes').value
+            };
+
+            if (!entry.weight) { alert('Wpisz wagę!'); return; }
+
+            history.push(entry);
+            history.sort((a,b) => new Date(a.date) - new Date(b.date));
+            localStorage.setItem('fitness_history', JSON.stringify(history));
+            
+            updateUI();
+            alert('Dane zapisane pomyślnie!');
+        }
+
+        function updateUI() {
+            const list = document.getElementById('history-list');
+            list.innerHTML = history.slice(-5).reverse().map(h => `
+                <div class="history-item">
+                    <strong>${h.date}</strong>: ${h.weight}kg | Pas: ${h.waist}cm | Energ: ${h.energy}/10
+                    ${h.notes ? `<span class="history-notes">📝 ${h.notes}</span>` : ''}
+                </div>
+            `).join('') || 'Brak danych.';
+
+            renderCharts();
+        }
+
+        function renderCharts() {
+            const ctxW = document.getElementById('weightChart').getContext('2d');
+            const ctxV = document.getElementById('vitalsChart').getContext('2d');
+            const labels = history.map(h => h.date);
+
+            if (weightChart) weightChart.destroy();
+            if (vitalsChart) vitalsChart.destroy();
+
+            const commonOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: { duration: 0 },
+                plugins: { legend: { display: true, labels: { boxWidth: 10 } } }
+            };
+
+            weightChart = new Chart(ctxW, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Waga (kg)',
+                        data: history.map(h => h.weight),
+                        borderColor: '#c5a059',
+                        backgroundColor: 'rgba(197, 160, 89, 0.1)',
+                        fill: true, tension: 0.3
+                    }]
+                },
+                options: commonOptions
+            });
+
+            vitalsChart = new Chart(ctxV, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        { label: 'Energia', data: history.map(h => h.energy), borderColor: '#3b312b', backgroundColor: 'rgba(59,49,43,0.1)', fill: true, tension: 0.4 },
+                        { label: 'Sen', data: history.map(h => h.sleep), borderColor: '#d4af37', backgroundColor: 'rgba(212,175,55,0.1)', fill: true, tension: 0.4 }
+                    ]
+                },
+                options: { ...commonOptions, scales: { y: { min: 0, max: 10 } } }
+            });
+        }
+
+        async function takeScreenshot() {
+            const container = document.getElementById('report-container');
+            const loader = document.getElementById('loading');
+            loader.style.display = 'flex';
+
+            try {
+                const canvas = await html2canvas(container, {
+                    scale: 2, // Wyższa jakość (Retina)
+                    useCORS: true,
+                    backgroundColor: '#f8f9fa',
+                    logging: false
+                });
+                
+                const link = document.createElement('a');
+                link.download = `Raport_Postepow_${new Date().toISOString().slice(0,10)}.png`;
+                link.href = canvas.toDataURL("image/png");
+                link.click();
+            } catch (err) {
+                alert("Błąd podczas generowania obrazu: " + err);
+            } finally {
+                loader.style.display = 'none';
             }
         }
 
-        function openModal(src) {
-            if(!src) return;
-            document.getElementById('modal-img').src = src;
-            document.getElementById('modal').style.display = 'flex';
+        function exportToTrainer() {
+            if (history.length === 0) { alert('Brak danych!'); return; }
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(history, null, 2));
+            const dl = document.createElement('a');
+            dl.setAttribute("href", dataStr);
+            dl.setAttribute("download", "raport_klienta.json");
+            dl.click();
         }
+
+        function clearData() {
+            if (confirm('Usunąć wszystko?')) {
+                localStorage.removeItem('fitness_history');
+                history = [];
+                updateUI();
+            }
+        }
+
+        updateUI();
     </script>
 </body>
 </html>
