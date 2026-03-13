@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Twój Plan Dietetyczny - paweł sabok</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+        
+        @page {
+            size: A4;
+            margin: 15mm 0;
+        }
+
+        html, body {
+            height: auto;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            box-sizing: border-box;
+            padding-bottom: 20mm;
+        }
+
+        .watermark-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+        }
+
+        .watermark-container img {
+            width: 90vw;
+            height: 90vh;
+            object-fit: contain;
+            opacity: 0.07;
+        }
+
+        .table-container {
+            width: 92%;
+            max-width: 850px;
+            margin-bottom: 12px;
+            page-break-inside: avoid;
+        }
+
+        .header {
+            text-align: center;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+            border-bottom: 1px solid #c5a059;
+            padding-bottom: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: transparent;
+        }
+
+        th {
+            background-color: #3b312b !important;
+            color: #d4af37 !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 6px;
+            text-align: center;
+            border: 1px solid #c5a059;
+            font-size: 10px;
+        }
+
+        th:first-child {
+            text-align: left;
+            width: 45%;
+        }
+
+        td {
+            padding: 8px 8px;
+            border: 1px solid #e0e0e0;
+            background-color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+            font-size: 11.5px;
+        }
+
+        td:first-child {
+            text-align: left;
+        }
+
+        .summary-row td {
+            font-weight: 600;
+            background-color: rgba(197, 160, 89, 0.15);
+        }
+
+        .notes {
+            font-size: 10.5px;
+            font-style: italic;
+            color: #555;
+            margin-top: 4px;
+            padding: 6px 10px;
+            background: rgba(249, 249, 249, 0.4);
+            border-left: 3px solid #c5a059;
+        }
+
+        .info-box {
+            width: 92%;
+            max-width: 850px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-around;
+            font-size: 12px;
+            background: #3b312b;
+            color: #d4af37;
+            padding: 8px 0;
+            border-radius: 5px;
+        }
+
+        .main-title {
+            font-size: 24px;
+            text-align: center;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin: 20px 0 10px 0;
+            color: #1a1a1a;
+        }
+
+        @media print {
+            .watermark-container { position: absolute; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="watermark-container">
+        <img src="https://raw.githubusercontent.com/rafalch37-project/CLI/main/szablony/logop.png" alt="Watermark">
+    </div>
+
+    <div class="main-title">PLAN DIETETYCZNY - paweł sabok</div>
+    
+    <div class="info-box" style="padding: 10px 0; font-size: 11px; letter-spacing: 1px;">
+        <span>💧 NAWODNIENIE: MIN. 3L WODY DZIENNIE</span>
+        <span>☕ KOFEINA: OGRANICZ SPOŻYCIE PO GODZINIE 16:00</span>
+    </div>
+
+    <div class="table-container">  <div class="header">Posiłek 1: Omlet owsiany z bananem</div>  <table>    <thead>      <tr>        <th>Produkt / Składnik</th>        <th style="width: 25%">Ilość / Waga</th>        <th style="width: 10%">B (g)</th>        <th style="width: 10%">T (g)</th>        <th style="width: 10%">W (g)</th>        <th style="width: 12%">Kcal</th>      </tr>    </thead>    <tbody>      <tr>        <td>Jaja kurze (całe)</td>        <td>120g (2 duże sztuki)</td>        <td>15.0</td><td>11.6</td><td>0.7</td><td>172.0</td>      </tr>      <tr>        <td>Płatki owsiane górskie</td>        <td>130g</td>        <td>15.5</td><td>9.4</td><td>81.1</td><td>493.0</td>      </tr>      <tr>        <td>Banan</td>        <td>150g</td>        <td>1.5</td><td>0.4</td><td>34.2</td><td>134.0</td>      </tr>      <tr class="summary-row">        <td>SUMA POSIŁKU:</td>        <td>-</td>        <td>32.0</td>        <td>21.4</td>        <td>116.0</td>        <td>799.0</td>      </tr>    </tbody>  </table>  <div class="notes">Płatki zblenduj z jajami i bananem, usmaż na patelni bez tłuszczu.</div></div><div class="table-container">  <div class="header">Posiłek 2: Kurczak z ryżem i brokułem (Przedtreningowy)</div>  <table>    <thead>      <tr>        <th>Produkt / Składnik</th>        <th style="width: 25%">Ilość / Waga</th>        <th style="width: 10%">B (g)</th>        <th style="width: 10%">T (g)</th>        <th style="width: 10%">W (g)</th>        <th style="width: 12%">Kcal</th>      </tr>    </thead>    <tbody>      <tr>        <td>Pierś z kurczaka (surowa)</td>        <td>120g</td>        <td>25.8</td><td>1.6</td><td>0.0</td><td>119.0</td>      </tr>      <tr>        <td>Ryż basmati (suchy)</td>        <td>150g</td>        <td>12.1</td><td>1.7</td><td>112.5</td><td>522.0</td>      </tr>      <tr>        <td>Oliwa z oliwek</td>        <td>5g</td>        <td>0.0</td><td>5.0</td><td>0.0</td><td>44.0</td>      </tr>      <tr>        <td>Brokuł (surowy)</td>        <td>200g</td>        <td>5.6</td><td>0.8</td><td>13.2</td><td>68.0</td>      </tr>      <tr class="summary-row">        <td>SUMA POSIŁKU:</td>        <td>-</td>        <td>43.5</td>        <td>9.1</td>        <td>125.7</td>        <td>753.0</td>      </tr>    </tbody>  </table>  <div class="notes">Standardowy posiłek przedtreningowy. Solidna porcja energii z ryżu.</div></div><div class="table-container">  <div class="header">Posiłek 3: Indyk z makaronem w sosie pomidorowym (Potreningowy)</div>  <table>    <thead>      <tr>        <th>Produkt / Składnik</th>        <th style="width: 25%">Ilość / Waga</th>        <th style="width: 10%">B (g)</th>        <th style="width: 10%">T (g)</th>        <th style="width: 10%">W (g)</th>        <th style="width: 12%">Kcal</th>      </tr>    </thead>    <tbody>      <tr>        <td>Mięso mielone z indyka (chude)</td>        <td>120g</td>        <td>22.4</td><td>5.0</td><td>0.0</td><td>140.0</td>      </tr>      <tr>        <td>Makaron pszenny (suchy)</td>        <td>150g</td>        <td>18.0</td><td>2.2</td><td>105.0</td><td>525.0</td>      </tr>      <tr>        <td>Pomidor</td>        <td>200g</td>        <td>1.8</td><td>0.4</td><td>7.8</td><td>36.0</td>      </tr>      <tr class="summary-row">        <td>SUMA POSIŁKU:</td>        <td>-</td>        <td>42.2</td>        <td>7.6</td>        <td>112.8</td>        <td>701.0</td>      </tr>    </tbody>  </table>  <div class="notes">Makaron ugotuj al dente. Mięso podsmaż z pomidorami i ziołami.</div></div><div class="table-container">  <div class="header">Posiłek 4: Kolacja - Kanapki z twarogiem i bananem</div>  <table>    <thead>      <tr>        <th>Produkt / Składnik</th>        <th style="width: 25%">Ilość / Waga</th>        <th style="width: 10%">B (g)</th>        <th style="width: 10%">T (g)</th>        <th style="width: 10%">W (g)</th>        <th style="width: 12%">Kcal</th>      </tr>    </thead>    <tbody>      <tr>        <td>Chleb żytni na zakwasie</td>        <td>150g</td>        <td>8.9</td><td>2.5</td><td>70.5</td><td>320.0</td>      </tr>      <tr>        <td>Skyr naturalny</td>        <td>200g</td>        <td>24.0</td><td>0.0</td><td>8.0</td><td>130.0</td>      </tr>      <tr>        <td>Masło orzechowe (100% orzeszków)</td>        <td>15g</td>        <td>3.8</td><td>7.3</td><td>2.4</td><td>88.0</td>      </tr>      <tr>        <td>Banan</td>        <td>150g</td>        <td>1.5</td><td>0.4</td><td>34.2</td><td>134.0</td>      </tr>      <tr class="summary-row">        <td>SUMA POSIŁKU:</td>        <td>-</td>        <td>38.2</td>        <td>10.2</td>        <td>115.1</td>        <td>672.0</td>      </tr>    </tbody>  </table>  <div class="notes">Skyr wymieszaj z masłem orzechowym, nałóż na pieczywo. Podaj z bananem.</div></div>
+
+    
+    <div class="table-container" style="margin-top: 10px; border-top: 2px solid #3b312b; padding-top: 10px;">
+        <div class="header" style="font-size: 22px;">PODSUMOWANIE DNIA (REALNE)</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 25%">Białko (B)</th>
+                    <th style="width: 25%">Tłuszcze (T)</th>
+                    <th style="width: 25%">Węglowodany (W)</th>
+                    <th style="width: 25%">Kalorie (Kcal)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="font-size: 18px; font-weight: 600;">
+                    <td>155.9 g</td>
+                    <td>48.3 g</td>
+                    <td>469.6 g</td>
+                    <td>2925.0 kcal</td>
+                </tr>
+                <tr style="font-size: 11px; color: #777;">
+                    <td>Cel: 126g</td>
+                    <td>Cel: 48g</td>
+                    <td>Cel: 498g</td>
+                    <td>Cel: 2928kcal</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+
+</body>
+</html>

@@ -18,25 +18,24 @@ def get_weight(ilosc_str):
 def find_product_in_db(name, db):
     """Szuka produktu w bazie, ignorując wielkość liter i dopiski w nawiasach"""
     name_low = name.lower().strip()
-    
-    # 1. Szukamy dokładnego dopasowania
     for p in db:
         if p['Nazwa'].lower() == name_low:
             return p
-            
-    # 2. Szukamy dopasowania "zawiera się" (np. "Pierś z kurczaka" pasuje do "Pierś z kurczaka (surowa)")
     for p in db:
         db_name_low = p['Nazwa'].lower()
         if name_low in db_name_low or db_name_low in name_low:
             return p
-            
     return None
 
 def generate_diet_html(jadlospis, produkty_db):
-    if not jadlospis: return "<p>Brak danych dietetycznych.</p>"
+    if not jadlospis: return "<p>Brak danych dietetycznych.</p>", 0, 0, 0, 0
     
     html = ""
+    day_b = day_t = day_w = day_kcal = 0
+    
     for meal in jadlospis:
+        meal_b = meal_t = meal_w = meal_kcal = 0
+        
         html += f'<div class="table-container">'
         html += f'  <div class="header">{meal.get("nazwa_posilku", "Posiłek")}</div>'
         html += f'  <table>'
@@ -56,8 +55,6 @@ def generate_diet_html(jadlospis, produkty_db):
             nazwa = item.get("Produkt", "-")
             ilosc = item.get("Ilość", "-")
             waga = get_weight(ilosc)
-            
-            # Szukamy w bazie inteligentnie
             p_data = find_product_in_db(nazwa, produkty_db)
             
             if p_data and waga > 0:
@@ -66,6 +63,12 @@ def generate_diet_html(jadlospis, produkty_db):
                 t = round(p_data['Tluszcz'] * ratio, 1)
                 w = round(p_data['Weglowodany'] * ratio, 1)
                 kcal = round(p_data['Kcal'] * ratio, 0)
+                
+                # Dodajemy do sumy posiłku
+                meal_b += b
+                meal_t += t
+                meal_w += w
+                meal_kcal += kcal
             else:
                 b = t = w = kcal = "-"
 
@@ -75,25 +78,33 @@ def generate_diet_html(jadlospis, produkty_db):
             html += f'        <td>{b}</td><td>{t}</td><td>{w}</td><td>{kcal}</td>'
             html += f'      </tr>'
             
+        # Suma posiłku (DYNAMICZNA)
         html += f'      <tr class="summary-row">'
         html += f'        <td>SUMA POSIŁKU:</td>'
         html += f'        <td>-</td>'
-        html += f'        <td>{meal.get("B", 0)}</td>'
-        html += f'        <td>{meal.get("T", 0)}</td>'
-        html += f'        <td>{meal.get("W", 0)}</td>'
-        html += f'        <td>{meal.get("kcal", 0)}</td>'
+        html += f'        <td>{round(meal_b, 1)}</td>'
+        html += f'        <td>{round(meal_t, 1)}</td>'
+        html += f'        <td>{round(meal_w, 1)}</td>'
+        html += f'        <td>{round(meal_kcal, 0)}</td>'
         html += f'      </tr>'
         html += f'    </tbody>'
         html += f'  </table>'
         if "notatki" in meal and meal["notatki"]:
             html += f'  <div class="notes">{meal["notatki"]}</div>'
         html += f'</div>'
-    return html
+        
+        # Dodajemy do sumy dnia
+        day_b += meal_b
+        day_t += meal_t
+        day_w += meal_w
+        day_kcal += meal_kcal
+        
+    return html, round(day_b, 1), round(day_t, 1), round(day_w, 1), round(day_kcal, 0)
 
-def generate_summary_html(target, total_kcal):
+def generate_summary_html(b, t, w, kcal, target):
     html = f'''
     <div class="table-container" style="margin-top: 10px; border-top: 2px solid #3b312b; padding-top: 10px;">
-        <div class="header" style="font-size: 22px;">PODSUMOWANIE DNIA (TARGET)</div>
+        <div class="header" style="font-size: 22px;">PODSUMOWANIE DNIA (REALNE)</div>
         <table>
             <thead>
                 <tr>
@@ -105,10 +116,16 @@ def generate_summary_html(target, total_kcal):
             </thead>
             <tbody>
                 <tr style="font-size: 18px; font-weight: 600;">
-                    <td>{target.get("B", 0)} g</td>
-                    <td>{target.get("T", 0)} g</td>
-                    <td>{target.get("W", 0)} g</td>
-                    <td>{total_kcal} kcal</td>
+                    <td>{b} g</td>
+                    <td>{t} g</td>
+                    <td>{w} g</td>
+                    <td>{kcal} kcal</td>
+                </tr>
+                <tr style="font-size: 11px; color: #777;">
+                    <td>Cel: {target.get("B", 0)}g</td>
+                    <td>Cel: {target.get("T", 0)}g</td>
+                    <td>Cel: {target.get("W", 0)}g</td>
+                    <td>Cel: {target.get("kcal", 0)}kcal</td>
                 </tr>
             </tbody>
         </table>
@@ -139,21 +156,22 @@ def pack_diet():
         with open(szablon_path, 'r', encoding='utf-8') as f:
             html = f.read()
         
-        # Podstawowe dane
         html = html.replace("{{IMIE}}", imie)
         
-        # Posiłki
-        diet_tables = generate_diet_html(data.get("jadlospis", []), produkty_db)
+        # Generowanie tabel i dynamiczne obliczanie sum
+        diet_tables, total_b, total_t, total_w, total_kcal = generate_diet_html(data.get("jadlospis", []), produkty_db)
         html = html.replace("{{DIETA}}", diet_tables)
         
-        # Podsumowanie
-        summary_table = generate_summary_html(data.get("makro_target", {}), data.get("kalorie", 0))
+        # Generowanie podsumowania dnia
+        target = data.get("makro_target", {})
+        target["kcal"] = data.get("kalorie", 0)
+        summary_table = generate_summary_html(total_b, total_t, total_w, total_kcal, target)
         html = html.replace("{{PODSUMOWANIE}}", summary_table)
 
         out_path = os.path.join(output_dir, f"Plan_Dietetyczny_{imie}.html")
         with open(out_path, 'w', encoding='utf-8') as f:
             f.write(html)
-        print(f"✅ Plan dietetyczny wygenerowany: {out_path}")
+        print(f"✅ Plan dietetyczny wygenerowany z dynamicznym podliczaniem: {out_path}")
 
 if __name__ == "__main__":
     pack_diet()

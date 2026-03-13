@@ -53,4 +53,20 @@ Zanim przejdziesz do ustalania makroskładników, oblicz całkowite zapotrzebowa
     4. Krótkie instrukcje przygotowania (klasa `.notes`).
 *   **Podsumowanie dnia:** Na końcu planu musi znaleźć się tabela z całkowitą sumą Kcal, Białka, Tłuszczy i Węglowodanów.
 
-> **WAŻNA DYREKTYWA DLA SYSTEMU:** Zawsze używaj dokładnych nazw produktów z pliku `src/produkty.json`. Jeśli brakuje jakiegoś produktu w bazie, dobierz najbliższy zamiennik i zaznacz to w notatce. Nie zmyślaj wartości odżywczych – opieraj się wyłącznie na danych JSON.
+## 6. ALGORYTM WERYFIKACJI MATEMATYCZNEJ (KRYTYCZNE)
+Przed sfinalizowaniem planu i zapisaniem pliku JSON, **MUSISZ** wykonać wewnętrzną symulację obliczeń:
+1.  **Sprawdź bazę:** Dla każdego wybranego składnika pobierz wartości B, T, W, Kcal z `src/produkty.json` (wartości na 100g).
+2.  **Przelicz wagę:** Pomnóż wartości z bazy przez (waga_skladnika / 100).
+3.  **Zsumuj dzień:** Dodaj wszystkie przeliczone wartości składników z całego dnia.
+4.  **Porównaj z celem:** Suma musi mieścić się w tolerancji +/- 3% względem `makro_target` i `kalorie`.
+5.  **Korekta:** Jeśli suma odbiega od celu, skoryguj gramaturę produktów (np. dodaj/odejmij 10g ryżu lub 5g oliwy) i powtórz obliczenia aż do uzyskania pełnej zgodności.
+
+## 7. ZASADY LOGIKI KULINARNEJ (LOGIKA TALERZA)
+Podczas układania menu, matematyka **nie może** naruszać logiki kulinarnej. Stosuj poniższe standardy porcji:
+*   **Białko zwierzęce:** Porcja mięsa (kurczak, wołowina, indyk) lub ryby musi wynosić od **120g do 200g**. Nigdy nie schodź poniżej 100g w głównym posiłku.
+*   **Jaja:** Minimum 2-3 sztuki na posiłek (ok. 120-180g). Nie planuj posiłku z "połową jajka".
+*   **Źródła skrobiowe:** Porcja ryżu, kaszy lub makaronu (sucha masa) powinna mieścić się w przedziale **50g - 150g**. Jeśli zapotrzebowanie na węglowodany jest ekstremalnie wysokie (np. >500g), nadmiar uzupełniaj owocami, sokami lub miodem, zamiast zwiększać porcję ryżu powyżej 150g.
+*   **Pieczywo:** Porcja chleba to zazwyczaj **100g - 200g** (2-4 solidne kromki).
+*   **Priorytet struktury posiłku:** Jeśli wysoka podaż węglowodanów powoduje, że białko roślinne (z ryżu/makaronu) wypełnia cały "limit" białka, **masz prawo zwiększyć całkowitą podaż białka (nawet do 2.5g/kg)**, aby zachować logiczną porcję mięsa/ryby w posiłku.
+
+> **WAŻNA DYREKTYWA DLA SYSTEMU:** Zawsze używaj dokładnych nazw produktów z pliku `src/produkty.json`. Jeśli brakuje jakiegoś produktu w bazie, dobierz najbliższy zamiennik i zaznacz to w notatce. Nie zmyślaj wartości odżywczych – opieraj się wyłącznie na danych JSON. Pamiętaj, że skrypt `master/pakuj_dieta.py` zweryfikuje Twoje obliczenia w locie – każda pomyłka będzie widoczna na gotowym raporcie.
