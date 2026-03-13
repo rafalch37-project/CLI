@@ -58,9 +58,9 @@ def run_training_pipeline():
     
     # --- SCENARIUSZ 4 DNI (PUSH/PULL) ---
     if dni >= 4:
-        p1 = [pick_exercise(muscle="Czworogłowy", gear_f=["Maszyna"]), pick_exercise(muscle="Klatka", gear_f=["Maszyna"]), pick_exercise(muscle="Naramienny (bok)", gear_f=["Wyciąg"]), pick_exercise(muscle="Czworogłowy", type_f="Izolowane"), pick_exercise(muscle="Klatka", type_f="Izolowane"), pick_exercise(muscle="Triceps", gear_f=["Wyciąg"])]
-        l1 = [pick_exercise(muscle="Najszerszy", specific="ściąganie"), pick_exercise(muscle="Dwugłowy", type_f="Wielostawowe"), pick_exercise(muscle="Najszerszy", specific="wiosłowanie"), pick_exercise(muscle="Naramienny (tył)"), pick_exercise(muscle="Dwugłowy", gear_f=["Maszyna"]), pick_exercise(muscle="Biceps", gear_f=["Hantle"])]
-        p2 = [pick_exercise(muscle="Czworogłowy", gear_f=["Maszyna", "Sztanga"]), pick_exercise(muscle="Klatka", gear_f=["Hantle"]), pick_exercise(muscle="Naramienny", gear_f=["Sztanga", "Hantle"]), pick_exercise(muscle="Czworogłowy", specific="bułgarskie"), pick_exercise(muscle="Klatka", gear_f=["Wyciąg"]), pick_exercise(muscle="Triceps", gear_f=["Hantle"])]
+        p1 = [pick_exercise(muscle="Czworogłowy"), pick_exercise(muscle="Klatka"), pick_exercise(muscle="Naramienny (bok)", gear_f=["Wyciąg"]), pick_exercise(muscle="Czworogłowy", type_f="Izolowane"), pick_exercise(muscle="Klatka", type_f="Izolowane"), pick_exercise(muscle="Triceps", gear_f=["Wyciąg"])]
+        l1 = [pick_exercise(muscle="Najszerszy", specific="ściąganie"), pick_exercise(muscle="Dwugłowy", type_f="Wielostawowe"), pick_exercise(muscle="Najszerszy", specific="wiosłowanie"), pick_exercise(muscle="Naramienny (tył)"), pick_exercise(muscle="Dwugłowy"), pick_exercise(muscle="Biceps", gear_f=["Hantle"])]
+        p2 = [pick_exercise(muscle="Czworogłowy"), pick_exercise(muscle="Klatka", gear_f=["Hantle"]), pick_exercise(muscle="Naramienny", gear_f=["Sztanga", "Hantle"]), pick_exercise(muscle="Czworogłowy", specific="bułgarskie"), pick_exercise(muscle="Klatka", gear_f=["Wyciąg"]), pick_exercise(muscle="Triceps", gear_f=["Hantle"])]
         l2 = [pick_exercise(muscle="Najszerszy", gear_f=["Drążek"]), pick_exercise(muscle="Dwugłowy", specific="Dzień dobry"), pick_exercise(muscle="Najszerszy", gear_f=["Hantle"]), pick_exercise(muscle="Naramienny (tył)"), pick_exercise(muscle="Biceps", gear_f=["Sztanga"]), pick_exercise(muscle="brzucha")]
         session_data = [("PUSH 1", p1), ("PULL 1", l1), ("PUSH 2", p2), ("PULL 2", l2)]
 
