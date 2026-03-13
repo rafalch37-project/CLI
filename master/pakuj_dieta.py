@@ -139,21 +139,21 @@ def pack_diet():
         with open(szablon_path, 'r', encoding='utf-8') as f:
             html = f.read()
         
+        # Podstawowe dane
         html = html.replace("{{IMIE}}", imie)
-        html = html.replace("{{WAGA}}", str(data.get("waga", "-")))
-        html = html.replace("{{WZROST}}", str(data.get("wzrost", "-")))
-        html = html.replace("{{CEL}}", data.get("cel_opis", "Zgodnie z zapotrzebowaniem"))
         
+        # Posiłki
         diet_tables = generate_diet_html(data.get("jadlospis", []), produkty_db)
         html = html.replace("{{DIETA}}", diet_tables)
         
+        # Podsumowanie
         summary_table = generate_summary_html(data.get("makro_target", {}), data.get("kalorie", 0))
         html = html.replace("{{PODSUMOWANIE}}", summary_table)
 
         out_path = os.path.join(output_dir, f"Plan_Dietetyczny_{imie}.html")
         with open(out_path, 'w', encoding='utf-8') as f:
             f.write(html)
-        print(f"✅ Plan dietetyczny wygenerowany z inteligentnym dopasowaniem: {out_path}")
+        print(f"✅ Plan dietetyczny wygenerowany: {out_path}")
 
 if __name__ == "__main__":
     pack_diet()
