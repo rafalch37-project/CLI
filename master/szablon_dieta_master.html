@@ -2,6 +2,7 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Twój Plan Dietetyczny - {{IMIE}}</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
@@ -56,7 +57,7 @@
         .table-container {
             width: 92%;
             max-width: 850px;
-            margin-bottom: 12px;
+            margin-bottom: 28px;
             page-break-inside: avoid;
         }
 
@@ -103,6 +104,7 @@
 
         td:first-child {
             text-align: left;
+            font-weight: 600;
         }
 
         .summary-row td {
@@ -142,8 +144,38 @@
             color: #1a1a1a;
         }
 
+        .macro-bar-container {
+            display: flex;
+            height: 12px;
+            background: #eee;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .macro-label-container {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            margin-top: 5px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media screen and (max-width: 600px) {
+            .main-title { font-size: 18px; letter-spacing: 2px; }
+            .info-box { flex-direction: column; gap: 8px; align-items: center; text-align: center; padding: 12px 5px; }
+            .table-container { width: 96%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            table { min-width: 500px; }
+            th, td { font-size: 10px; padding: 6px 4px; }
+            .notes { font-size: 9.5px; }
+        }
+
         @media print {
             .watermark-container { position: absolute; }
+            .table-container { overflow: visible; }
         }
     </style>
 </head>

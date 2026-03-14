@@ -2,6 +2,7 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Twój Plan Treningowy - {{IMIE}}</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
@@ -12,7 +13,7 @@
         }
 
         html, body {
-            height: 100%;
+            height: auto;
             margin: 0;
             padding: 0;
         }
@@ -24,7 +25,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-evenly;
             width: 100%;
             position: relative;
             -webkit-print-color-adjust: exact;
@@ -49,6 +49,7 @@
         .table-container {
             width: 90%;
             max-width: 800px;
+            margin-bottom: 28px;
         }
 
         .header {
@@ -106,8 +107,17 @@
             font-style: italic;
         }
 
+        @media screen and (max-width: 600px) {
+            .header { font-size: 16px; letter-spacing: 2px; }
+            .table-container { width: 96%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            table { min-width: 450px; }
+            th, td { font-size: 11px; padding: 8px 6px; }
+            .notes { font-size: 9px; }
+        }
+
         @media print {
             .watermark { position: absolute; }
+            .table-container { overflow: visible; }
         }
     </style>
 </head>

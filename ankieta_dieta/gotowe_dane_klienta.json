@@ -1,57 +1,52 @@
 {
   "imie": "paweł sabok",
-  "kalorie": 2928,
+  "kalorie": 2600,
   "makro_target": {
     "B": 126,
     "T": 48,
-    "W": 498
+    "W": 416
   },
   "jadlospis": [
     {
-      "nazwa_posilku": "Posiłek 1: Omlet owsiany z bananem",
+      "nazwa_posilku": "Posiłek 1: Śniadanie energetyczne",
       "skladniki": [
-        { "Produkt": "Jaja kurze (całe)", "Ilość": "120g (2 duże sztuki)" },
-        { "Produkt": "Płatki owsiane górskie", "Ilość": "130g" },
-        { "Produkt": "Banan", "Ilość": "150g" }
+        { "Produkt": "Płatki owsiane górskie", "Ilość": "100g" },
+        { "Produkt": "Mleko spożywcze (2%)", "Ilość": "200g" },
+        { "Produkt": "Skyr naturalny", "Ilość": "100g" },
+        { "Produkt": "Banan", "Ilość": "100g" }
       ],
-      "kcal": 798,
-      "B": 32, "T": 21, "W": 116,
-      "notatki": "Płatki zblenduj z jajami i bananem, usmaż na patelni bez tłuszczu."
+      "notatki": "Płatki ugotuj na mleku, wymieszaj ze skyrem i pokrojonym bananem."
     },
     {
-      "nazwa_posilku": "Posiłek 2: Kurczak z ryżem i brokułem (Przedtreningowy)",
+      "nazwa_posilku": "Posiłek 2: Obiad I (Okołotreningowy)",
       "skladniki": [
-        { "Produkt": "Pierś z kurczaka (surowa)", "Ilość": "120g" },
+        { "Produkt": "Pierś z kurczaka (surowa)", "Ilość": "100g" },
         { "Produkt": "Ryż basmati (suchy)", "Ilość": "150g" },
         { "Produkt": "Oliwa z oliwek", "Ilość": "5g" },
-        { "Produkt": "Brokuł (surowy)", "Ilość": "200g" }
+        { "Produkt": "Papryka czerwona", "Ilość": "100g" }
       ],
-      "kcal": 753,
-      "B": 43, "T": 9, "W": 126,
-      "notatki": "Standardowy posiłek przedtreningowy. Solidna porcja energii z ryżu."
+      "notatki": "Kurczaka grilluj bez tłuszczu, ryż ugotuj. Paprykę podawaj na surowo lub grillowaną. Oliwę dodaj do ryżu po ugotowaniu."
     },
     {
-      "nazwa_posilku": "Posiłek 3: Indyk z makaronem w sosie pomidorowym (Potreningowy)",
+      "nazwa_posilku": "Posiłek 3: Obiad II (Regeneracja)",
       "skladniki": [
-        { "Produkt": "Mięso mielone z indyka (chude)", "Ilość": "120g" },
-        { "Produkt": "Makaron pszenny (suchy)", "Ilość": "150g" },
-        { "Produkt": "Pomidor", "Ilość": "200g" }
+        { "Produkt": "Pierś z kurczaka (surowa)", "Ilość": "80g" },
+        { "Produkt": "Makaron pszenny (suchy)", "Ilość": "120g" },
+        { "Produkt": "Oliwa z oliwek", "Ilość": "5g" },
+        { "Produkt": "Pomidor", "Ilość": "100g" },
+        { "Produkt": "Jabłko", "Ilość": "150g" }
       ],
-      "kcal": 701,
-      "B": 42, "T": 8, "W": 113,
-      "notatki": "Makaron ugotuj al dente. Mięso podsmaż z pomidorami i ziołami."
+      "notatki": "Kurczaka przygotuj na parze lub grillu. Makaron wymieszaj z oliwą i pomidorem. Jabłko jako deser."
     },
     {
-      "nazwa_posilku": "Posiłek 4: Kolacja - Kanapki z twarogiem i bananem",
+      "nazwa_posilku": "Posiłek 4: Kolacja (Białko na noc)",
       "skladniki": [
         { "Produkt": "Chleb żytni na zakwasie", "Ilość": "150g" },
-        { "Produkt": "Skyr naturalny", "Ilość": "200g" },
-        { "Produkt": "Masło orzechowe (100% orzeszków)", "Ilość": "15g" },
-        { "Produkt": "Banan", "Ilość": "150g" }
+        { "Produkt": "Jaja kurze (całe)", "Ilość": "120g (2 szt)" },
+        { "Produkt": "Masło (82%)", "Ilość": "5g" },
+        { "Produkt": "Pomarańcza", "Ilość": "200g" }
       ],
-      "kcal": 671,
-      "B": 38, "T": 10, "W": 115,
-      "notatki": "Skyr wymieszaj z masłem orzechowym, nałóż na pieczywo. Podaj z bananem."
+      "notatki": "Jajka przygotuj na twardo lub jako jajecznicę na maśle. Podawaj z chlebem żytnim. Pomarańcza na zakończenie dnia."
     }
   ]
 }

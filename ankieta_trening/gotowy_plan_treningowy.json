@@ -1,165 +1,118 @@
 [
   {
-    "nazwa_sesji": "PUSH 1 (Stabilizacja)",
+    "nazwa_sesji": "FBW A (Podstawy i Maszyny)",
     "cwiczenia": [
       {
-        "nazwa": "Przysiady na maszynie Hack",
+        "nazwa": "Przysiady z hantlem (kielichowe)",
         "serie": 3,
         "powtorzenia": "8-10",
-        "notatki": "Tempo: 3-1-1-0. Plecy oparte o oparcie, stopy nieco wysunięte w przód, głęboki ruch, stabilizacja tułowia."
+        "notatki": "Tempo: 3-1-1-0. Hantel trzymany przy mostku, łokcie wąsko, głęboki siad. Idealne do nauki wzorca przysiadu."
       },
       {
         "nazwa": "Wyciskanie na maszynie typu Hammer",
         "serie": 3,
         "powtorzenia": "8-10",
-        "notatki": "Tempo: 3-1-1-0. Wyciskanie siedząc na maszynie. Bezpieczna praca z dużym ciężarem."
-      },
-      {
-        "nazwa": "Wyciskanie hantli siedząc",
-        "serie": 3,
-        "powtorzenia": "8-10",
-        "notatki": "Tempo: 3-1-1-0. Wyciskanie hantli nad głowę na ławce z oparciem (kąt 90°). Plecy proste."
-      },
-      {
-        "nazwa": "Maszyna typu Butterfly (Rozpiętki)",
-        "serie": 3,
-        "powtorzenia": "10-12",
-        "notatki": "Tempo: 3-1-1-0. Przywodzenie ramion do środka siedząc. Czysta izolacja klatki."
-      },
-      {
-        "nazwa": "Prostowanie ramienia jednorącz podchwytem",
-        "serie": 2,
-        "powtorzenia": "10-12",
-        "notatki": "Tempo: 3-1-1-0. Chwyt odwrotny (dłoń do góry), izoluje często pomijaną głowę przyśrodkową (przy łokciu)."
-      },
-      {
-        "nazwa": "Wznosy linki wyciągu bokiem jednorącz",
-        "serie": 2,
-        "powtorzenia": "10-12",
-        "notatki": "Tempo: 3-1-1-0. Unoszenie linki wyciągu dolnego bokiem. Stałe napięcie mięśnia."
-      }
-    ]
-  },
-  {
-    "nazwa_sesji": "PULL 1 (Szerokość)",
-    "cwiczenia": [
-      {
-        "nazwa": "Wiosłowanie hantlem jednorącz",
-        "serie": 3,
-        "powtorzenia": "8-10",
-        "notatki": "Tempo: 3-1-1-0. Podparcie na ławce, tułów równolegle do podłogi, ruch hantla po łuku w stronę biodra."
-      },
-      {
-        "nazwa": "Rumuński martwy ciąg",
-        "serie": 3,
-        "powtorzenia": "8-10",
-        "notatki": "Tempo: 3-1-1-0. Nogi minimalnie ugięte, ruch tylko w biodrze (wypychanie w tył), sztanga blisko nóg, plecy proste."
+        "notatki": "Tempo: 3-1-1-0. Wyciskanie siedząc na maszynie. Bezpieczna praca z dużym ciężarem. Łopatki przyklejone do oparcia."
       },
       {
         "nazwa": "Wiosłowanie na maszynie z podparciem klatki",
         "serie": 3,
         "powtorzenia": "8-10",
-        "notatki": "Tempo: 3-1-1-0. Klatka mocno przywarta do oparcia, pełne rozciągnięcie mięśni, spięcie łopatek bez ruchu tułowiem."
+        "notatki": "Tempo: 3-0-1-1. Klatka mocno przywarta do oparcia, pełne rozciągnięcie mięśni, spięcie łopatek bez ruchu tułowiem."
       },
       {
-        "nazwa": "Uginanie nóg na maszynie leżąc",
+        "nazwa": "Wznosy hantli bokiem",
         "serie": 3,
         "powtorzenia": "10-12",
-        "notatki": "Tempo: 3-1-1-0. Biodra przyklejone do ławki, ruch pełny do pośladka, powolna faza opuszczania (ekscentryczna)."
+        "notatki": "Tempo: 2-0-1-2. Unoszenie hantli na boki do wysokości barków. Łokcie lekko ugięte. Pauza w szczytowym napięciu."
       },
       {
-        "nazwa": "Uginanie ramion z hantlami z supinacją",
+        "nazwa": "Uginanie ramion na wyciągu dolnym stojąc",
         "serie": 2,
         "powtorzenia": "10-12",
-        "notatki": "Tempo: 3-1-1-0. Start chwytem młotkowym, w trakcie ruchu rotacja nadgarstka na zewnątrz (mały palec do góry)."
-      },
-      {
-        "nazwa": "Allahy (Skłony tułowia na wyciągu klęcząc)",
-        "serie": 2,
-        "powtorzenia": "10-12",
-        "notatki": "Tempo: 3-1-1-0. Biodra nieruchomo nad kolanami, \"zwijanie\" kręgosłupa w łuk (głowa do kolan), wydech przy spięciu."
+        "notatki": "Tempo: 2-0-1-2. Stały opór w całym zakresie ruchu, łokcie stabilnie przy żebrach. Pełny wyprost ramion."
       }
     ]
   },
   {
-    "nazwa_sesji": "PUSH 2 (Siła/Unilateral)",
+    "nazwa_sesji": "FBW B (Hantle i Masa Ciała)",
     "cwiczenia": [
-      {
-        "nazwa": "Wyciskanie hantli na skosie dodatnim",
-        "serie": 3,
-        "powtorzenia": "8-10",
-        "notatki": "Tempo: 3-1-1-0. Wyciskanie na ławce 30-45°. Większy zakres ruchu niż sztanga."
-      },
-      {
-        "nazwa": "Wypychanie ciężaru na suwnicy",
-        "serie": 3,
-        "powtorzenia": "8-10",
-        "notatki": "Tempo: 3-1-1-0. Plecy i biodra przyklejone, stopy na środku platformy, nie blokujemy kolan w pełnym wyproście."
-      },
-      {
-        "nazwa": "Pompki na poręczach (Dipsy)",
-        "serie": 3,
-        "powtorzenia": "8-10",
-        "notatki": "Tempo: 3-1-1-0. Opuszczanie tułowia na poręczach z pochyleniem ciała do przodu."
-      },
       {
         "nazwa": "Wyprosty nóg na maszynie siedząc",
         "serie": 3,
         "powtorzenia": "10-12",
-        "notatki": "Tempo: 3-1-1-0. Plecy oparte, ruch do pełnego wyprostu, przytrzymanie napięcia w górze, palce stóp na siebie."
+        "notatki": "Tempo: 2-0-1-2. Plecy oparte, ruch do pełnego wyprostu, przytrzymanie napięcia w górze, palce stóp na siebie."
       },
       {
-        "nazwa": "Prostowanie ramion z linką wyciągu zza głowy",
-        "serie": 2,
-        "powtorzenia": "10-12",
-        "notatki": "Tempo: 3-1-1-0. Ustawienie tyłem do wyciągu, linka nad głową, łokcie stabilne, ruch w przód. Stałe napięcie."
+        "nazwa": "Pompki klasyczne",
+        "serie": 3,
+        "powtorzenia": "8-10",
+        "notatki": "Tempo: 3-1-1-0. Podpor przodem, ciało proste. Zginanie ramion, klatka tuż nad ziemię. Brzuch napięty."
       },
       {
-        "nazwa": "BRAK",
+        "nazwa": "Przyciąganie linki wyciągu dolnego siedząc",
+        "serie": 3,
+        "powtorzenia": "8-10",
+        "notatki": "Tempo: 3-0-1-1. Klatka wypięta, brak nadmiernego odchylania tułowia, mocna retrakcja łopatek w końcowej fazie."
+      },
+      {
+        "nazwa": "Wyciskanie hantli siedząc",
+        "serie": 2,
+        "powtorzenia": "8-10",
+        "notatki": "Tempo: 3-1-1-0. Wyciskanie hantli nad głowę na ławce z oparciem (kąt 90 stopni). Plecy proste."
+      },
+      {
+        "nazwa": "Prostowanie ramion z linką wyciągu górnego",
         "serie": 2,
         "powtorzenia": "10-12",
-        "notatki": "Tempo: 3-1-1-0. -"
+        "notatki": "Tempo: 2-0-1-2. Tułów lekko pochylony, łokcie przyklejone do żeber, na dole rozchylenie linki na zewnątrz."
+      },
+      {
+        "nazwa": "Plank (Deska klasyczna)",
+        "serie": 2,
+        "powtorzenia": "30-45 sek.",
+        "notatki": "Podpór przodem na przedramionach, ciało w linii prostej, mocno spięte pośladki i brzuch. Nie dopuszczaj do opadania lędźwi."
       }
     ]
   },
   {
-    "nazwa_sesji": "PULL 2 (Grubość)",
+    "nazwa_sesji": "FBW C (Izolacja i Szerokość)",
     "cwiczenia": [
       {
-        "nazwa": "Podciąganie na drążku nachwytem",
+        "nazwa": "Uginanie nóg na maszynie leżąc",
         "serie": 3,
-        "powtorzenia": "8-10",
-        "notatki": "Tempo: 3-1-1-0. Pełny zwis, depresja łopatek przed ruchem, łokcie prowadzone do bioder, brak bujania."
+        "powtorzenia": "10-12",
+        "notatki": "Tempo: 2-0-1-2. Biodra przyklejone do ławki, ruch pełny do pośladka, powolna faza opuszczania."
       },
       {
-        "nazwa": "Dzień dobry ze sztangą",
+        "nazwa": "Maszyna typu Butterfly (Rozpiętki)",
         "serie": 3,
-        "powtorzenia": "8-10",
-        "notatki": "Tempo: 3-1-1-0. Sztanga jak do przysiadu, ruch wypychania bioder w tył przy prostych plecach, tułów prawie równolegle do ziemi."
+        "powtorzenia": "10-12",
+        "notatki": "Tempo: 2-0-1-2. Przywodzenie ramion do środka siedząc. Czysta izolacja klatki. Mocne spięcie w centrum."
       },
       {
-        "nazwa": "Wiosłowanie hantlem jednorącz",
+        "nazwa": "Ściąganie drążka wyciągu górnego do klatki",
         "serie": 3,
         "powtorzenia": "8-10",
-        "notatki": "Tempo: 3-1-1-0. Podparcie na ławce, tułów równolegle do podłogi, ruch hantla po łuku w stronę biodra."
+        "notatki": "Tempo: 3-0-1-1. Tułów lekko odchylony, ściągnięcie łopatek w dół, drążek do górnej części klatki."
       },
       {
         "nazwa": "Face Pull (Przyciąganie do twarzy)",
         "serie": 3,
-        "powtorzenia": "8-10",
-        "notatki": "Tempo: 3-1-1-0. Przyciąganie liny wyciągu w kierunku czoła. Łokcie szeroko na zewnątrz."
+        "powtorzenia": "10-12",
+        "notatki": "Tempo: 3-0-1-1. Przyciąganie liny wyciągu w kierunku czoła. Łokcie szeroko na zewnątrz."
       },
       {
-        "nazwa": "Uginanie ramion ze sztangą stojąc",
+        "nazwa": "Uginanie młotkowe z hantlami",
         "serie": 2,
         "powtorzenia": "10-12",
-        "notatki": "Tempo: 3-1-1-0. Łokcie przy żebrach, brak bujania tułowiem, pełny wyprost, dopięcie u góry. Król masy."
+        "notatki": "Tempo: 2-0-1-2. Chwyt neutralny (kciuk w górę), łokieć nieruchomo przy ciele."
       },
       {
-        "nazwa": "Wspięcia na palce siedząc",
+        "nazwa": "Prostowanie ramion z hantlem oburącz siedząc",
         "serie": 2,
         "powtorzenia": "10-12",
-        "notatki": "Tempo: 3-1-1-0. Kolana ugięte pod kątem 90 stopni (wyłącza brzuchaty łydki), praca samym stawem skokowym."
+        "notatki": "Tempo: 3-1-1-0. Trzymaj hantel oburącz nad głową, opuszczaj go powoli za kark, utrzymując łokcie blisko uszu. Pełny wyprost w górze."
       }
     ]
   }

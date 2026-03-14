@@ -2,6 +2,7 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Twój Plan Dietetyczny - paweł sabok</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
@@ -56,7 +57,7 @@
         .table-container {
             width: 92%;
             max-width: 850px;
-            margin-bottom: 12px;
+            margin-bottom: 28px;
             page-break-inside: avoid;
         }
 
@@ -103,6 +104,7 @@
 
         td:first-child {
             text-align: left;
+            font-weight: 600;
         }
 
         .summary-row td {
@@ -142,8 +144,38 @@
             color: #1a1a1a;
         }
 
+        .macro-bar-container {
+            display: flex;
+            height: 12px;
+            background: #eee;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .macro-label-container {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            margin-top: 5px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media screen and (max-width: 600px) {
+            .main-title { font-size: 18px; letter-spacing: 2px; }
+            .info-box { flex-direction: column; gap: 8px; align-items: center; text-align: center; padding: 12px 5px; }
+            .table-container { width: 96%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            table { min-width: 500px; }
+            th, td { font-size: 10px; padding: 6px 4px; }
+            .notes { font-size: 9.5px; }
+        }
+
         @media print {
             .watermark-container { position: absolute; }
+            .table-container { overflow: visible; }
         }
     </style>
 </head>
@@ -160,11 +192,11 @@
         <span>☕ KOFEINA: OGRANICZ SPOŻYCIE PO GODZINIE 16:00</span>
     </div>
 
-    <div class="table-container">  <div class="header">Posiłek 1: Omlet owsiany z bananem</div>  <table>    <thead>      <tr>        <th>Produkt / Składnik</th>        <th style="width: 25%">Ilość / Waga</th>        <th style="width: 10%">B (g)</th>        <th style="width: 10%">T (g)</th>        <th style="width: 10%">W (g)</th>        <th style="width: 12%">Kcal</th>      </tr>    </thead>    <tbody>      <tr>        <td>Jaja kurze (całe)</td>        <td>120g (2 duże sztuki)</td>        <td>15.0</td><td>11.6</td><td>0.7</td><td>172.0</td>      </tr>      <tr>        <td>Płatki owsiane górskie</td>        <td>130g</td>        <td>15.5</td><td>9.4</td><td>81.1</td><td>493.0</td>      </tr>      <tr>        <td>Banan</td>        <td>150g</td>        <td>1.5</td><td>0.4</td><td>34.2</td><td>134.0</td>      </tr>      <tr class="summary-row">        <td>SUMA POSIŁKU:</td>        <td>-</td>        <td>32.0</td>        <td>21.4</td>        <td>116.0</td>        <td>799.0</td>      </tr>    </tbody>  </table>  <div class="notes">Płatki zblenduj z jajami i bananem, usmaż na patelni bez tłuszczu.</div></div><div class="table-container">  <div class="header">Posiłek 2: Kurczak z ryżem i brokułem (Przedtreningowy)</div>  <table>    <thead>      <tr>        <th>Produkt / Składnik</th>        <th style="width: 25%">Ilość / Waga</th>        <th style="width: 10%">B (g)</th>        <th style="width: 10%">T (g)</th>        <th style="width: 10%">W (g)</th>        <th style="width: 12%">Kcal</th>      </tr>    </thead>    <tbody>      <tr>        <td>Pierś z kurczaka (surowa)</td>        <td>120g</td>        <td>25.8</td><td>1.6</td><td>0.0</td><td>119.0</td>      </tr>      <tr>        <td>Ryż basmati (suchy)</td>        <td>150g</td>        <td>12.1</td><td>1.7</td><td>112.5</td><td>522.0</td>      </tr>      <tr>        <td>Oliwa z oliwek</td>        <td>5g</td>        <td>0.0</td><td>5.0</td><td>0.0</td><td>44.0</td>      </tr>      <tr>        <td>Brokuł (surowy)</td>        <td>200g</td>        <td>5.6</td><td>0.8</td><td>13.2</td><td>68.0</td>      </tr>      <tr class="summary-row">        <td>SUMA POSIŁKU:</td>        <td>-</td>        <td>43.5</td>        <td>9.1</td>        <td>125.7</td>        <td>753.0</td>      </tr>    </tbody>  </table>  <div class="notes">Standardowy posiłek przedtreningowy. Solidna porcja energii z ryżu.</div></div><div class="table-container">  <div class="header">Posiłek 3: Indyk z makaronem w sosie pomidorowym (Potreningowy)</div>  <table>    <thead>      <tr>        <th>Produkt / Składnik</th>        <th style="width: 25%">Ilość / Waga</th>        <th style="width: 10%">B (g)</th>        <th style="width: 10%">T (g)</th>        <th style="width: 10%">W (g)</th>        <th style="width: 12%">Kcal</th>      </tr>    </thead>    <tbody>      <tr>        <td>Mięso mielone z indyka (chude)</td>        <td>120g</td>        <td>22.4</td><td>5.0</td><td>0.0</td><td>140.0</td>      </tr>      <tr>        <td>Makaron pszenny (suchy)</td>        <td>150g</td>        <td>18.0</td><td>2.2</td><td>105.0</td><td>525.0</td>      </tr>      <tr>        <td>Pomidor</td>        <td>200g</td>        <td>1.8</td><td>0.4</td><td>7.8</td><td>36.0</td>      </tr>      <tr class="summary-row">        <td>SUMA POSIŁKU:</td>        <td>-</td>        <td>42.2</td>        <td>7.6</td>        <td>112.8</td>        <td>701.0</td>      </tr>    </tbody>  </table>  <div class="notes">Makaron ugotuj al dente. Mięso podsmaż z pomidorami i ziołami.</div></div><div class="table-container">  <div class="header">Posiłek 4: Kolacja - Kanapki z twarogiem i bananem</div>  <table>    <thead>      <tr>        <th>Produkt / Składnik</th>        <th style="width: 25%">Ilość / Waga</th>        <th style="width: 10%">B (g)</th>        <th style="width: 10%">T (g)</th>        <th style="width: 10%">W (g)</th>        <th style="width: 12%">Kcal</th>      </tr>    </thead>    <tbody>      <tr>        <td>Chleb żytni na zakwasie</td>        <td>150g</td>        <td>8.9</td><td>2.5</td><td>70.5</td><td>320.0</td>      </tr>      <tr>        <td>Skyr naturalny</td>        <td>200g</td>        <td>24.0</td><td>0.0</td><td>8.0</td><td>130.0</td>      </tr>      <tr>        <td>Masło orzechowe (100% orzeszków)</td>        <td>15g</td>        <td>3.8</td><td>7.3</td><td>2.4</td><td>88.0</td>      </tr>      <tr>        <td>Banan</td>        <td>150g</td>        <td>1.5</td><td>0.4</td><td>34.2</td><td>134.0</td>      </tr>      <tr class="summary-row">        <td>SUMA POSIŁKU:</td>        <td>-</td>        <td>38.2</td>        <td>10.2</td>        <td>115.1</td>        <td>672.0</td>      </tr>    </tbody>  </table>  <div class="notes">Skyr wymieszaj z masłem orzechowym, nałóż na pieczywo. Podaj z bananem.</div></div>
+    <div class="table-container">  <div class="header">Posiłek 1: Śniadanie energetyczne</div>  <table>    <thead>      <tr>        <th>Produkt / Składnik</th>        <th style="width: 25%">Ilość / Waga</th>        <th style="width: 10%">B (g)</th>        <th style="width: 10%">T (g)</th>        <th style="width: 10%">W (g)</th>        <th style="width: 12%">Kcal</th>      </tr>    </thead>    <tbody>      <tr>        <td>Płatki owsiane górskie</td>        <td>100g</td>        <td>11.9</td><td>7.2</td><td>62.4</td><td>379.0</td>      </tr>      <tr>        <td>Mleko spożywcze (2%)</td>        <td>200g</td>        <td>6.8</td><td>4.0</td><td>9.8</td><td>100.0</td>      </tr>      <tr>        <td>Skyr naturalny</td>        <td>100g</td>        <td>12.0</td><td>0.0</td><td>4.0</td><td>65.0</td>      </tr>      <tr>        <td>Banan</td>        <td>100g</td>        <td>1.0</td><td>0.3</td><td>22.8</td><td>89.0</td>      </tr>      <tr class="summary-row">        <td>SUMA POSIŁKU:</td>        <td>-</td>        <td>31.7</td>        <td>11.5</td>        <td>99.0</td>        <td>633.0</td>      </tr>    </tbody>  </table>  <div class="notes">Płatki ugotuj na mleku, wymieszaj ze skyrem i pokrojonym bananem.</div></div><div class="table-container">  <div class="header">Posiłek 2: Obiad I (Okołotreningowy)</div>  <table>    <thead>      <tr>        <th>Produkt / Składnik</th>        <th style="width: 25%">Ilość / Waga</th>        <th style="width: 10%">B (g)</th>        <th style="width: 10%">T (g)</th>        <th style="width: 10%">W (g)</th>        <th style="width: 12%">Kcal</th>      </tr>    </thead>    <tbody>      <tr>        <td>Pierś z kurczaka (surowa)</td>        <td>100g</td>        <td>21.5</td><td>1.3</td><td>0.0</td><td>99.0</td>      </tr>      <tr>        <td>Ryż basmati (suchy)</td>        <td>124g</td>        <td>10.0</td><td>1.4</td><td>93.0</td><td>431.5</td>      </tr>      <tr>        <td>Oliwa z oliwek</td>        <td>10g</td>        <td>0.0</td><td>10.0</td><td>0.0</td><td>88.0</td>      </tr>      <tr>        <td>Papryka czerwona</td>        <td>100g</td>        <td>1.0</td><td>0.3</td><td>6.0</td><td>31.0</td>      </tr>      <tr class="summary-row">        <td>SUMA POSIŁKU:</td>        <td>-</td>        <td>32.5</td>        <td>13.0</td>        <td>99.0</td>        <td>649.5</td>      </tr>    </tbody>  </table>  <div class="notes">Kurczaka grilluj bez tłuszczu, ryż ugotuj. Paprykę podawaj na surowo lub grillowaną. Oliwę dodaj do ryżu po ugotowaniu.</div></div><div class="table-container">  <div class="header">Posiłek 3: Obiad II (Regeneracja)</div>  <table>    <thead>      <tr>        <th>Produkt / Składnik</th>        <th style="width: 25%">Ilość / Waga</th>        <th style="width: 10%">B (g)</th>        <th style="width: 10%">T (g)</th>        <th style="width: 10%">W (g)</th>        <th style="width: 12%">Kcal</th>      </tr>    </thead>    <tbody>      <tr>        <td>Pierś z kurczaka (surowa)</td>        <td>80g</td>        <td>17.2</td><td>1.0</td><td>0.0</td><td>79.0</td>      </tr>      <tr>        <td>Makaron pszenny (suchy)</td>        <td>120g</td>        <td>14.4</td><td>1.8</td><td>84.0</td><td>420.0</td>      </tr>      <tr>        <td>Oliwa z oliwek</td>        <td>10g</td>        <td>0.0</td><td>10.0</td><td>0.0</td><td>88.0</td>      </tr>      <tr>        <td>Pomidor</td>        <td>100g</td>        <td>0.9</td><td>0.2</td><td>3.9</td><td>18.0</td>      </tr>      <tr>        <td>Jabłko</td>        <td>150g</td>        <td>0.3</td><td>0.4</td><td>20.7</td><td>78.0</td>      </tr>      <tr class="summary-row">        <td>SUMA POSIŁKU:</td>        <td>-</td>        <td>32.8</td>        <td>13.4</td>        <td>108.6</td>        <td>683.0</td>      </tr>    </tbody>  </table>  <div class="notes">Kurczaka przygotuj na parze lub grillu. Makaron wymieszaj z oliwą i pomidorem. Jabłko jako deser.</div></div><div class="table-container">  <div class="header">Posiłek 4: Kolacja (Białko na noc)</div>  <table>    <thead>      <tr>        <th>Produkt / Składnik</th>        <th style="width: 25%">Ilość / Waga</th>        <th style="width: 10%">B (g)</th>        <th style="width: 10%">T (g)</th>        <th style="width: 10%">W (g)</th>        <th style="width: 12%">Kcal</th>      </tr>    </thead>    <tbody>      <tr>        <td>Chleb żytni na zakwasie</td>        <td>150g</td>        <td>8.9</td><td>2.5</td><td>70.5</td><td>320.0</td>      </tr>      <tr>        <td>Jaja kurze (całe)</td>        <td>120g (2 szt)</td>        <td>15.0</td><td>11.6</td><td>0.7</td><td>172.0</td>      </tr>      <tr>        <td>Masło (82%)</td>        <td>5g</td>        <td>0.0</td><td>4.1</td><td>0.0</td><td>37.0</td>      </tr>      <tr>        <td>Pomarańcza</td>        <td>200g</td>        <td>1.8</td><td>0.4</td><td>23.4</td><td>94.0</td>      </tr>      <tr class="summary-row">        <td>SUMA POSIŁKU:</td>        <td>-</td>        <td>25.7</td>        <td>18.6</td>        <td>94.6</td>        <td>623.0</td>      </tr>    </tbody>  </table>  <div class="notes">Jajka przygotuj na twardo lub jako jajecznicę na maśle. Podawaj z chlebem żytnim. Pomarańcza na zakończenie dnia.</div></div>
 
     
     <div class="table-container" style="margin-top: 10px; border-top: 2px solid #3b312b; padding-top: 10px;">
-        <div class="header" style="font-size: 22px;">PODSUMOWANIE DNIA (REALNE)</div>
+        <div class="header" style="font-size: 22px;">PODSUMOWANIE DNIA</div>
         <table>
             <thead>
                 <tr>
@@ -176,19 +208,30 @@
             </thead>
             <tbody>
                 <tr style="font-size: 18px; font-weight: 600;">
-                    <td>155.9 g</td>
-                    <td>48.3 g</td>
-                    <td>469.6 g</td>
-                    <td>2925.0 kcal</td>
-                </tr>
-                <tr style="font-size: 11px; color: #777;">
-                    <td>Cel: 126g</td>
-                    <td>Cel: 48g</td>
-                    <td>Cel: 498g</td>
-                    <td>Cel: 2928kcal</td>
+                    <td>122.7 g</td>
+                    <td>56.5 g</td>
+                    <td>401.2 g</td>
+                    <td>2588.5 kcal</td>
                 </tr>
             </tbody>
         </table>
+
+        <div class="macro-bar-container">
+            <div title="Białko" style="width: 19%; background: #3498db;"></div>
+            <div title="Tłuszcze" style="width: 20%; background: #f1c40f;"></div>
+            <div title="Węglowodany" style="width: 61%; background: #e67e22;"></div>
+        </div>
+        <div class="macro-label-container">
+            <span>🔵 Białko: 19%</span>
+            <span>🟡 Tłuszcze: 20%</span>
+            <span>🟠 Węglowodany: 61%</span>
+        </div>
+
+        <!-- 
+        DANE ANALITYCZNE DLA TRENERA (UKRYTE):
+        Cel: 126g B | 48g T | 416g W | 2600 kcal
+        Różnica: -3.3g B | +8.5g T | -14.8g W | -11.5 kcal
+        -->
     </div>
     
 
