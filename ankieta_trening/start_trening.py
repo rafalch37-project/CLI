@@ -22,11 +22,23 @@ def run_training_pipeline():
         if isinstance(ankieta, dict): return ankieta.get(key)
         return None
 
-    # Pobranie liczby dni (domyślnie 3 jeśli brak danych)
+    # Pobranie parametrów z ankiety
     try:
         dni = int(get_val("dni") or 3)
     except:
         dni = 3
+    
+    priorytety = get_val("priorytet") or []
+    # Mapowanie nazw z ankiety na klucze w bazie
+    map_prio = {
+        "Klatka piersiowa": "Klatka",
+        "Plecy": "Najszerszy",
+        "Nogi": "Czworogłowy",
+        "Barki": "Naramienny",
+        "Biceps": "Biceps",
+        "Triceps": "Triceps"
+    }
+    prio_mapped = [map_prio.get(p, p) for p in priorytety]
 
     # --- LOGIKA TEMPA ---
     def get_smart_tempo(cw_name):
@@ -40,15 +52,25 @@ def run_training_pipeline():
     used_exercises = set()
 
     def pick_exercise(muscle=None, type_f=None, gear_f=None, specific=None):
+        # 1. Próba znalezienia idealnego dopasowania (unikalne)
         opts = [cw for cw in baza_cwiczen if cw['Nazwa_Cwiczenia'] not in used_exercises]
         if muscle: opts = [cw for cw in opts if muscle.lower() in cw['Partia_Glowna'].lower()]
         if type_f: opts = [cw for cw in opts if cw['Typ ćwiczenia'] == type_f]
         if gear_f: opts = [cw for cw in opts if cw['Sprzet'] in gear_f]
         if specific: opts = [cw for cw in opts if specific.lower() in cw['Nazwa_Cwiczenia'].lower()]
         
+        # 2. Jeśli brak, poluzuj filtry sprzętu i typu, ale zachowaj unikalność i partię
         if not opts:
-            opts = [cw for cw in baza_cwiczen if muscle and muscle.lower() in cw['Partia_Glowna'].lower()]
-            if not opts: opts = baza_cwiczen
+            opts = [cw for cw in baza_cwiczen if cw['Nazwa_Cwiczenia'] not in used_exercises]
+            if muscle: opts = [cw for cw in opts if muscle.lower() in cw['Partia_Glowna'].lower()]
+        
+        # 3. Jeśli nadal brak unikalnych dla partii, weź jakiekolwiek unikalne (zabezpieczenie)
+        if not opts:
+            opts = [cw for cw in baza_cwiczen if cw['Nazwa_Cwiczenia'] not in used_exercises]
+            
+        # 4. Jeśli cała baza unikalnych wyczerpana (bardzo mało prawdopodobne), weź cokolwiek
+        if not opts:
+            opts = baza_cwiczen
             
         chosen = random.choice(opts)
         used_exercises.add(chosen['Nazwa_Cwiczenia'])
@@ -56,57 +78,125 @@ def run_training_pipeline():
 
     plan = []
     
-    # --- SCENARIUSZ 4 DNI (PUSH/PULL) ---
-    if dni >= 4:
-        p1 = [pick_exercise(muscle="Czworogłowy"), pick_exercise(muscle="Klatka"), pick_exercise(muscle="Naramienny (bok)", gear_f=["Wyciąg"]), pick_exercise(muscle="Czworogłowy", type_f="Izolowane"), pick_exercise(muscle="Klatka", type_f="Izolowane"), pick_exercise(muscle="Triceps", gear_f=["Wyciąg"])]
-        l1 = [pick_exercise(muscle="Najszerszy", specific="ściąganie"), pick_exercise(muscle="Dwugłowy", type_f="Wielostawowe"), pick_exercise(muscle="Najszerszy", specific="wiosłowanie"), pick_exercise(muscle="Naramienny (tył)"), pick_exercise(muscle="Dwugłowy"), pick_exercise(muscle="Biceps", gear_f=["Hantle"])]
-        p2 = [pick_exercise(muscle="Czworogłowy"), pick_exercise(muscle="Klatka", gear_f=["Hantle"]), pick_exercise(muscle="Naramienny", gear_f=["Sztanga", "Hantle"]), pick_exercise(muscle="Czworogłowy", specific="bułgarskie"), pick_exercise(muscle="Klatka", gear_f=["Wyciąg"]), pick_exercise(muscle="Triceps", gear_f=["Hantle"])]
-        l2 = [pick_exercise(muscle="Najszerszy", gear_f=["Drążek"]), pick_exercise(muscle="Dwugłowy", specific="Dzień dobry"), pick_exercise(muscle="Najszerszy", gear_f=["Hantle"]), pick_exercise(muscle="Naramienny (tył)"), pick_exercise(muscle="Biceps", gear_f=["Sztanga"]), pick_exercise(muscle="brzucha")]
-        session_data = [("PUSH 1", p1), ("PULL 1", l1), ("PUSH 2", p2), ("PULL 2", l2)]
-
-    # --- SCENARIUSZ 3 DNI (PUSH / PULL / LEGS) ---
-    else:
-        push = [
-            pick_exercise(muscle="Klatka", type_f="Wielostawowe"), # Klata złożone
-            pick_exercise(muscle="Naramienny", type_f="Wielostawowe"), # Barki złożone
-            pick_exercise(muscle="Klatka", type_f="Izolowane"), # Klata izolacja
-            pick_exercise(muscle="Naramienny (bok)", type_f="Izolowane"), # Barki bok
-            pick_exercise(muscle="Triceps", gear_f=["Wyciąg"]), # Triceps wyciąg
-            pick_exercise(muscle="Triceps", gear_f=["Hantle"]) # Triceps hantle
-        ]
-        pull = [
-            pick_exercise(muscle="Najszerszy", specific="ściąganie"), # Szerokość
-            pick_exercise(muscle="Najszerszy", specific="wiosłowanie"), # Grubość
-            pick_exercise(muscle="Naramienny (tył)"), # Tył barku
-            pick_exercise(muscle="Biceps", gear_f=["Sztanga"]), # Biceps masa
-            pick_exercise(muscle="Biceps", gear_f=["Hantle"]), # Biceps kształt
-            pick_exercise(muscle="brzucha") # Brzuch
-        ]
-        legs = [
-            pick_exercise(muscle="Czworogłowy", type_f="Wielostawowe"), # Nogi przód
-            pick_exercise(muscle="Dwugłowy", type_f="Wielostawowe"), # Nogi tył (RDL)
-            pick_exercise(muscle="Czworogłowy", type_f="Izolowane"), # Wyprosty
-            pick_exercise(muscle="Dwugłowy", type_f="Izolowane"), # Uginanie
-            pick_exercise(muscle="łydki"), # Łydki
-            pick_exercise(muscle="brzucha") # Brzuch
-        ]
-        session_data = [("PUSH (Góra przód)", push), ("PULL (Góra tył)", pull), ("LEGS (Nogi i brzuch)", legs)]
-
-    for name, content in session_data:
+    # --- DYNAMICZNE BUDOWANIE SESJI Z UWZGLĘDNIENIEM PRIORYTETÓW ---
+    def build_session(name, base_structure):
+        prio_complex = []
+        prio_isol = []
+        other_complex = []
+        other_isol = []
+        
+        for item in base_structure:
+            is_prio = any(p.lower() in item['muscle'].lower() for p in prio_mapped)
+            is_complex = item.get('type_f') == 'Wielostawowe' or 'specific' in item
+            
+            if is_prio:
+                if is_complex: prio_complex.append(item)
+                else: prio_isol.append(item)
+            else:
+                if is_complex: other_complex.append(item)
+                else: other_isol.append(item)
+        
+        final_list = prio_complex + prio_isol + other_complex + other_isol
+        
         sesja = {"nazwa_sesji": name, "cwiczenia": []}
-        for idx, cw in enumerate(content):
-            s = 3 if idx < 4 else 2
+        for idx, item in enumerate(final_list):
+            exclude_keywords = []
+            if 'Klatka' in item['muscle'] and idx == 0:
+                exclude_keywords = ['triceps', 'barki', 'pionowo']
+            
+            cw = pick_exercise(muscle=item['muscle'], type_f=item.get('type_f'), gear_f=item.get('gear_f'), specific=item.get('specific'))
+            
+            if exclude_keywords and any(k in cw['Krótki opis techniki'].lower() for k in exclude_keywords):
+                # Ponowne losowanie jest już bezpieczniejsze dzięki poprawionej pick_exercise
+                cw = pick_exercise(muscle=item['muscle'], type_f=item.get('type_f'), gear_f=item.get('gear_f'), specific=item.get('specific'))
+
+            is_prio = any(p.lower() in item['muscle'].lower() for p in prio_mapped)
+            if is_prio:
+                s = 4 if item.get('type_f') == 'Wielostawowe' or idx == 0 else 3
+            else:
+                s = 3 if item.get('type_f') == 'Wielostawowe' else 2
+                
             sesja["cwiczenia"].append({
                 "nazwa": cw['Nazwa_Cwiczenia'],
                 "serie": s,
-                "powtorzenia": "8-10" if cw['Typ ćwiczenia'] == "Wielostawowe" else "10-12",
+                "powtorzenia": "6-10" if cw['Typ ćwiczenia'] == "Wielostawowe" else "10-12",
                 "notatki": f"Tempo: {get_smart_tempo(cw['Nazwa_Cwiczenia'])}. {cw['Krótki opis techniki']}"
             })
-        plan.append(sesja)
+        return sesja
+
+    # --- SCENARIUSZE ---
+    if dni >= 4:
+        p1_struct = [
+            {'muscle': 'Klatka', 'type_f': 'Wielostawowe'},
+            {'muscle': 'Czworogłowy', 'type_f': 'Wielostawowe'},
+            {'muscle': 'Naramienny (bok)', 'gear_f': ['Wyciąg']},
+            {'muscle': 'Klatka', 'type_f': 'Izolowane'},
+            {'muscle': 'Czworogłowy', 'type_f': 'Izolowane'},
+            {'muscle': 'Triceps', 'gear_f': ['Wyciąg']}
+        ]
+        l1_struct = [
+            {'muscle': 'Najszerszy', 'specific': 'ściąganie'},
+            {'muscle': 'Dwugłowy', 'type_f': 'Wielostawowe'},
+            {'muscle': 'Najszerszy', 'specific': 'wiosłowanie'},
+            {'muscle': 'Naramienny (tył)'},
+            {'muscle': 'Dwugłowy'},
+            {'muscle': 'Biceps', 'gear_f': ['Hantle']}
+        ]
+        p2_struct = [
+            {'muscle': 'Klatka', 'gear_f': ['Hantle']},
+            {'muscle': 'Czworogłowy', 'specific': 'Przysiad'},
+            {'muscle': 'Naramienny', 'gear_f': ['Sztanga', 'Hantle']},
+            {'muscle': 'Czworogłowy', 'specific': 'bułgarskie'},
+            {'muscle': 'Klatka', 'gear_f': ['Wyciąg']},
+            {'muscle': 'Triceps', 'gear_f': ['Hantle']}
+        ]
+        l2_struct = [
+            {'muscle': 'Najszerszy', 'gear_f': ['Drążek']},
+            {'muscle': 'Dwugłowy', 'specific': 'Dzień dobry'},
+            {'muscle': 'Najszerszy', 'gear_f': ['Hantle']},
+            {'muscle': 'Naramienny (tył)'},
+            {'muscle': 'Biceps', 'gear_f': ['Sztanga']},
+            {'muscle': 'brzucha'}
+        ]
+        
+        plan.append(build_session("PUSH 1 (Priorytety przód)", p1_struct))
+        plan.append(build_session("PULL 1 (Priorytety tył)", l1_struct))
+        plan.append(build_session("PUSH 2 (Priorytety przód)", p2_struct))
+        plan.append(build_session("PULL 2 (Priorytety tył)", l2_struct))
+
+    else:
+        push_struct = [
+            {'muscle': 'Klatka', 'type_f': 'Wielostawowe'},
+            {'muscle': 'Naramienny', 'type_f': 'Wielostawowe'},
+            {'muscle': 'Klatka', 'type_f': 'Izolowane'},
+            {'muscle': 'Naramienny (bok)', 'type_f': 'Izolowane'},
+            {'muscle': 'Triceps', 'gear_f': ['Wyciąg']},
+            {'muscle': 'Triceps', 'gear_f': ['Hantle']}
+        ]
+        pull_struct = [
+            {'muscle': 'Najszerszy', 'specific': 'ściąganie'},
+            {'muscle': 'Najszerszy', 'specific': 'wiosłowanie'},
+            {'muscle': 'Naramienny (tył)'},
+            {'muscle': 'Biceps', 'gear_f': ['Sztanga']},
+            {'muscle': 'Biceps', 'gear_f': ['Hantle']},
+            {'muscle': 'brzucha'}
+        ]
+        legs_struct = [
+            {'muscle': 'Czworogłowy', 'type_f': 'Wielostawowe'},
+            {'muscle': 'Dwugłowy', 'type_f': 'Wielostawowe'},
+            {'muscle': 'Czworogłowy', 'type_f': 'Izolowane'},
+            {'muscle': 'Dwugłowy', 'type_f': 'Izolowane'},
+            {'muscle': 'łydki'},
+            {'muscle': 'brzucha'}
+        ]
+        
+        plan.append(build_session("PUSH", push_struct))
+        plan.append(build_session("PULL", pull_struct))
+        plan.append(build_session("LEGS", legs_struct))
 
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(plan, f, indent=2, ensure_ascii=False)
-    print(f"✅ Skrypt dostosowany do {dni} dni treningowych.")
+    print(f"✅ Skrypt dostosowany do {dni} dni treningowych z uwzględnieniem priorytetów: {', '.join(priorytety)}.")
 
 if __name__ == "__main__":
     run_training_pipeline()
