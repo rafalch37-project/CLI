@@ -40,22 +40,22 @@ def generate_training_html(plan_data):
 def pack_training():
     base_dir = os.path.dirname(os.path.abspath(__file__))
     
-    # Dane klienta pobieramy z ankiety diety (tam jest imię) lub treningu
-    dieta_json = os.path.join(base_dir, '..', 'ankieta_dieta', 'gotowe_dane_klienta.json')
+    # Dane klienta pobieramy z ankiety treningowej
+    ankieta_json = os.path.join(base_dir, '..', 'ankieta_trening', 'ankieta_j.json')
     trening_json = os.path.join(base_dir, '..', 'ankieta_trening', 'gotowy_plan_treningowy.json')
     szablon_path = os.path.join(base_dir, 'szablon_trening_master.html')
     output_dir = os.path.join(base_dir, '..', 'plany')
 
     if not os.path.exists(output_dir): os.makedirs(output_dir)
 
-    data_c = load_json(dieta_json)
+    data_a = load_json(ankieta_json)
     data_t = load_json(trening_json)
 
     if not data_t:
         print("❌ Błąd: Brak pliku gotowy_plan_treningowy.json")
         return
 
-    imie = data_c.get("imie", "Klient") if data_c else "Klient"
+    imie = data_a.get("imie", "Klient") if data_a else "Klient"
     print(f"--- GENEROWANIE PLANU TRENINGOWEGO DLA: {imie} ---")
 
     if os.path.exists(szablon_path):

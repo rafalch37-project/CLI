@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twój Plan Treningowy - Kamil Sobków </title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+        
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        html, body {
+            height: auto;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            position: relative;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            box-sizing: border-box;
+            padding: 20mm 0;
+        }
+
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90vw;
+            height: 90vh;
+            object-fit: contain;
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .table-container {
+            width: 90%;
+            max-width: 800px;
+            margin-bottom: 28px;
+        }
+
+        .header {
+            text-align: center;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: transparent;
+        }
+
+        th {
+            background-color: #3b312b !important;
+            color: #d4af37 !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #c5a059;
+            font-size: 13px;
+        }
+
+        td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #e0e0e0;
+            border-left: 1px solid #e0e0e0;
+            border-right: 1px solid #e0e0e0;
+            word-wrap: break-word;
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .serie-col, .powt-col {
+            text-align: center;
+            width: 15%;
+            white-space: nowrap;
+        }
+
+        .exercise-name {
+            font-weight: 600;
+            display: block;
+            font-size: 14px;
+        }
+
+        .notes {
+            font-size: 11px;
+            color: #555;
+            display: block;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        @media screen and (max-width: 600px) {
+            .header { font-size: 16px; letter-spacing: 2px; }
+            .table-container { width: 96%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            table { min-width: 450px; }
+            th, td { font-size: 11px; padding: 8px 6px; }
+            .notes { font-size: 9px; }
+        }
+
+        @media print {
+            .watermark { position: absolute; }
+            .table-container { overflow: visible; }
+        }
+    </style>
+</head>
+<body>
+
+    <img src="https://raw.githubusercontent.com/rafalch37-project/CLI/main/szablony/logop.png" alt="Watermark" class="watermark">
+
+    <div class="table-container">  <div class="header">PUSH 1</div>  <table>    <thead>      <tr>        <th>Nazwa Ćwiczenia</th>        <th class="serie-col">Serie</th>        <th class="powt-col">Powtórzenia</th>      </tr>    </thead>    <tbody>      <tr>        <td>          <span class="exercise-name">Wypychanie ciężaru na suwnicy</span>          <span class="notes">Tempo: 3-0-1-0. Plecy i biodra przyklejone, stopy na środku platformy, nie blokujemy kolan w pełnym wyproście.</span>        </td>        <td class="serie-col">3</td>        <td class="powt-col">8-10</td>      </tr>      <tr>        <td>          <span class="exercise-name">Rozpiętki z hantlami na ławce poziomej</span>          <span class="notes">Tempo: 2-0-1-2. Ruch po łuku (obejmowanie drzewa). Stały kąt ugięcia łokci.</span>        </td>        <td class="serie-col">3</td>        <td class="powt-col">10-12</td>      </tr>      <tr>        <td>          <span class="exercise-name">Wznosy linki wyciągu bokiem jednorącz</span>          <span class="notes">Tempo: 2-0-1-2. Unoszenie linki wyciągu dolnego bokiem. Stałe napięcie mięśnia.</span>        </td>        <td class="serie-col">3</td>        <td class="powt-col">10-12</td>      </tr>      <tr>        <td>          <span class="exercise-name">Wyprosty nóg na maszynie siedząc</span>          <span class="notes">Tempo: 2-0-1-2. Plecy oparte, ruch do pełnego wyprostu, przytrzymanie napięcia w górze, palce stóp na siebie.</span>        </td>        <td class="serie-col">3</td>        <td class="powt-col">10-12</td>      </tr>      <tr>        <td>          <span class="exercise-name">Krzyżowanie linek wyciągu górnego (Brama)</span>          <span class="notes">Tempo: 2-0-1-2. Ściąganie rączek wyciągu przed siebie stojąc. Stałe napięcie mięśnia.</span>        </td>        <td class="serie-col">2</td>        <td class="powt-col">10-12</td>      </tr>      <tr>        <td>          <span class="exercise-name">Prostowanie ramion z linką wyciągu górnego</span>          <span class="notes">Tempo: 3-0-1-0. Tułów lekko pochylony, łokcie przyklejone do żeber, na dole rozchylenie linki na zewnątrz.</span>        </td>        <td class="serie-col">2</td>        <td class="powt-col">10-12</td>      </tr>    </tbody>  </table></div><div class="table-container">  <div class="header">PULL 1</div>  <table>    <thead>      <tr>        <th>Nazwa Ćwiczenia</th>        <th class="serie-col">Serie</th>        <th class="powt-col">Powtórzenia</th>      </tr>    </thead>    <tbody>      <tr>        <td>          <span class="exercise-name">Ściąganie drążka podchwytem</span>          <span class="notes">Tempo: 3-0-1-1. Chwyt na szerokość barków, łokcie prowadzone blisko ciała, skupienie na dopięciu dołu najszerszego.</span>        </td>        <td class="serie-col">3</td>        <td class="powt-col">8-10</td>      </tr>      <tr>        <td>          <span class="exercise-name">Rumuński martwy ciąg</span>          <span class="notes">Tempo: 3-1-1-0. Nogi minimalnie ugięte, ruch tylko w biodrze (wypychanie w tył), sztanga blisko nóg, plecy proste.</span>        </td>        <td class="serie-col">3</td>        <td class="powt-col">8-10</td>      </tr>      <tr>        <td>          <span class="exercise-name">Wiosłowanie na maszynie z podparciem klatki</span>          <span class="notes">Tempo: 3-0-1-1. Klatka mocno przywarta do oparcia, pełne rozciągnięcie mięśni, spięcie łopatek bez ruchu tułowiem.</span>        </td>        <td class="serie-col">3</td>        <td class="powt-col">8-10</td>      </tr>      <tr>        <td>          <span class="exercise-name">Face Pull (Przyciąganie do twarzy)</span>          <span class="notes">Tempo: 3-0-1-0. Przyciąganie liny wyciągu w kierunku czoła. Łokcie szeroko na zewnątrz.</span>        </td>        <td class="serie-col">3</td>        <td class="powt-col">8-10</td>      </tr>      <tr>        <td>          <span class="exercise-name">Żuraw (Opad tułowia klęcząc)</span>          <span class="notes">Tempo: 3-0-1-0. Klęk, pięty zablokowane, powolne opuszczanie tułowia do ziemi samą siłą nóg. Król prewencji kontuzji.</span>        </td>        <td class="serie-col">2</td>        <td class="powt-col">8-10</td>      </tr>      <tr>        <td>          <span class="exercise-name">Uginanie ramion z hantlami z supinacją</span>          <span class="notes">Tempo: 2-0-1-2. Start chwytem młotkowym, w trakcie ruchu rotacja nadgarstka na zewnątrz (mały palec do góry).</span>        </td>        <td class="serie-col">2</td>        <td class="powt-col">10-12</td>      </tr>    </tbody>  </table></div><div class="table-container">  <div class="header">PUSH 2</div>  <table>    <thead>      <tr>        <th>Nazwa Ćwiczenia</th>        <th class="serie-col">Serie</th>        <th class="powt-col">Powtórzenia</th>      </tr>    </thead>    <tbody>      <tr>        <td>          <span class="exercise-name">Przysiady ze sztangą z przodu</span>          <span class="notes">Tempo: 3-1-1-0. Sztanga na przedniej części barków, tułów pionowo, głęboki siad, mocna praca brzucha.</span>        </td>        <td class="serie-col">3</td>        <td class="powt-col">8-10</td>      </tr>      <tr>        <td>          <span class="exercise-name">Wyciskanie hantli chwytem młotkowym</span>          <span class="notes">Tempo: 3-1-1-0. Hantle złączone, wyciskanie wąsko, stały docisk hantli do siebie.</span>        </td>        <td class="serie-col">3</td>        <td class="powt-col">8-10</td>      </tr>      <tr>        <td>          <span class="exercise-name">Wyciskanie hantla jednorącz stojąc</span>          <span class="notes">Tempo: 3-1-1-0. Wyciskanie jedną ręką. Druga ręka stabilizuje tułów (praca core).</span>        </td>        <td class="serie-col">3</td>        <td class="powt-col">8-10</td>      </tr>      <tr>        <td>          <span class="exercise-name">Przysiady bułgarskie</span>          <span class="notes">Tempo: 3-1-1-0. Jedna noga z tyłu na podwyższeniu, tułów lekko pochylony, kolano nogi wykrocznej nie ucieka do środka.</span>        </td>        <td class="serie-col">3</td>        <td class="powt-col">8-10</td>      </tr>      <tr>        <td>          <span class="exercise-name">Landmine Press (Wyciskanie półsztangi)</span>          <span class="notes">Tempo: 3-1-1-0. Wypychanie końca sztangi jednorącz/oburącz stojąc. Ruch po skosie.</span>        </td>        <td class="serie-col">2</td>        <td class="powt-col">8-10</td>      </tr>      <tr>        <td>          <span class="exercise-name">Wyciskanie sztangi wąskim chwytem</span>          <span class="notes">Tempo: 3-1-1-0. Chwyt na szerokość barków, łokcie prowadzone blisko tułowia, opuszczanie do mostka. Buduje siłę.</span>        </td>        <td class="serie-col">2</td>        <td class="powt-col">8-10</td>      </tr>    </tbody>  </table></div><div class="table-container">  <div class="header">PULL 2</div>  <table>    <thead>      <tr>        <th>Nazwa Ćwiczenia</th>        <th class="serie-col">Serie</th>        <th class="powt-col">Powtórzenia</th>      </tr>    </thead>    <tbody>      <tr>        <td>          <span class="exercise-name">Podciąganie na drążku nachwytem</span>          <span class="notes">Tempo: 3-0-1-0. Pełny zwis, depresja łopatek przed ruchem, łokcie prowadzone do bioder, brak bujania.</span>        </td>        <td class="serie-col">3</td>        <td class="powt-col">8-10</td>      </tr>      <tr>        <td>          <span class="exercise-name">Dzień dobry ze sztangą</span>          <span class="notes">Tempo: 3-0-1-0. Sztanga jak do przysiadu, ruch wypychania bioder w tył przy prostych plecach, tułów prawie równolegle do ziemi.</span>        </td>        <td class="serie-col">3</td>        <td class="powt-col">8-10</td>      </tr>      <tr>        <td>          <span class="exercise-name">Wiosłowanie hantlem jednorącz</span>          <span class="notes">Tempo: 3-0-1-1. Podparcie na ławce, tułów równolegle do podłogi, ruch hantla po łuku w stronę biodra.</span>        </td>        <td class="serie-col">3</td>        <td class="powt-col">8-10</td>      </tr>      <tr>        <td>          <span class="exercise-name">Wznosy hantli w opadzie tułowia</span>          <span class="notes">Tempo: 2-0-1-2. Unoszenie hantli na boki w głębokim pochyleniu. Ruch jak "odwrotne skrzydła".</span>        </td>        <td class="serie-col">3</td>        <td class="powt-col">10-12</td>      </tr>      <tr>        <td>          <span class="exercise-name">Uginanie ramion ze sztangą stojąc</span>          <span class="notes">Tempo: 2-0-1-2. Łokcie przy żebrach, brak bujania tułowiem, pełny wyprost, dopięcie u góry. Król masy.</span>        </td>        <td class="serie-col">2</td>        <td class="powt-col">10-12</td>      </tr>      <tr>        <td>          <span class="exercise-name">Martwy Robak (Dead Bug)</span>          <span class="notes">Tempo: 3-0-1-0. Leżenie tyłem, odcinek lędźwiowy wbity w matę (brak prześwitu!). Naprzemienne opuszczanie ręki i nogi bez odrywania pleców.</span>        </td>        <td class="serie-col">2</td>        <td class="powt-col">10-12</td>      </tr>    </tbody>  </table></div>
+
+</body>
+</html>

@@ -77,7 +77,7 @@ def run_training_pipeline():
         pull = [
             pick_exercise(muscle="Najszerszy", specific="ściąganie"), # Szerokość
             pick_exercise(muscle="Najszerszy", specific="wiosłowanie"), # Grubość
-            pick_exercise(muscle="Naramienny", muscle="tył"), # Tył barku
+            pick_exercise(muscle="Naramienny (tył)"), # Tył barku
             pick_exercise(muscle="Biceps", gear_f=["Sztanga"]), # Biceps masa
             pick_exercise(muscle="Biceps", gear_f=["Hantle"]), # Biceps kształt
             pick_exercise(muscle="brzucha") # Brzuch

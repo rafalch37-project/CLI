@@ -1,15 +1,20 @@
 {
-  "imie": "paweł sabok",
+  "imie": "Kamil Sobków ",
   "plec": "Mężczyzna",
-  "wiek": "15",
-  "waga": "60",
-  "wzrost": "178",
-  "poziom": "Początkujący",
-  "cel": "Budowa masy mięśniowej",
-  "aktywnosc": "3 treningi na silowni w tygodniu",
-  "kontuzje": "",
-  "dni": "3",
-  "czas": "60",
+  "wiek": "32",
+  "waga": "100",
+  "wzrost": "180",
+  "poziom": "Zaawansowany",
+  "cel": "Redukcja tkanki tłuszczowej",
+  "aktywnosc": "Wysoka aktywnosc, Paraca fizyczna po 8h jednozmianowa  okoł 20 tyś kroków ",
+  "kontuzje": "Przepuchlina w kręgosupie  ",
+  "dni": "4",
+  "czas": "90",
+  "priorytet": [
+    "Klatka piersiowa",
+    "Plecy",
+    "Biceps"
+  ],
   "sprzet": [
     "Sztanga",
     "Hantle",
@@ -20,5 +25,5 @@
     "Ławka",
     "Gumy"
   ],
-  "data_wypelnienia": "2026-03-13"
+  "data_wypelnienia": "2026-03-11"
 }
