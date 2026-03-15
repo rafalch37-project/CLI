@@ -42,6 +42,11 @@
         .input-set { width: 100%; border: 1px solid #eee; padding: 5px; font-family: 'Montserrat', sans-serif; font-size: 11px; text-align: center; border-radius: 3px; outline: none; background: #fafafa; }
         .input-set:focus { border-color: #c5a059; background: #fff; }
 
+        /* Ukrywanie strzałek w polach number */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        input[type=number] { -moz-appearance: textfield; }
+
         .btn-add-set { width: 100%; background: #fff; border: none; color: #c5a059; padding: 5px; font-size: 9px; text-transform: uppercase; font-weight: 600; cursor: pointer; border-top: 1px dashed #eee; }
         .btn-remove { color: #cc0000; background: none; border: none; cursor: pointer; font-size: 14px; opacity: 0.4; }
         .btn-remove:hover { opacity: 1; }
@@ -80,7 +85,8 @@
 
         <div class="actions-footer">
             <div class="btn-main-group">
-                <button class="btn btn-add-day" onclick="addWorkoutDay()">+ Dodaj Dzień</button>
+                <button class="btn btn-add-day" onclick="addWorkoutDay()">+ Nowy Dzień</button>
+                <button class="btn btn-add-day" style="background-color: #3b312b; color: #d4af37;" onclick="copyLastWorkout()">⚡ Kopiuj Ostatni</button>
                 <button class="btn btn-print" onclick="window.print()">Zapisz PDF</button>
                 <button class="btn btn-json" onclick="exportJSON()">Pobierz JSON</button>
                 <button class="btn btn-json" onclick="copyJSON()">Kopiuj KOD</button>
@@ -116,7 +122,6 @@
 
         function saveData() {
             const data = getWorkoutData();
-            // Zapisujemy też stan zwinięcia
             const states = Array.from(document.querySelectorAll('.day-content')).map(c => c.classList.contains('collapsed'));
             localStorage.setItem('workoutDataV3', JSON.stringify({data, states}));
         }
@@ -210,8 +215,8 @@
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td style="font-size: 10px; font-weight: 600;">${num || tbody.children.length + 1}</td>
-                <td><input type="text" class="input-set" oninput="saveData()" placeholder="0" value="${data ? data.kg : ''}"></td>
-                <td><input type="text" class="input-set" oninput="saveData()" placeholder="0" value="${data ? data.powt : ''}"></td>
+                <td><input type="number" step="any" class="input-set" inputmode="decimal" oninput="this.value = this.value.replace(/[^0-9.,]/g, ''); saveData()" placeholder="0" value="${data ? data.kg : ''}"></td>
+                <td><input type="number" class="input-set" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, ''); saveData()" placeholder="0" value="${data ? data.powt : ''}"></td>
                 <td><input type="text" class="input-set" oninput="saveData()" placeholder="..." value="${data ? data.uwagi : ''}"></td>
                 <td><button class="btn-remove" onclick="removeRow(this)">×</button></td>
             `;
@@ -231,6 +236,26 @@
         function addWorkoutDay() {
             renderDay();
             saveData();
+        }
+
+        function copyLastWorkout() {
+            const allData = getWorkoutData();
+            if (allData.length === 0) {
+                addWorkoutDay();
+                return;
+            }
+            const lastDay = allData[allData.length - 1];
+            const newDayData = {
+                data: new Date().toISOString().split('T')[0],
+                nazwa: lastDay.nazwa,
+                cwiczenia: lastDay.cwiczenia.map(ex => ({
+                    nazwa: ex.nazwa,
+                    serie: ex.serie.map(() => ({ kg: '', powt: '', uwagi: '' }))
+                }))
+            };
+            renderDay(newDayData);
+            saveData();
+            window.scrollTo(0, document.body.scrollHeight);
         }
 
         function addExercise(container) {

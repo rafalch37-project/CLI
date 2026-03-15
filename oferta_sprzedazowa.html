@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta Współpracy | Premium Fitness Coaching</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --gold: #d4af37;
+            --dark-brown: #3b312b;
+            --muted-gold: #c5a059;
+            --bg-light: #f8f8f8;
+            --white: #ffffff;
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70vw;
+            opacity: 0.03;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            font-size: 28px;
+            color: var(--dark-brown);
+            margin: 0;
+        }
+
+        .logo-subtext {
+            color: var(--gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .onboarding-banner {
+            background: var(--dark-brown);
+            color: var(--gold);
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 50px;
+            text-align: center;
+            border: 1px solid var(--gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .onboarding-banner h2 {
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 18px;
+        }
+
+        /* Flexbox dla wyśrodkowania kart */
+        .pricing-flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .package-card {
+            background: var(--white);
+            border-left: 5px solid var(--dark-brown);
+            padding: 35px 25px;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 280px;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .package-card.premium {
+            border: 2px solid var(--gold);
+            background: #fff;
+            transform: scale(1.05);
+            z-index: 2;
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .package-card.premium:hover {
+            transform: scale(1.08);
+        }
+
+        /* Wstążka REKOMENDOWANY - poprawiona pozycja i szerokość */
+        .package-tag {
+            position: absolute;
+            top: 50px;
+            right: -95px;
+            background: var(--gold);
+            color: var(--dark-brown);
+            padding: 10px 0;
+            transform: rotate(45deg);
+            font-size: 9px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+
+        .package-name {
+            color: var(--dark-brown);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .package-price {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--muted-gold);
+            margin-bottom: 20px;
+        }
+
+        .package-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .package-features li {
+            font-size: 11px;
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .package-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .package-features li.feature-main {
+            font-weight: 600;
+            color: var(--dark-brown);
+        }
+
+        .btn-select {
+            margin-top: 25px;
+            background: var(--dark-brown);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            font-size: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-select:hover {
+            background: var(--gold);
+            color: var(--dark-brown);
+        }
+
+        .premium .btn-select {
+            background: var(--gold);
+            color: var(--dark-brown);
+        }
+
+        .why-me {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 20px;
+            margin-bottom: 40px;
+            color: var(--dark-brown);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-item h4 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--muted-gold);
+            margin-bottom: 10px;
+        }
+
+        .benefit-item p {
+            font-size: 13px;
+            color: #666;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid #ddd;
+        }
+
+        .footer-cta {
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--dark-brown);
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .package-card.premium { transform: none; }
+            .package-card.premium:hover { transform: translateY(-10px); }
+            .package-card { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <img src="https://raw.githubusercontent.com/rafalch37-project/CLI/main/szablony/logop.png" alt="Logo" class="watermark">
+
+    <div class="container">
+        <header>
+            <h1 class="logo-text">DATA-PRO</h1>
+            <div class="logo-subtext">Premium Fitness Coaching</div>
+        </header>
+
+        <div class="onboarding-banner">
+            <h2>00. Etap Wstępny: Profesjonalny Onboarding</h2>
+            <p>Każda współpraca zaczyna się od Twojej Interaktywnej Ankiety. Analizuję Twój cel, staż, kontuzje i priorytety, aby system był w 100% dopasowany do Ciebie.</p>
+        </div>
+
+        <h2 class="section-title">Wybierz swój pakiet</h2>
+
+        <div class="pricing-flex">
+            <!-- PAKIET 1 -->
+            <div class="package-card">
+                <div class="package-name">SOLO (Fundament)</div>
+                <div class="package-price">Indywidualnie</div>
+                <ul class="package-features">
+                    <li class="feature-main">Dieta LUB Trening</li>
+                    <li>Plan treningowy (Metodyka Tempo 3-1-1-0)</li>
+                    <li>LUB Plan żywieniowy (Mifflin-St Jeor)</li>
+                    <li>Pełne instrukcje techniczne i wskazówki</li>
+                    <li>Format HTML/PDF gotowy do druku</li>
+                    <li>Dostęp do bazy produktów (łatwe zakupy)</li>
+                </ul>
+                <a href="#" class="btn-select">Wybieram Fundament</a>
+            </div>
+
+            <!-- PAKIET 2 -->
+            <div class="package-card">
+                <div class="package-name">SYNERGIA (Duo)</div>
+                <div class="package-price">Kompleksowo</div>
+                <ul class="package-features">
+                    <li class="feature-main">Dieta + Trening</li>
+                    <li>Zintegrowany system żywieniowy i treningowy</li>
+                    <li>Metaboliczny Sync (Kalorie vs Objętość)</li>
+                    <li>Lista zakupów oparta na stałej bazie produktów</li>
+                    <li>Periodyzacja objętości (12-16 serii na partię)</li>
+                    <li>Sekcja .notes z instrukcją do każdego ćwiczenia</li>
+                </ul>
+                <a href="#" class="btn-select">Wybieram Synergię</a>
+            </div>
+
+            <!-- PAKIET 3 -->
+            <div class="package-card">
+                <div class="package-name">CYFROWY TRENER (Smart)</div>
+                <div class="package-price">Najlepsza Wartość</div>
+                <ul class="package-features">
+                    <li class="feature-main">Wszystko z SYNERGIA + Aplikacje</li>
+                    <li><strong>Mobilny Dziennik Treningowy:</strong> Autorskie narzędzie (bez subskrypcji)</li>
+                    <li>Funkcja ⚡ Kopiuj Ostatni Trening</li>
+                    <li><strong>Dashboard Postępów:</strong> Wykresy wagi, energii i snu</li>
+                    <li>Raportowanie wizualne (Generowanie PNG)</li>
+                </ul>
+                <a href="#" class="btn-select">Wybieram Smart</a>
+            </div>
+
+            <!-- PAKIET 4 -->
+            <div class="package-card premium">
+                <div class="package-tag">Rekomendowany</div>
+                <div class="package-name">ELITARNY (Total Control)</div>
+                <div class="package-price">Pełna Opieka</div>
+                <ul class="package-features">
+                    <li class="feature-main">Wszystko z SMART + Analiza PRO</li>
+                    <li><strong>Cotygodniowa Analiza Tonażu:</strong> Sprawdzam Twoje postępy w Panelu</li>
+                    <li>Monitoring Rekordów (System Best Set)</li>
+                    <li>Korekty planu na podstawie twardych danych</li>
+                    <li><strong>Archiwum PRO:</strong> Twoja pełna historia (Excel)</li>
+                    <li>Priorytetowy kontakt i wsparcie</li>
+                </ul>
+                <a href="#" class="btn-select">Wybieram Elitarny</a>
+            </div>
+        </div>
+
+        <div class="why-me">
+            <h2 class="section-title">Twoja przewaga technologiczna</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h4>Dożywotnie Narzędzia</h4>
+                    <p>Zamiast płacić 30-50 zł miesięcznie za aplikacje treningowe, otrzymujesz ode mnie autorskie narzędzia na własność. Brak ukrytych kosztów.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>Dane zamiast domysłów</h4>
+                    <p>Mój system Analizatora PRO pozwala mi podejmować decyzje o zmianach w Twojej diecie i treningu na podstawie twardych liczb (tonaż, jakość snu, trend wagi).</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>Maksymalna Wygoda</h4>
+                    <p>Interaktywne dzienniki zoptymalizowane pod smartfona sprawiają, że notowanie wyników zajmuje sekundy. Skupiasz się na treningu, a technologia dba o resztę.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-cta">Gotowy na start?</div>
+            <p style="font-size: 13px; color: #777;">Wypełnij ankietę wstępną, a ja przygotuję dla Ciebie system, który zmieni Twoją sylwetkę.</p>
+            <div class="btn-container" style="margin-top: 30px;">
+                <a href="#" class="btn-select" style="padding: 15px 40px; background: var(--dark-brown); color: var(--gold); border-radius: 5px;">Wypełnij Ankietę</a>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
