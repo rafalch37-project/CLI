@@ -1,52 +1,51 @@
 {
-  "imie": "paweł sabok",
-  "kalorie": 2600,
+  "imie": "Beata Chmielowska ",
+  "kalorie": 1718,
   "makro_target": {
-    "B": 126,
-    "T": 48,
-    "W": 416
+    "B": 172,
+    "T": 66,
+    "W": 109
   },
   "jadlospis": [
     {
-      "nazwa_posilku": "Posiłek 1: Śniadanie energetyczne",
+      "nazwa_posilku": "Posiłek 1: Kanapki z chudą wędliną i warzywami",
       "skladniki": [
-        { "Produkt": "Płatki owsiane górskie", "Ilość": "100g" },
-        { "Produkt": "Mleko spożywcze (2%)", "Ilość": "200g" },
-        { "Produkt": "Skyr naturalny", "Ilość": "100g" },
-        { "Produkt": "Banan", "Ilość": "100g" }
+        { "Produkt": "Chleb żytni na zakwasie", "Ilość": "70g" },
+        { "Produkt": "Masło (82%)", "Ilość": "15g" },
+        { "Produkt": "Pierś z indyka (surowa)", "Ilość": "200g (wędlina chuda)" },
+        { "Produkt": "Ser żółty Gouda", "Ilość": "20g" },
+        { "Produkt": "Pomidor", "Ilość": "100g" }
       ],
-      "notatki": "Płatki ugotuj na mleku, wymieszaj ze skyrem i pokrojonym bananem."
+      "notatki": "Pieczywo posmaruj masłem. Ułóż solidną porcję wędliny (ok. 8-10 plastrów), ser oraz plastry pomidora. Idealne śniadanie do pracy."
     },
     {
-      "nazwa_posilku": "Posiłek 2: Obiad I (Okołotreningowy)",
+      "nazwa_posilku": "Posiłek 2: Kurczak w ziołach z ziemniakami i brokułem",
       "skladniki": [
-        { "Produkt": "Pierś z kurczaka (surowa)", "Ilość": "100g" },
-        { "Produkt": "Ryż basmati (suchy)", "Ilość": "150g" },
+        { "Produkt": "Pierś z kurczaka (surowa)", "Ilość": "200g" },
+        { "Produkt": "Ziemniaki (surowe)", "Ilość": "150g" },
+        { "Produkt": "Oliwa z oliwek", "Ilość": "10g" },
+        { "Produkt": "Brokuł (surowy)", "Ilość": "200g" }
+      ],
+      "notatki": "Kurczaka upiecz lub podsmaż na oliwie z ulubionymi ziołami. Ziemniaki ugotuj. Brokuły ugotuj al dente (ok. 5 min)."
+    },
+    {
+      "nazwa_posilku": "Posiłek 3: Przekąska proteinowa z borówkami",
+      "skladniki": [
+        { "Produkt": "Skyr naturalny", "Ilość": "250g" },
+        { "Produkt": "Borówki amerykańskie", "Ilość": "100g" },
+        { "Produkt": "Orzechy włoskie", "Ilość": "10g" }
+      ],
+      "notatki": "Wymieszaj skyr z borówkami i posiekanymi orzechami. Szybka przekąska hamująca głód."
+    },
+    {
+      "nazwa_posilku": "Posiłek 4: Kolacja - Lekka jajecznica z indykiem",
+      "skladniki": [
+        { "Produkt": "Jaja kurze (całe)", "Ilość": "180g (3 sztuki)" },
+        { "Produkt": "Pierś z indyka (surowa)", "Ilość": "100g (dodatek)" },
         { "Produkt": "Oliwa z oliwek", "Ilość": "5g" },
         { "Produkt": "Papryka czerwona", "Ilość": "100g" }
       ],
-      "notatki": "Kurczaka grilluj bez tłuszczu, ryż ugotuj. Paprykę podawaj na surowo lub grillowaną. Oliwę dodaj do ryżu po ugotowaniu."
-    },
-    {
-      "nazwa_posilku": "Posiłek 3: Obiad II (Regeneracja)",
-      "skladniki": [
-        { "Produkt": "Pierś z kurczaka (surowa)", "Ilość": "80g" },
-        { "Produkt": "Makaron pszenny (suchy)", "Ilość": "120g" },
-        { "Produkt": "Oliwa z oliwek", "Ilość": "5g" },
-        { "Produkt": "Pomidor", "Ilość": "100g" },
-        { "Produkt": "Jabłko", "Ilość": "150g" }
-      ],
-      "notatki": "Kurczaka przygotuj na parze lub grillu. Makaron wymieszaj z oliwą i pomidorem. Jabłko jako deser."
-    },
-    {
-      "nazwa_posilku": "Posiłek 4: Kolacja (Białko na noc)",
-      "skladniki": [
-        { "Produkt": "Chleb żytni na zakwasie", "Ilość": "150g" },
-        { "Produkt": "Jaja kurze (całe)", "Ilość": "120g (2 szt)" },
-        { "Produkt": "Masło (82%)", "Ilość": "5g" },
-        { "Produkt": "Pomarańcza", "Ilość": "200g" }
-      ],
-      "notatki": "Jajka przygotuj na twardo lub jako jajecznicę na maśle. Podawaj z chlebem żytnim. Pomarańcza na zakończenie dnia."
+      "notatki": "Na oliwie podsmaż indyka i paprykę, następnie dodaj jajka. Podawaj bez pieczywa (węglowodany zjedzone wcześniej)."
     }
   ]
 }

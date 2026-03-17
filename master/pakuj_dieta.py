@@ -102,6 +102,25 @@ def generate_diet_html(jadlospis, produkty_db):
     return html, round(day_b, 1), round(day_t, 1), round(day_w, 1), round(day_kcal, 0)
 
 def generate_summary_html(b, t, w, kcal, target):
+    # Obliczenia procentowe
+    k_b = b * 4
+    k_t = t * 9
+    k_w = w * 4
+    total_m = k_b + k_t + k_w
+    
+    if total_m > 0:
+        pct_b = round((k_b / total_m) * 100, 1)
+        pct_t = round((k_t / total_m) * 100, 1)
+        pct_w = round((k_w / total_m) * 100, 1)
+    else:
+        pct_b = pct_t = pct_w = 0
+
+    # Obliczenie różnic
+    diff_b = round(b - target.get("B", 0), 1)
+    diff_t = round(t - target.get("T", 0), 1)
+    diff_w = round(w - target.get("W", 0), 1)
+    diff_kcal = round(kcal - target.get("kcal", 0), 1)
+
     html = f'''
     <div class="table-container" style="margin-top: 10px; border-top: 2px solid #3b312b; padding-top: 10px;">
         <div class="header" style="font-size: 22px;">PODSUMOWANIE DNIA (REALNE)</div>
@@ -121,14 +140,25 @@ def generate_summary_html(b, t, w, kcal, target):
                     <td>{w} g</td>
                     <td>{kcal} kcal</td>
                 </tr>
-                <tr style="font-size: 11px; color: #777;">
-                    <td>Cel: {target.get("B", 0)}g</td>
-                    <td>Cel: {target.get("T", 0)}g</td>
-                    <td>Cel: {target.get("W", 0)}g</td>
-                    <td>Cel: {target.get("kcal", 0)}kcal</td>
-                </tr>
             </tbody>
         </table>
+
+        <div class="macro-bar-container">
+            <div title="Białko" style="width: {pct_b}%; background: #3498db;"></div>
+            <div title="Tłuszcze" style="width: {pct_t}%; background: #f1c40f;"></div>
+            <div title="Węglowodany" style="width: {pct_w}%; background: #e67e22;"></div>
+        </div>
+        <div class="macro-label-container">
+            <span>🔵 Białko: {int(pct_b)}%</span>
+            <span>🟡 Tłuszcze: {int(pct_t)}%</span>
+            <span>🟠 Węglowodany: {int(pct_w)}%</span>
+        </div>
+
+        <!-- 
+        DANE ANALITYCZNE DLA TRENERA (UKRYTE):
+        Cel: {target.get("B", 0)}g B | {target.get("T", 0)}g T | {target.get("W", 0)}g W | {target.get("kcal", 0)} kcal
+        Różnica: {diff_b:+}g B | {diff_t:+}g T | {diff_w:+}g W | {diff_kcal:+} kcal
+        -->
     </div>
     '''
     return html
