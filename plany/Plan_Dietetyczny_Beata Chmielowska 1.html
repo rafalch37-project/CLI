@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twój Plan Dietetyczny - Beata Chmielowska (Alternatywny)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+        
+        @page {
+            size: A4;
+            margin: 15mm 0;
+        }
+
+        html, body {
+            height: auto;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            box-sizing: border-box;
+            padding-bottom: 20mm;
+        }
+
+        .watermark-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+        }
+
+        .watermark-container img {
+            width: 90vw;
+            height: 90vh;
+            object-fit: contain;
+            opacity: 0.07;
+        }
+
+        .table-container {
+            width: 92%;
+            max-width: 850px;
+            margin-bottom: 28px;
+            page-break-inside: avoid;
+        }
+
+        .header {
+            text-align: center;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+            border-bottom: 1px solid #c5a059;
+            padding-bottom: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: transparent;
+        }
+
+        th {
+            background-color: #3b312b !important;
+            color: #d4af37 !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 6px;
+            text-align: center;
+            border: 1px solid #c5a059;
+            font-size: 10px;
+        }
+
+        th:first-child {
+            text-align: left;
+            width: 45%;
+        }
+
+        td {
+            padding: 8px 8px;
+            border: 1px solid #e0e0e0;
+            background-color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+            font-size: 11.5px;
+        }
+
+        td:first-child {
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .summary-row td {
+            font-weight: 600;
+            background-color: rgba(197, 160, 89, 0.15);
+        }
+
+        .notes {
+            font-size: 10.5px;
+            font-style: italic;
+            color: #555;
+            margin-top: 4px;
+            padding: 6px 10px;
+            background: rgba(249, 249, 249, 0.4);
+            border-left: 3px solid #c5a059;
+        }
+
+        .info-box {
+            width: 92%;
+            max-width: 850px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-around;
+            font-size: 12px;
+            background: #3b312b;
+            color: #d4af37;
+            padding: 8px 0;
+            border-radius: 5px;
+        }
+
+        .main-title {
+            font-size: 24px;
+            text-align: center;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin: 20px 0 10px 0;
+            color: #1a1a1a;
+        }
+
+        .macro-bar-container {
+            display: flex;
+            height: 12px;
+            background: #eee;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .macro-label-container {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            margin-top: 5px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media screen and (max-width: 600px) {
+            .main-title { font-size: 18px; letter-spacing: 2px; }
+            .info-box { flex-direction: column; gap: 8px; align-items: center; text-align: center; padding: 12px 5px; }
+            .table-container { width: 96%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            table { min-width: 500px; }
+            th, td { font-size: 10px; padding: 6px 4px; }
+            .notes { font-size: 9.5px; }
+        }
+
+        @media print {
+            .watermark-container { position: absolute; }
+            .table-container { overflow: visible; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="watermark-container">
+        <img src="https://raw.githubusercontent.com/rafalch37-project/CLI/main/szablony/logop.png" alt="Watermark">
+    </div>
+
+    <div class="main-title">PLAN DIETETYCZNY - Beata Chmielowska</div>
+    
+    <div class="info-box" style="padding: 10px 0; font-size: 11px; letter-spacing: 1px;">
+        <span>💧 NAWODNIENIE: MIN. 3L WODY DZIENNIE</span>
+        <span>☕ KOFEINA: OGRANICZ SPOŻYCIE PO GODZINIE 16:00</span>
+    </div>
+
+    <div class="info-box" style="background: #c5a059; color: #1a1a1a; margin-top: -10px; margin-bottom: 35px; font-weight: 600; font-size: 11px; letter-spacing: 1px;">
+        <span>W DNI TRENINGOWE: DODAJ 1 ŚREDNIEGO BANANA PO TRENINGU</span>
+    </div>
+
+    <div class="table-container">
+        <div class="header">Posiłek 1: Kremowa owsianka z owocami i orzechami</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Produkt / Składnik</th>
+                    <th style="width: 25%">Ilość / Waga</th>
+                    <th style="width: 10%">B (g)</th>
+                    <th style="width: 10%">T (g)</th>
+                    <th style="width: 10%">W (g)</th>
+                    <th style="width: 12%">Kcal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Płatki owsiane górskie</td>
+                    <td>50g</td>
+                    <td>6.0</td><td>3.6</td><td>31.2</td><td>189.5</td>
+                </tr>
+                <tr>
+                    <td>Mleko spożywcze (2%)</td>
+                    <td>250g</td>
+                    <td>8.5</td><td>5.0</td><td>12.3</td><td>125.0</td>
+                </tr>
+                <tr>
+                    <td>Odżywka białkowa (WPC)</td>
+                    <td>30g</td>
+                    <td>24.0</td><td>1.8</td><td>2.1</td><td>120.0</td>
+                </tr>
+                <tr>
+                    <td>Migdały</td>
+                    <td>10g</td>
+                    <td>2.1</td><td>5.0</td><td>2.2</td><td>57.9</td>
+                </tr>
+                <tr>
+                    <td>Borówki amerykańskie</td>
+                    <td>50g</td>
+                    <td>0.4</td><td>0.2</td><td>7.2</td><td>28.5</td>
+                </tr>
+                <tr class="summary-row">
+                    <td>SUMA POSIŁKU:</td>
+                    <td>-</td>
+                    <td>41.0</td>
+                    <td>15.6</td>
+                    <td>55.0</td>
+                    <td>520.9</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="notes">Płatki ugotuj na mleku. Po zdjęciu z ognia wmieszaj odżywkę białkową (jeśli nie masz, użyj twarogu chudego 120g). Posyp migdałami i borówkami.</div>
+    </div>
+
+    <div class="table-container">
+        <div class="header">Posiłek 2: Makaron z chudym indykiem w pomidorach</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Produkt / Składnik</th>
+                    <th style="width: 25%">Ilość / Waga</th>
+                    <th style="width: 10%">B (g)</th>
+                    <th style="width: 10%">T (g)</th>
+                    <th style="width: 10%">W (g)</th>
+                    <th style="width: 12%">Kcal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Makaron pełnoziarnisty (suchy)</td>
+                    <td>60g</td>
+                    <td>8.4</td><td>1.5</td><td>39.0</td><td>208.8</td>
+                </tr>
+                <tr>
+                    <td>Mięso mielone z indyka (chude)</td>
+                    <td>200g</td>
+                    <td>37.4</td><td>8.4</td><td>0.0</td><td>234.0</td>
+                </tr>
+                <tr>
+                    <td>Oliwa z oliwek</td>
+                    <td>5g</td>
+                    <td>0.0</td><td>5.0</td><td>0.0</td><td>44.2</td>
+                </tr>
+                <tr>
+                    <td>Passata pomidorowa</td>
+                    <td>100g</td>
+                    <td>1.5</td><td>0.2</td><td>5.0</td><td>32.0</td>
+                </tr>
+                <tr class="summary-row">
+                    <td>SUMA POSIŁKU:</td>
+                    <td>-</td>
+                    <td>47.3</td>
+                    <td>15.1</td>
+                    <td>44.0</td>
+                    <td>519.0</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="notes">Makaron ugotuj al dente. Mięso podsmaż na oliwie, dodaj passatę i ulubione zioła (bazylia, oregano). Wymieszaj z makaronem.</div>
+    </div>
+
+    <div class="table-container">
+        <div class="header">Posiłek 3: Jogurt naturalny z orzechami i jabłkiem</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Produkt / Składnik</th>
+                    <th style="width: 25%">Ilość / Waga</th>
+                    <th style="width: 10%">B (g)</th>
+                    <th style="width: 10%">T (g)</th>
+                    <th style="width: 10%">W (g)</th>
+                    <th style="width: 12%">Kcal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Skyr naturalny</td>
+                    <td>250g</td>
+                    <td>30.0</td><td>0.0</td><td>10.0</td><td>162.5</td>
+                </tr>
+                <tr>
+                    <td>Orzechy włoskie</td>
+                    <td>15g</td>
+                    <td>2.3</td><td>9.8</td><td>2.1</td><td>98.1</td>
+                </tr>
+                <tr>
+                    <td>Jabłko</td>
+                    <td>80g</td>
+                    <td>0.2</td><td>0.2</td><td>11.0</td><td>41.6</td>
+                </tr>
+                <tr class="summary-row">
+                    <td>SUMA POSIŁKU:</td>
+                    <td>-</td>
+                    <td>32.5</td>
+                    <td>10.0</td>
+                    <td>23.1</td>
+                    <td>302.2</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="notes">Skyr wymieszaj z pokrojonym w kostkę jabłkiem i posiekanymi orzechami. Możesz dodać cynamon dla smaku.</div>
+    </div>
+
+    <div class="table-container">
+        <div class="header">Posiłek 4: Kolacja - Sałatka z łososiem wędzonym</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Produkt / Składnik</th>
+                    <th style="width: 25%">Ilość / Waga</th>
+                    <th style="width: 10%">B (g)</th>
+                    <th style="width: 10%">T (g)</th>
+                    <th style="width: 10%">W (g)</th>
+                    <th style="width: 12%">Kcal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Łosoś atlantycki (wędzony)</td>
+                    <td>110g</td>
+                    <td>22.0</td><td>14.3</td><td>0.0</td><td>228.8</td>
+                </tr>
+                <tr>
+                    <td>Serek wiejski (lekki)</td>
+                    <td>150g (1 opakowanie)</td>
+                    <td>16.5</td><td>4.5</td><td>3.8</td><td>121.5</td>
+                </tr>
+                <tr>
+                    <td>Ogórek świeży</td>
+                    <td>100g</td>
+                    <td>0.6</td><td>0.1</td><td>2.9</td><td>14.0</td>
+                </tr>
+                <tr>
+                    <td>Rzodkiewka</td>
+                    <td>50g</td>
+                    <td>0.4</td><td>0.1</td><td>1.7</td><td>8.0</td>
+                </tr>
+                <tr class="summary-row">
+                    <td>SUMA POSIŁKU:</td>
+                    <td>-</td>
+                    <td>39.5</td>
+                    <td>19.0</td>
+                    <td>8.4</td>
+                    <td>372.3</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="notes">Łososia pokrój w paski, wymieszaj z całym opakowaniem serka wiejskiego i posiekanymi warzywami. Podawaj jako sałatkę.</div>
+    </div>
+
+    <div class="table-container" style="margin-top: 10px; border-top: 2px solid #3b312b; padding-top: 10px;">
+        <div class="header" style="font-size: 22px;">PODSUMOWANIE DNIA</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 25%">Białko (B)</th>
+                    <th style="width: 25%">Tłuszcze (T)</th>
+                    <th style="width: 25%">Węglowodany (W)</th>
+                    <th style="width: 25%">Kalorie (Kcal)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="font-size: 18px; font-weight: 600;">
+                    <td>160.3 g</td>
+                    <td>59.7 g</td>
+                    <td>130.5 g</td>
+                    <td>1714.4 kcal</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="macro-bar-container">
+            <div title="Białko" style="width: 37.4%; background: #3498db;"></div>
+            <div title="Tłuszcze" style="width: 32.5%; background: #f1c40f;"></div>
+            <div title="Węglowodany" style="width: 30.1%; background: #e67e22;"></div>
+        </div>
+        <div class="macro-label-container">
+            <span>🔵 Białko: 37%</span>
+            <span>🟡 Tłuszcze: 33%</span>
+            <span>🟠 Węglowodany: 30%</span>
+        </div>
+        
+        <!-- 
+        DANE ANALITYCZNE DLA TRENERA (UKRYTE):
+        Cel: 172g B | 66g T | 109g W | 1718 kcal
+        Różnica: -11.7g B | -6.3g T | +21.5g W | -3.6 kcal
+        Wersja z pełnym opakowaniem serka wiejskiego i skorygowanym łososiem.
+        -->
+    </div>
+
+</body>
+</html>
