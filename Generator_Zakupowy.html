@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Listy Zakupów</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        :root {
+            --text-main: #333333;
+            --gold-main: #d4af37;
+            --brown-main: #3b312b;
+            --gold-muted: #c5a059;
+            --card-bg: rgba(255, 255, 255, 0.75);
+            --success-color: #2e7d32;
+        }
+
+        html, body {
+            height: auto;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            box-sizing: border-box;
+            padding: 20mm;
+        }
+
+        .watermark-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            z-index: -1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+        }
+
+        .watermark-container img {
+            width: 110%;
+            height: 110%;
+            object-fit: contain;
+            opacity: 0.12;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 850px;
+            z-index: 1; /* Być nad znakiem wodnym */
+            background-color: transparent;
+        }
+
+        .header-title {
+            text-align: center;
+            font-size: 24px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--brown-main);
+            margin: 0 0 30px 0;
+            border-bottom: 2px solid var(--gold-muted);
+            padding-bottom: 15px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--brown-main);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            page-break-inside: avoid;
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 15px;
+            color: var(--gold-main);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background-color: var(--brown-main);
+            padding: 8px 15px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .card-desc {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .upload-area {
+            border: 2px dashed var(--gold-muted);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.4);
+            font-weight: 600;
+            color: var(--brown-main);
+        }
+
+        .upload-area:hover, .upload-area.dragover {
+            border-color: var(--brown-main);
+            background-color: rgba(197, 160, 89, 0.15);
+        }
+
+        .upload-area input[type="file"] {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .status-badge.missing { background-color: #8b0000; color: white; }
+        .status-badge.ok { background-color: var(--success-color); color: white; }
+
+        .form-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-group input[type="number"] {
+            background-color: white;
+            border: 1px solid var(--gold-muted);
+            color: var(--text-main);
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-family: inherit;
+            width: 80px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        button {
+            background-color: var(--brown-main);
+            color: var(--gold-main);
+            border: 1px solid var(--gold-muted);
+            padding: 12px 25px;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        button:hover:not(:disabled) { 
+            background-color: #2a221f; 
+            color: #fff;
+        }
+        button:disabled { background-color: #eee; color: #aaa; border-color: #ddd; cursor: not-allowed; }
+
+        #results-area { display: none; margin-top: 30px; }
+
+        .category-block {
+            margin-bottom: 25px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--gold-muted);
+            border-radius: 5px;
+            overflow: hidden;
+            page-break-inside: avoid;
+        }
+
+        .category-header {
+            background-color: var(--brown-main);
+            color: var(--gold-main);
+            padding: 8px 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .product-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            border-bottom: 1px solid #efefef;
+            font-size: 13px;
+        }
+
+        .product-item:last-child { border-bottom: none; }
+        .product-item:hover { background-color: rgba(255, 255, 255, 1); }
+
+        .product-amount { font-weight: 600; color: var(--brown-main); }
+
+        .flex-buttons { display: flex; gap: 15px; margin-bottom: 20px; }
+        .flex-buttons button { margin-top: 0; }
+        
+        #btn-copy { background-color: var(--card-bg); color: var(--brown-main); }
+        #btn-copy:hover { background-color: var(--gold-muted); color: white; }
+
+        /* Ukryty kontener roboczy do parsowania HTML diety */
+        #parser-sandbox { display: none; }
+
+        @media screen and (max-width: 600px) {
+            .header-title { font-size: 18px; letter-spacing: 2px; }
+            .card { padding: 15px; }
+            .flex-buttons { flex-direction: column; gap: 10px; }
+        }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { padding: 0; }
+            .watermark-container { position: absolute; }
+            .container { width: 100%; max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="watermark-container">
+    <img src="https://raw.githubusercontent.com/rafalch37-project/CLI/main/szablony/logop.png" alt="Watermark">
+</div>
+
+<div class="container">
+    <div class="header-title no-print">GENERATOR LISTY ZAKUPÓW</div>
+
+    <!-- KROK 1: Baza produktów -->
+    <div class="card no-print">
+        <h2>1. BAZA PRODUKTÓW</h2>
+        <p class="card-desc">Załaduj plik <code>produkty.json</code> z folderu <code>src/</code>. Zostanie trwale przypisany do przeglądarki!</p>
+        
+        <div class="upload-area" id="db-upload-area">
+            <input type="file" id="db-file" accept=".json">
+            <div>📄 Przeciągnij plik <b>produkty.json</b> tutaj</div>
+            <div id="db-status" class="status-badge missing">Brak bazy produktów</div>
+        </div>
+    </div>
+
+    <!-- KROK 2: Plik diety -->
+    <div class="card no-print">
+        <h2>2. JADŁOSPIS KLIENTA (.HTML)</h2>
+        <p class="card-desc">Załaduj gotowy, wygenerowany plik HTML (np. <i>Plan_Dietetyczny_Beata Chmielowska.html</i>).</p>
+
+        <div class="upload-area" id="diet-upload-area">
+            <input type="file" id="diet-file" accept=".html" disabled>
+            <div>📁 Przeciągnij plik z <b>Dietą HTML</b> tutaj</div>
+            <div id="diet-file-name" style="margin-top: 10px; color: var(--gold-muted); font-weight: bold; font-size: 13px;"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="multiplier">NA ILE DNI WYGENEROWAĆ ZAKUPY?</label>
+            <input type="number" id="multiplier" value="7" min="1" max="30">
+        </div>
+
+        <button id="btn-generate" disabled>🛒 Generuj Listę</button>
+    </div>
+
+    <!-- WYNIKI -->
+    <div id="results-area">
+        <div class="header-title" style="margin-top: 0;">LISTA ZAKUPÓW</div>
+        
+        <div class="flex-buttons no-print">
+            <button id="btn-copy">📋 Kopiuj Tekst</button>
+            <button id="btn-download">💾 Pobierz HTML</button>
+        </div>
+
+        <div id="shopping-list-output"></div>
+    </div>
+</div>
+
+<div id="parser-sandbox"></div>
+
+<script>
+    let productsDB = [];
+    let dietParsedData = [];
+
+    const dbStatus = document.getElementById('db-status');
+    const dietInput = document.getElementById('diet-file');
+    const dietFileName = document.getElementById('diet-file-name');
+    const btnGenerate = document.getElementById('btn-generate');
+    const sandbox = document.getElementById('parser-sandbox');
+    const outputArea = document.getElementById('shopping-list-output');
+    const resultsArea = document.getElementById('results-area');
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedDB = localStorage.getItem('trainerProductsDB');
+        if (savedDB) {
+            try {
+                productsDB = JSON.parse(savedDB);
+                updateDbStatusUI(true, productsDB.length);
+            } catch (e) {
+                console.error("Błąd parsowania zapisanej bazy", e);
+            }
+        }
+    });
+
+    document.getElementById('db-file').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+            try {
+                productsDB = JSON.parse(evt.target.result);
+                localStorage.setItem('trainerProductsDB', evt.target.result);
+                updateDbStatusUI(true, productsDB.length);
+            } catch (error) {
+                alert("Błąd! Plik produkty.json wydaje się być uszkodzony.");
+                updateDbStatusUI(false);
+            }
+        };
+        reader.readAsText(file);
+    });
+
+    function updateDbStatusUI(isOk, count = 0) {
+        if (isOk) {
+            dbStatus.className = 'status-badge ok';
+            dbStatus.innerText = `Baza załadowana (${count} prod.) ✓`;
+            dietInput.disabled = false;
+        } else {
+            dbStatus.className = 'status-badge missing';
+            dbStatus.innerText = "Brak bazy produktów";
+            dietInput.disabled = true;
+        }
+    }
+
+    dietInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        dietFileName.innerText = file.name;
+        
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+            sandbox.innerHTML = evt.target.result;
+            btnGenerate.disabled = false;
+        };
+        reader.readAsText(file);
+    });
+
+    btnGenerate.addEventListener('click', () => {
+        dietParsedData = [];
+        const days = parseInt(document.getElementById('multiplier').value) || 7;
+        
+        // Pobieramy całe tabele by sprawdzić nagłówki
+        const tables = sandbox.querySelectorAll('table');
+        
+        tables.forEach(table => {
+            // Upewniamy się, że modyfikujemy tylko tabele z listami składników (Posiłki)
+            const firstHeader = table.querySelector('thead th');
+            if (!firstHeader || !firstHeader.innerText.toLowerCase().includes('produkt')) return;
+
+            const tbody = table.querySelector('tbody');
+            if(!tbody) return;
+
+            const rows = tbody.querySelectorAll('tr');
+            rows.forEach(row => {
+                if (row.classList.contains('summary-row') || row.innerText.includes('SUMA')) return;
+
+                const cells = row.querySelectorAll('td');
+                if (cells.length >= 2) {
+                    const productName = cells[0].innerText.trim();
+                    const rawWeight = cells[1].innerText.trim();
+                    
+                    if (productName === "") return;
+
+                    const matchNumeric = rawWeight.match(/\d+([.,]\d+)?/);
+                    let amount = 0;
+                    let unit = "";
+
+                    if (matchNumeric) {
+                        amount = parseFloat(matchNumeric[0].replace(',', '.'));
+                        const afterNumberStr = rawWeight.substring(matchNumeric.index + matchNumeric[0].length).trim();
+                        if (afterNumberStr.toLowerCase().startsWith('g')) unit = "g";
+                        else if (afterNumberStr.toLowerCase().startsWith('ml')) unit = "ml";
+                        else unit = "szt.";
+                    }
+
+                    dietParsedData.push({
+                        name: productName,
+                        amount: amount,
+                        unit: unit,
+                        originalWeightStr: rawWeight
+                    });
+                }
+            });
+        });
+
+        if (dietParsedData.length === 0) {
+            alert("Nie znaleziono żadnych produktów. Upewnij się, że dodajesz plik z tablicami html.");
+            return;
+        }
+
+        const aggregated = {};
+        dietParsedData.forEach(item => {
+            const lcName = item.name.toLowerCase();
+            if (!aggregated[lcName]) {
+                aggregated[lcName] = { name: item.name, amount: item.amount, unit: item.unit };
+            } else {
+                aggregated[lcName].amount += item.amount;
+            }
+        });
+
+        const categorizedItems = {
+            "MIĘSO I DRÓB": [],
+            "RYBY I OWOCE MORZA": [],
+            "NABIAŁ I JAJA": [],
+            "ZBOŻA, KASZE I STRĄCZKI": [],
+            "TŁUSZCZE, ORZECHY I NASIONA": [],
+            "WARZYWA I OWOCE": [],
+            "INNE (DO ZWERYFIKOWANIA)": []
+        };
+
+        Object.values(aggregated).forEach(item => {
+            const category = findCategory(item.name);
+            item.totalAmount = item.amount * days;
+            
+            if (categorizedItems[category]) {
+                categorizedItems[category].push(item);
+            } else {
+                categorizedItems["INNE (DO ZWERYFIKOWANIA)"].push(item);
+            }
+        });
+
+        renderOutput(categorizedItems, days);
+        resultsArea.style.display = 'block';
+        resultsArea.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    function findCategory(productName) {
+        if (productsDB.length === 0) return "INNE (DO ZWERYFIKOWANIA)";
+        
+        let bestMatch = null;
+        let pNameLC = productName.toLowerCase();
+        let basePNameLC = pNameLC.replace(/\(.*?\)/g, '').trim(); // Ostrzejsze wycięcie wszystkiego w nawiasach
+
+        // 1. Sprawdzenie idealne
+        for (let p of productsDB) {
+            if (p.Nazwa.toLowerCase() === pNameLC) return p.Kategoria;
+        }
+
+        let maxLen = 0;
+        // 2. Szukanie dopasowań częściowych (tzw. Fuzzy / Inclusions)
+        for (let p of productsDB) {
+            let dbNameLC = p.Nazwa.toLowerCase();
+            let baseDbNameLC = dbNameLC.replace(/\(.*?\)/g, '').trim();
+
+            if (pNameLC.includes(dbNameLC) || dbNameLC.includes(pNameLC) ||
+                basePNameLC === baseDbNameLC || basePNameLC.includes(baseDbNameLC) || baseDbNameLC.includes(basePNameLC)) {
+                
+                // Ustalnie wagi trafności po długości wyrazu by uniknąć kolizji z drobinkami
+                let currentMatchLen = baseDbNameLC.length;
+                if (currentMatchLen > maxLen && currentMatchLen > 2) {
+                    maxLen = currentMatchLen;
+                    bestMatch = p.Kategoria;
+                }
+            }
+        }
+        return bestMatch || "INNE (DO ZWERYFIKOWANIA)";
+    }
+
+    function renderOutput(categorizedItems, days) {
+        outputArea.innerHTML = '';
+        
+        let hasItems = false;
+        
+        for (const [categoryName, items] of Object.entries(categorizedItems)) {
+            if (items.length > 0) {
+                hasItems = true;
+                items.sort((a,b) => a.name.localeCompare(b.name));
+
+                let blockHtml = `<div class="category-block">
+                    <div class="category-header">${categoryName}</div>`;
+                
+                items.forEach(itm => {
+                    let formattedAmount = itm.totalAmount > 0 
+                                          ? `${Number(itm.totalAmount.toFixed(1))} ${itm.unit}`
+                                          : `wg uznania`;
+                    
+                    blockHtml += `<div class="product-item">
+                        <span>${itm.name}</span>
+                        <span class="product-amount">${formattedAmount}</span>
+                    </div>`;
+                });
+                blockHtml += `</div>`;
+                outputArea.innerHTML += blockHtml;
+            }
+        }
+    }
+
+    document.getElementById('btn-copy').addEventListener('click', () => {
+        let textToCopy = "=== LISTA ZAKUPÓW ===\nNa dni: " + document.getElementById('multiplier').value + "\n\n";
+        
+        const blocks = outputArea.querySelectorAll('.category-block');
+        blocks.forEach(block => {
+            textToCopy += `--- ${block.querySelector('.category-header').innerText} ---\n`;
+            const items = block.querySelectorAll('.product-item');
+            items.forEach(item => {
+                const name = item.querySelector('span:nth-child(1)').innerText;
+                const amt = item.querySelector('.product-amount').innerText;
+                textToCopy += `• ${name} - ${amt}\n`;
+            });
+            textToCopy += "\n";
+        });
+
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            const btn = document.getElementById('btn-copy');
+            const orig = btn.innerText;
+            btn.innerText = "✅ Skopiowano!";
+            setTimeout(() => btn.innerText = orig, 2000);
+        });
+    });
+
+    document.getElementById('btn-download').addEventListener('click', () => {
+        const days = document.getElementById('multiplier').value;
+        const outHtml = document.getElementById('shopping-list-output').innerHTML;
+        const dietName = dietFileName.innerText.replace('.html', '').trim() || "Dieta";
+
+    const fullHtml = `<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Zakupów - ${dietName}</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+        @page { size: A4; margin: 15mm 0; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            padding: 20mm;
+            max-width: 850px;
+            margin: 0 auto;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        .watermark-container {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 100%; height: 100%; z-index: -1000; pointer-events: none;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .watermark-container img { width: 110%; height: 110%; object-fit: contain; opacity: 0.12; }
+        .main-title {
+            text-align: center; font-size: 24px; letter-spacing: 5px; text-transform: uppercase;
+            font-weight: 700; color: #3b312b; margin-bottom: 20px;
+        }
+        .subtitle {
+            text-align: center; color: #c5a059; font-weight: 600; font-size: 14px; margin-bottom: 30px; letter-spacing: 1px;
+        }
+        .category-block {
+            margin-bottom: 20px;
+            page-break-inside: avoid;
+            background: rgba(255, 255, 255, 0.7);
+            border-left: 4px solid #3b312b;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            border-radius: 4px;
+            border: 1px solid #eaeaea; border-left: 4px solid #3b312b;
+        }
+        .category-header {
+            background-color: #3b312b; color: #d4af37; padding: 8px 15px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1px; font-size: 13px; text-align: center;
+        }
+        .product-item {
+            display: flex; justify-content: space-between; padding: 10px 20px;
+            border-bottom: 1px solid #f0f0f0; font-size: 13px;
+        }
+        .product-item:last-child { border-bottom: none; }
+        .product-item span:first-child { font-weight: 600; color: #333; }
+        .product-amount { font-weight: 700; color: #c5a059; }
+    </style>
+</head>
+<body>
+    <div class="watermark-container">
+        <img src="https://raw.githubusercontent.com/rafalch37-project/CLI/main/szablony/logop.png" alt="Watermark">
+    </div>
+    <div class="main-title">LISTA ZAKUPÓW</div>
+    <div class="subtitle">PRZYGOTOWANA NA: ${days} DNI</div>
+    ${outHtml}
+</body>
+</html>`;
+
+        const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Lista_Zakupow_${dietName}.html`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+
+    const setupDragAndDrop = (id) => {
+        const dropArea = document.getElementById(id);
+        const fileInput = dropArea.querySelector('input[type="file"]');
+        
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults (e) {
+            e.preventDefault(); e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, () => dropArea.classList.add('dragover'), false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, () => dropArea.classList.remove('dragover'), false);
+        });
+
+        dropArea.addEventListener('drop', (e) => {
+            let dt = e.dataTransfer;
+            let files = dt.files;
+            if(files.length > 0 && !fileInput.disabled) {
+                fileInput.files = files;
+                fileInput.dispatchEvent(new Event('change'));
+            }
+        });
+    }
+
+    setupDragAndDrop('db-upload-area');
+    setupDragAndDrop('diet-upload-area');
+
+</script>
+</body>
+</html>

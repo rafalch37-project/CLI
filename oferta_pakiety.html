@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta Współpracy | Premium Fitness Coaching</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap');
+        
+        :root {
+            --gold: #d4af37;
+            --dark-brown: #3b312b;
+            --muted-gold: #c5a059;
+            --bg-light: #f8f8f8;
+            --white: #ffffff;
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70vw;
+            opacity: 0.03;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .logo-text {
+            font-weight: 800;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            font-size: 32px;
+            color: var(--dark-brown);
+            margin: 0;
+        }
+
+        .logo-subtext {
+            color: var(--gold);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .onboarding-banner {
+            background: var(--dark-brown);
+            color: var(--gold);
+            padding: 35px;
+            border-radius: 8px;
+            margin-bottom: 60px;
+            text-align: center;
+            border: 1px solid var(--gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .onboarding-banner h2 {
+            margin: 0 0 15px 0;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 20px;
+        }
+
+        .onboarding-banner p {
+            color: #e0e0e0;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 15px;
+        }
+
+        /* Sekcja pakietów w siatce CSS (3 równe kolumny, idealne pod psychologię cenową) */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 70px;
+            align-items: center; /* Ważne żeby środkowy pakiet mógł być wyższy */
+        }
+
+        .package-card {
+            background: var(--white);
+            border-top: 6px solid var(--dark-brown);
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            position: relative;
+            height: 100%;
+        }
+
+        .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Środkowy (Premium) wybijający się */
+        .package-card.premium {
+            border-color: var(--gold);
+            background: #fff;
+            transform: scale(1.05);
+            z-index: 2;
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
+            height: calc(100% + 40px);
+        }
+
+        .package-card.premium:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+
+        .package-tag {
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--dark-brown);
+            padding: 8px 25px;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+            z-index: 10;
+            white-space: nowrap;
+            border: 3px solid var(--white);
+        }
+
+        .package-name {
+            color: var(--dark-brown);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+            font-size: 18px;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .package-price {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--muted-gold);
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        
+        .price-desc {
+            display: block;
+            font-size: 11px;
+            color: #888;
+            font-weight: 400;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        .package-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .package-features li {
+            font-size: 13px;
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .package-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 800;
+            font-size: 14px;
+        }
+
+        .package-features li.feature-main {
+            font-weight: 700;
+            color: var(--dark-brown);
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .package-features li.feature-main::before {
+            content: '⭐';
+        }
+
+        .btn-select {
+            margin-top: 30px;
+            background: var(--dark-brown);
+            color: var(--gold);
+            border: 2px solid var(--dark-brown);
+            padding: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            font-size: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 4px;
+        }
+
+        .btn-select:hover {
+            background: var(--gold);
+            color: var(--dark-brown);
+            border-color: var(--gold);
+        }
+
+        .premium .btn-select {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--dark-brown);
+        }
+
+        .premium .btn-select:hover {
+            background: var(--dark-brown);
+            border-color: var(--dark-brown);
+            color: var(--gold);
+        }
+
+        .why-me {
+            background: var(--white);
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+            margin-bottom: 60px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .section-title {
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 22px;
+            margin-bottom: 50px;
+            color: var(--dark-brown);
+            font-weight: 800;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .benefit-item h4 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--dark-brown);
+            margin-bottom: 15px;
+            font-weight: 700;
+            font-size: 15px;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .benefit-item p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            border-top: 1px solid #ddd;
+        }
+
+        .footer-cta {
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 20px;
+            color: var(--dark-brown);
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 992px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            .package-card.premium { 
+                transform: none; 
+                height: auto;
+            }
+            .package-card.premium:hover { 
+                transform: translateY(-5px); 
+            }
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <img src="https://raw.githubusercontent.com/rafalch37-project/CLI/main/szablony/logop.png" alt="Logo" class="watermark">
+
+    <div class="container">
+        <header>
+            <h1 class="logo-text">DATA-PRO</h1>
+            <div class="logo-subtext">Premium Fitness Coaching</div>
+        </header>
+
+        <div class="onboarding-banner">
+            <h2>00. Etap Wstępny: Profesjonalny Onboarding</h2>
+            <p>Najpierw diagnostyka, potem rozwiązanie. Zaczynamy od Interaktywnej Ankiety Wstępnej (analiza celu, kontuzji i priorytetów), dopiero potem budujemy architekturę Twojego planu.</p>
+        </div>
+
+        <h2 class="section-title">Modele Współpracy</h2>
+
+        <div class="pricing-grid">
+            
+            <!-- PAKIET 1: START -->
+            <div class="package-card">
+                <div class="package-name">START</div>
+                <div class="package-price">[Twój Cennik] PLN <span class="price-desc">Jednorazowo / Miesięcznie</span></div>
+                <ul class="package-features">
+                    <li class="feature-main">Dieta LUB Trening</li>
+                    <li><strong>Trening:</strong> Plan z rygorystycznym programowaniem tempa (3-1-1-0).</li>
+                    <li><strong>LUB Dieta:</strong> Pełny jadłospis z <strong>gotową, zautomatyzowaną Listą Zakupów</strong>.</li>
+                    <li>Sekcja `notes` z bezwzględnymi instrukcjami do każdego ćwiczenia.</li>
+                    <li>Przejrzysty format PDF/HTML gotowy do druku, bez przedłużających się zobowiązań.</li>
+                </ul>
+                <a href="#" class="btn-select">Wybieram Start</a>
+            </div>
+
+            <!-- PAKIET 2: KOMPLEKS (REKOMENDOWANY) -->
+            <div class="package-card premium">
+                <div class="package-tag">Najlepszy Wybór</div>
+                <div class="package-name">KOMPLEKS (Duo)</div>
+                <div class="package-price">[Twój Cennik] PLN <span class="price-desc">Miesięcznie</span></div>
+                <ul class="package-features">
+                    <li class="feature-main">Dieta + Trening + Narzędzia</li>
+                    <li>Pełna synerga: Periodyzacja objętości 12-16 serii dopasowana pod kalorie.</li>
+                    <li><strong>Autorski Dziennik Treningowy:</strong> Twój prywatny system do śledzenia wyników prosto z telefonu (brak subskrypcji i płatnych apek!).</li>
+                    <li><strong>Idealna Lista Zakupów:</strong> Interaktywne zestawienie Twoich wydatków spożywczych.</li>
+                    <li><strong>1x Raport w tygodniu:</strong> Ty dostarczasz dane z dziennika, ja optymalizuję system (System Best Set).</li>
+                    <li>Gwarancja 1 dużej korekty w miesiącu na życzenie lub z samej potrzeby liczb.</li>
+                </ul>
+                <a href="#" class="btn-select">Wybieram Kompleks</a>
+            </div>
+
+            <!-- PAKIET 3: MENTORING VIP -->
+            <div class="package-card">
+                <div class="package-name">MENTORING VIP</div>
+                <div class="package-price">[Twój Cennik] PLN <span class="price-desc">Miesięcznie / Limitowane</span></div>
+                <ul class="package-features">
+                    <li class="feature-main">Pełna Opieka Indywidualna + Analiza Video</li>
+                    <li>Wszystko z Kompleks (wraz z <strong>Listą Zakupów</strong> i <strong>Autorskim Dziennikiem</strong>).</li>
+                    <li><strong>Audyt Biomechaniczny:</strong> Bieżąca wideo-analiza Twoich serii roboczych. Wyłapujemy słabe ogniwa i zabezpieczamy Twój aparat ruchu przed kontuzją (100% trafności w cel główny).</li>
+                    <li><strong>Bieżący kontakt:</strong> WhatsApp/Telegram dla pytań tu i teraz (bez czekania na raport).</li>
+                    <li><strong>Dynamiczna Mikro-Periodyzacja:</strong> Brak sztywnych limitów na poprawki. Reagujemy natychmiast na każdą dłuższą stagnację tonażu lub wagi na podstawie twardych danych.</li>
+                    <li>Archiwum Pro (pełna historia historii Twojego organizmu).</li>
+                </ul>
+                <a href="#" class="btn-select">Wybieram VIP</a>
+            </div>
+            
+        </div>
+
+        <div class="why-me">
+            <h2 class="section-title">Filozofia: „Dane zamiast Domysłów”</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h4>Precyzja Ponad Przypadek</h4>
+                    <p>Uczę ćwiczyć do biologicznego załamania. Narzucam tempo 3-1-1-0 i restrykcje techniczne, a maszyny wybieram pod optymalizację profilu oporu. Nul "scrappy reps".</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>Dożywotnia Technologia</h4>
+                    <p>Dostajesz ode mnie autorskie oprogramowanie (Interaktywny Dziennik, Dashboard Postępów). Żadnych ukrytych abonamentów w zewnętrznych apkach. Płacisz za moją wiedzę, apkę dostajesz w pakiecie.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>Metaboliczna Matematyka</h4>
+                    <p>Kalorie i gęstość odżywcza oparte na medycznych przelicznikach. Skupiamy się na Hormonalnym Minimum i precyzyjnym Nutrient Timingu bez szamanizmu i magicznych pigułek.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-cta">Twoja ewolucja zaczyna się od liczb.</div>
+            <p style="font-size: 14px; color: #777;">Wypełnij ankietę wstępną, a przygotuję system zarządzania Twoją sylwetką.</p>
+            <div class="btn-container" style="margin-top: 30px;">
+                <a href="#" class="btn-select" style="padding: 16px 50px; border-radius: 6px;">Przejdź do Ankiety</a>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
