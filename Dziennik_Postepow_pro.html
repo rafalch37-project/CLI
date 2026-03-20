@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ZAAWANSOWANY Dashboard Postępów - Twój Trener</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+        
+        html, body { height: 100%; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            position: relative;
+            padding: 10mm 0;
+        }
+
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90vw;
+            height: 90vh;
+            object-fit: contain;
+            opacity: 0.08;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        #report-container { width: 95%; max-width: 1000px; z-index: 1; box-sizing: border-box; background: transparent; padding: 10px; border-radius: 8px; }
+
+        .header-main {
+            text-align: center;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            border-bottom: 2px solid #c5a059;
+            padding-bottom: 8px;
+            position: relative;
+        }
+        
+        .pro-badge {
+            position: absolute; right: 0; top: 0;
+            background: #d4af37; color: #1a1a1a; padding: 2px 6px; font-size: 10px; font-weight: bold; border-radius: 2px;
+            letter-spacing: 1px;
+        }
+
+        .section-row { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 15px; width: 100%; }
+        .card {
+            border-left: 4px solid #3b312b;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: #ffffff;
+            box-sizing: border-box;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 4px;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .card-full { width: 100%; flex: none; }
+
+        .card-title {
+            background-color: #3b312b;
+            color: #d4af37;
+            display: inline-flex; justify-content: space-between; align-items: center; width: 100%; box-sizing: border-box;
+            padding: 5px 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            font-size: 12px;
+            margin-bottom: 12px;
+            border-radius: 2px;
+        }
+
+        .chart-container {
+            width: 100%;
+            height: 220px;
+            margin-top: 10px;
+            position: relative;
+        }
+
+        table { width: 100%; border-collapse: collapse; }
+        th { text-align: left; font-size: 10px; text-transform: uppercase; color: #777; padding-bottom: 6px; border-bottom: 1px solid #c5a059; }
+        td { padding: 6px 4px; border-bottom: 1px solid #eee; font-size: 13px; }
+
+        .input-field {
+            width: 80px;
+            border: 1px solid #e0e0e0;
+            border-bottom: 2px solid #c5a059;
+            padding: 5px;
+            text-align: center;
+            font-family: inherit;
+            border-radius: 3px;
+        }
+
+        .scale-box { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; }
+        .scale-label { font-size: 11px; font-weight: 600; width: 110px; text-transform: uppercase; color: #555; }
+        .circles { display: flex; gap: 4px; flex-wrap: wrap; }
+        .circle {
+            width: 20px; height: 20px;
+            border: 2px solid #3b312b;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .circle.active { background-color: #d4af37; border-color: #d4af37; }
+
+        .history-list-container {
+            max-height: 280px; overflow-y: auto; padding-right: 5px;
+        }
+        .history-list-container::-webkit-scrollbar { width: 6px; }
+        .history-list-container::-webkit-scrollbar-thumb { background: #c5a059; border-radius: 3px; }
+
+        .history-item {
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+            font-size: 12px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .history-details { flex: 1; }
+        .history-notes {
+            color: #666;
+            font-style: italic;
+            margin-top: 4px;
+            font-size: 11px;
+            display: block;
+        }
+
+        .actions { display: flex; justify-content: center; gap: 10px; margin-top: 20px; padding-bottom: 40px; flex-wrap: wrap; }
+        .btn {
+            padding: 10px 16px;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            font-size: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            transition: all 0.2s;
+            display: inline-flex; align-items: center; gap: 5px;
+        }
+        .btn:active { transform: scale(0.95); }
+        .btn-save { background-color: #27ae60; color: white; }
+        .btn-image { background-color: #3b312b; color: #d4af37; }
+        .btn-export { background-color: #d4af37; color: #3b312b; }
+        .btn-import { background-color: #f39c12; color: #fff; }
+        .btn-clear { background-color: #e74c3c; color: white; }
+        
+        .btn-small {
+            background: #eee; border: none; padding: 5px 8px; border-radius: 3px; cursor: pointer; font-size: 11px; color: #333;
+        }
+        .btn-small:hover { background: #ddd; }
+        .btn-del { color: #e74c3c; background: #fceceb; }
+        .btn-del:hover { background: #fadbd8; }
+        .btn-edit { color: #2980b9; background: #ebf5fb; }
+        .btn-edit:hover { background: #d6eaf8; }
+        
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255,255,255,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        #toast {
+            visibility: hidden; min-width: 250px; background-color: #3b312b; color: #d4af37;
+            text-align: center; border-radius: 4px; padding: 12px 16px; position: fixed; z-index: 1001;
+            left: 50%; bottom: 30px; transform: translateX(-50%); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 11px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+        }
+        #toast.show { visibility: visible; animation: fadein 0.4s, fadeout 0.4s 2.6s; }
+        #toast.error { background-color: #e74c3c; color: white; border-left: 4px solid #c0392b; }
+        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+
+        @media (max-width: 768px) { .section-row { flex-wrap: wrap; } .card { min-width: 100%; } }
+    </style>
+</head>
+<body>
+
+    <div id="loading" class="loading-overlay">Generowanie raportu...</div>
+    <div id="toast">Poprawnie zapisano</div>
+    <img src="https://raw.githubusercontent.com/rafalch37-project/CLI/main/szablony/logop.png" alt="Watermark" class="watermark">
+
+    <div id="report-container">
+        <div class="header-main">
+            Dashboard Postępów <span class="pro-badge">PRO</span>
+        </div>
+
+        <!-- Sekcja Wykresów -->
+        <div class="section-row">
+            <div class="card">
+                <div class="card-title"><span>Skład Ciała</span></div>
+                <div class="chart-container">
+                    <canvas id="bodyChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title"><span>Energia i Sen</span></div>
+                <div class="chart-container">
+                    <canvas id="vitalsChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sekcja Wprowadzania i Historii -->
+        <div class="section-row">
+            <div class="card" style="flex: 1.2;">
+                <div class="card-title"><span>Metryki Dnia</span> <span id="mode-badge" style="display:none; background:#2980b9; color:#fff; font-size:9px; padding:2px 5px; border-radius:2px;">Tryb Edycji</span></div>
+                <div style="display:flex; gap:15px; flex-wrap: wrap;">
+                    <div style="flex:1; min-width:200px;">
+                        <table>
+                            <tr><td>Data</td><td><input type="date" id="input-date" class="input-field" style="width: 110px;"></td></tr>
+                            <tr><td>Waga (kg)</td><td><input type="number" step="0.1" id="input-weight" class="input-field" placeholder="0.0"></td></tr>
+                            <tr><td>Pas (cm)</td><td><input type="number" step="0.1" id="input-waist" class="input-field" placeholder="0.0"></td></tr>
+                        </table>
+                    </div>
+                    <div style="flex:1; min-width:200px;">
+                        <div class="scale-box"><span class="scale-label">Energia (1-10)</span><div class="circles" data-metric="energy"></div></div>
+                        <div class="scale-box"><span class="scale-label">Sen (1-10)</span><div class="circles" data-metric="sleep"></div></div>
+                    </div>
+                </div>
+                <textarea id="input-notes" style="width:100%; height:60px; margin-top:15px; border:1px solid #ddd; padding:10px; font-family:inherit; outline:none; border-bottom: 2px solid #c5a059; box-sizing:border-box;" placeholder="Jakieś uwagi do treningu lub diety?"></textarea>
+                <button class="btn btn-save" style="width:100%; margin-top:10px; justify-content:center;" onclick="saveData()">💾 Zapisz / Aktualizuj Dzień</button>
+            </div>
+
+            <div class="card" style="flex: 1.5;">
+                <div class="card-title"><span>Pełna Historia Wpisów</span></div>
+                <div class="history-list-container" id="history-list">
+                    Brak danych w pamięci.
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="actions">
+        <button class="btn btn-image" onclick="takeScreenshot()">📷 Pobierz Raport PNG</button>
+        <button class="btn btn-export" onclick="exportToTrainer()">📤 Eksportuj JSON</button>
+        <button class="btn btn-import" onclick="document.getElementById('file-import').click()">📥 Importuj JSON</button>
+        <input type="file" id="file-import" accept=".json" style="display:none" onchange="importFromJson(event)">
+        <button class="btn btn-clear" onclick="clearData()">🗑️ Reset</button>
+    </div>
+
+    <script>
+        let historyData = JSON.parse(localStorage.getItem('fitness_history_pro') || '[]');
+        // Migracja ze starego logu
+        if (historyData.length === 0) {
+            const oldData = JSON.parse(localStorage.getItem('fitness_history') || '[]');
+            if (oldData.length > 0) {
+                historyData = oldData.map(o => ({...o, id: Date.now().toString() + Math.random().toString(36).substr(2, 5)}));
+                saveToLocalStorage();
+            }
+        }
+
+        let bodyChart, vitalsChart;
+        let editingId = null;
+
+        document.getElementById('input-date').valueAsDate = new Date();
+
+        function initCircles() {
+            document.querySelectorAll('.circles').forEach(container => {
+                container.innerHTML = '';
+                for(let i=1; i<=10; i++){
+                    const c = document.createElement('div');
+                    c.className = 'circle';
+                    c.addEventListener('click', () => {
+                        const circles = container.querySelectorAll('.circle');
+                        const isActive = circles[i-1].classList.contains('active');
+                        
+                        let targetValue = i;
+                        if(isActive && targetValue === parseInt(container.dataset.value)) {
+                            targetValue = targetValue - 1;
+                        } else if(isActive && i === 1 && parseInt(container.dataset.value) === 1) {
+                            targetValue = 0; 
+                        }
+
+                        container.dataset.value = targetValue;
+                        circles.forEach((cc, idx) => cc.classList.toggle('active', idx < targetValue));
+                    });
+                    container.appendChild(c);
+                }
+            });
+        }
+        initCircles();
+
+        function showToast(message, isError = false) {
+            const t = document.getElementById('toast');
+            t.textContent = message;
+            t.className = 'toast show' + (isError ? ' error' : '');
+            setTimeout(() => { t.className = t.className.replace('show', ''); }, 3000);
+        }
+
+        function setCircles(metric, val) {
+            const container = document.querySelector(`[data-metric="${metric}"]`);
+            val = val || 0;
+            container.dataset.value = val;
+            container.querySelectorAll('.circle').forEach((c, idx) => c.classList.toggle('active', idx < val));
+        }
+
+        function resetForm() {
+            document.getElementById('input-weight').value = '';
+            document.getElementById('input-waist').value = '';
+            document.getElementById('input-notes').value = '';
+            setCircles('energy', 0);
+            setCircles('sleep', 0);
+            editingId = null;
+            document.getElementById('mode-badge').style.display = 'none';
+        }
+
+        function saveToLocalStorage() {
+            historyData.sort((a,b) => new Date(a.date) - new Date(b.date));
+            localStorage.setItem('fitness_history_pro', JSON.stringify(historyData));
+        }
+
+        function saveData() {
+            const wVal = document.getElementById('input-weight').value;
+            if (!wVal) { showToast('Wymagane podanie chociaż wagi!', true); return; }
+
+            const entry = {
+                id: editingId || (Date.now().toString() + Math.random().toString(36).substr(2, 5)),
+                date: document.getElementById('input-date').value,
+                weight: parseFloat(wVal),
+                waist: parseFloat(document.getElementById('input-waist').value) || null,
+                energy: parseInt(document.querySelector('[data-metric="energy"]').dataset.value || 0),
+                sleep: parseInt(document.querySelector('[data-metric="sleep"]').dataset.value || 0),
+                notes: document.getElementById('input-notes').value
+            };
+
+            const existingDayIdx = historyData.findIndex(x => x.date === entry.date && x.id !== entry.id);
+
+            if (existingDayIdx !== -1) {
+                if(!confirm(`Dzień ${entry.date} już istnieje. Zastąpić wpis?`)) return;
+                entry.id = historyData[existingDayIdx].id; 
+                historyData[existingDayIdx] = entry;
+            } else if (editingId) {
+                const idx = historyData.findIndex(x => x.id === editingId);
+                if (idx !== -1) historyData[idx] = entry;
+            } else {
+                historyData.push(entry);
+            }
+
+            saveToLocalStorage();
+            updateUI();
+            resetForm();
+            showToast('Zapisano dane pomyślnie!');
+        }
+
+        function editEntry(id) {
+            const h = historyData.find(x => x.id === id);
+            if (!h) return;
+            document.getElementById('input-date').value = h.date;
+            document.getElementById('input-weight').value = h.weight || '';
+            document.getElementById('input-waist').value = h.waist || '';
+            document.getElementById('input-notes').value = h.notes || '';
+            setCircles('energy', h.energy);
+            setCircles('sleep', h.sleep);
+            
+            editingId = h.id;
+            document.getElementById('mode-badge').style.display = 'inline-block';
+            showToast('Tryb edycji: wczytano dane', false);
+        }
+
+        function deleteEntry(id) {
+            if(confirm('Na pewno całkowicie usunąć wpis z historii?')) {
+                historyData = historyData.filter(x => x.id !== id);
+                saveToLocalStorage();
+                updateUI();
+                showToast('Wpis bezpowrotnie usunięto');
+                if (editingId === id) resetForm();
+            }
+        }
+
+        function formatDatePl(dateString) {
+            if(!dateString) return '';
+            const d = new Date(dateString);
+            return `${String(d.getDate()).padStart(2,'0')}.${String(d.getMonth()+1).padStart(2,'0')}.${d.getFullYear()}`;
+        }
+
+        function updateUI() {
+            const list = document.getElementById('history-list');
+            list.innerHTML = [...historyData].reverse().map(h => `
+                <div class="history-item">
+                    <div class="history-details">
+                        <strong>${formatDatePl(h.date)}</strong>: 
+                        Waga <b style="color:#d4af37">${h.weight}kg</b> 
+                        ${h.waist ? `| Pas ${h.waist}cm` : ''} <br>
+                        
+                        <span style="font-size:10px; color:#555">
+                            Energia: ${h.energy}/10 | Sen: ${h.sleep}/10
+                        </span>
+                        
+                        ${h.notes ? `<span class="history-notes">💬 "${h.notes}"</span>` : ''}
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:4px; max-width:60px;">
+                        <button class="btn-small btn-edit" onclick="editEntry('${h.id}')" title="Edytuj dane z tego dnia">Edytuj</button>
+                        <button class="btn-small btn-del" onclick="deleteEntry('${h.id}')" title="Usuń trwale ten wpis">Usuń</button>
+                    </div>
+                </div>
+            `).join('') || '<div style="padding:10px; color:#777; text-align:center;">Brak wpisów.<br>Dodaj swój pierwszy dzień.</div>';
+
+            renderCharts();
+        }
+
+        function renderCharts() {
+            const labels = historyData.map(h => formatDatePl(h.date));
+
+            const commonOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: { duration: 0 },
+                plugins: { legend: { display: true, labels: { boxWidth: 10, font: {size: 10} } } },
+                interaction: { mode: 'index', intersect: false }
+            };
+
+            // 1. Skład Ciała (Waga / Pas)
+            if (bodyChart) bodyChart.destroy();
+            const ctxBody = document.getElementById('bodyChart').getContext('2d');
+            bodyChart = new Chart(ctxBody, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        { label: 'Waga (kg)', yAxisID: 'y', data: historyData.map(h => h.weight), borderColor: '#c5a059', backgroundColor: 'rgba(197, 160, 89, 0.1)', fill: true, tension: 0.3 },
+                        { label: 'Pas (cm)', yAxisID: 'y1', data: historyData.map(h => h.waist), borderColor: '#3b312b', borderDash: [5, 5], tension: 0.3 }
+                    ]
+                },
+                options: { ...commonOptions, 
+                    scales: { 
+                        y: { type: 'linear', display: true, position: 'left', title: {display:true, text:'Waga'} },
+                        y1: { type: 'linear', display: true, position: 'right', grid:{drawOnChartArea:false}, title:{display:true, text:'Pas'} }
+                    }
+                }
+            });
+
+            // 2. Vitals
+            if (vitalsChart) vitalsChart.destroy();
+            const ctxVitals = document.getElementById('vitalsChart').getContext('2d');
+            vitalsChart = new Chart(ctxVitals, {
+                type: 'line', 
+                data: {
+                    labels: labels,
+                    datasets: [
+                        { label: 'Energia', data: historyData.map(h => h.energy ? h.energy : null), borderColor: '#2ecc71', backgroundColor: '#2ecc71', tension: 0.4 },
+                        { label: 'Sen', data: historyData.map(h => h.sleep ? h.sleep : null), borderColor: '#3498db', backgroundColor: '#3498db', tension: 0.4 }
+                    ]
+                },
+                options: { ...commonOptions, scales: { y: { min: 0, max: 10, title: {display:true, text:'Skala 1-10'} } } }
+            });
+        }
+
+        async function takeScreenshot() {
+            const container = document.getElementById('report-container');
+            const loader = document.getElementById('loading');
+            loader.style.display = 'flex';
+
+            try {
+                const canvas = await html2canvas(container, {
+                    scale: 2,
+                    useCORS: true,
+                    backgroundColor: '#f8f9fa',
+                    logging: false
+                });
+                
+                const link = document.createElement('a');
+                link.download = `Raport_Postepow_PRO_${new Date().toISOString().slice(0,10)}.png`;
+                link.href = canvas.toDataURL("image/png");
+                link.click();
+            } catch (err) {
+                showToast("Błąd przy pobieraniu png: " + err, true);
+            } finally {
+                loader.style.display = 'none';
+            }
+        }
+
+        function exportToTrainer() {
+            if (historyData.length === 0) { showToast('Brak danych do eksportu!', true); return; }
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(historyData, null, 2));
+            const dl = document.createElement('a');
+            dl.setAttribute("href", dataStr);
+            dl.setAttribute("download", "raport_dietowo_treningowy_pro.json");
+            dl.click();
+            showToast('Rozpoczęto eksport bazy...');
+        }
+
+        function importFromJson(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                try {
+                    const data = JSON.parse(evt.target.result);
+                    if(Array.isArray(data)) {
+                        if(confirm('Zaimportowanie JSON nadpisze lub połączy starą bazę z nową. Kontynuować?')) {
+                           data.forEach(d => { if(!d.id) d.id = Date.now().toString() + Math.random().toString(36).substr(2, 5); });
+                           historyData = data;
+                           saveToLocalStorage();
+                           updateUI();
+                           showToast('Pomyślnie zaimportowano bazę JSON');
+                        }
+                    } else {
+                        showToast('Niepoprawna struktura pliku', true);
+                    }
+                } catch(err) {
+                    showToast('Błąd odczytu pliku', true);
+                }
+            };
+            reader.readAsText(file);
+            e.target.value = ''; // reset elementu
+        }
+
+        function clearData() {
+            if (confirm('UWAGA: CZY CHCESZ BEZPOWROTNIE USUNĄĆ CAŁĄ HISTORIĘ?')) {
+                localStorage.removeItem('fitness_history_pro');
+                historyData = [];
+                updateUI();
+                resetForm();
+                showToast('Pamięć wyczyszczona na zero!');
+            }
+        }
+
+        // Uruchomienie przy starcie
+        updateUI();
+    </script>
+</body>
+</html>
