@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dziennik Treningowy PRO</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+        
+        @page { size: A4; margin: 8mm; }
+
+        html, body { margin: 0; padding: 0; background-color: #f8f8f8; color: #333; }
+        body { font-family: 'Montserrat', sans-serif; display: flex; flex-direction: column; align-items: center; width: 100%; padding: 15px 0; }
+
+        .watermark { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 70vw; opacity: 0.05; z-index: -1; pointer-events: none; }
+
+        .container { width: 95%; max-width: 800px; z-index: 1; }
+
+        .header-main { text-align: center; letter-spacing: 3px; text-transform: uppercase; font-size: 18px; margin-bottom: 20px; color: #1a1a1a; border-bottom: 2px solid #c5a059; padding-bottom: 8px; font-weight: 600; }
+
+        .workout-day { background: #fff; border-left: 4px solid #3b312b; margin-bottom: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-radius: 0 4px 4px 0; overflow: hidden; }
+        
+        .day-header { background: #fff; padding: 10px 15px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; user-select: none; border-bottom: 1px solid #f0f0f0; }
+        .day-title-info { display: flex; gap: 12px; align-items: center; flex: 1; }
+        .day-date { font-weight: 600; font-size: 12px; color: #3b312b; min-width: 85px; }
+        .day-name-display { font-size: 12px; color: #c5a059; font-weight: 600; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px; }
+        
+        .day-content { padding: 12px; display: block; }
+        .day-content.collapsed { display: none; }
+
+        .workout-header-inputs { display: flex; gap: 10px; margin-bottom: 12px; background: #fdfdfd; padding: 8px; border-radius: 4px; border: 1px solid #eee; }
+        .input-header { flex: 1; border: none; border-bottom: 1px solid #ddd; padding: 4px; font-family: 'Montserrat', sans-serif; font-size: 12px; outline: none; background: transparent; }
+
+        .exercise-block { border: 1px solid #eee; margin-bottom: 8px; border-radius: 4px; background: #fff; }
+        .exercise-title-row { background: #3b312b; color: #d4af37; padding: 5px 10px; display: flex; align-items: center; justify-content: space-between; }
+        .input-exercise-name { background: transparent; border: none; color: #d4af37; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; width: 85%; outline: none; text-transform: uppercase; }
+
+        .sets-table { width: 100%; border-collapse: collapse; }
+        .sets-table th { background: #f9f9f9; color: #888; font-size: 8px; text-transform: uppercase; padding: 5px 2px; text-align: center; border-bottom: 1px solid #eee; }
+        .sets-table td { padding: 2px; border-bottom: 1px solid #f5f5f5; text-align: center; }
+
+        .input-set { width: 100%; border: 1px solid #eee; padding: 5px; font-family: 'Montserrat', sans-serif; font-size: 11px; text-align: center; border-radius: 3px; outline: none; background: #fafafa; }
+        .input-set:focus { border-color: #c5a059; background: #fff; }
+        .input-set::placeholder { color: #bbb; } /* Ghost text styling */
+
+        /* Ukrywanie strzałek w polach number */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        input[type=number] { -moz-appearance: textfield; }
+
+        .btn-add-set { width: 100%; background: #fff; border: none; color: #c5a059; padding: 5px; font-size: 9px; text-transform: uppercase; font-weight: 600; cursor: pointer; border-top: 1px dashed #eee; }
+        .btn-remove { color: #cc0000; background: none; border: none; cursor: pointer; font-size: 14px; opacity: 0.4; }
+        .btn-remove:hover { opacity: 1; }
+
+        .tonnage-container { text-align: right; font-size: 10px; color: #888; padding: 4px 10px; background: #fdfdfd; border-top: 1px dashed #eee; margin-bottom: 2px; }
+        .tonnage-value { font-weight: bold; color: #c5a059; }
+
+        .actions-footer { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 20px; padding-bottom: 40px; }
+        .btn-main-group { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+        .btn { padding: 10px 16px; font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; font-size: 10px; cursor: pointer; border: none; border-radius: 4px; display: flex; align-items: center; gap: 5px; }
+        
+        .btn-add-day { background-color: #c5a059; color: white; }
+        .btn-print { background-color: #3b312b; color: #d4af37; }
+        .btn-json { background-color: #eee; color: #333; }
+        .btn-reset { background-color: transparent; color: #bbb; font-size: 9px; }
+
+        .arrow { transition: transform 0.3s; font-size: 9px; color: #c5a059; }
+        .collapsed .arrow { transform: rotate(-90deg); }
+
+        .save-toast { position: fixed; bottom: 20px; right: 20px; background: #3b312b; color: #d4af37; padding: 10px 20px; border-radius: 4px; font-size: 11px; display: none; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; flex-direction: column; }
+        .modal-content { background: #fff; padding: 20px; border-radius: 8px; width: 80%; max-width: 400px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .modal-btn { width: 100%; padding: 12px; font-family: 'Montserrat', sans-serif; font-size: 11px; text-transform: uppercase; font-weight: 600; cursor: pointer; border: 1px solid #c5a059; background: #fff; color: #c5a059; border-radius: 4px; transition: 0.2s; }
+        .modal-btn:hover { background: #c5a059; color: #fff; }
+
+        @media print {
+            .actions-footer, .btn-remove, .btn-add-set, .btn-add-ex, .arrow, .modal-overlay { display: none !important; }
+            .day-content { display: block !important; }
+            .workout-day { break-inside: avoid; border: 1px solid #3b312b; margin-bottom: 20px; }
+            body { padding: 0; background: white; }
+            .input-set, .input-header { border: none !important; background: transparent !important; }
+            .tonnage-container { background: transparent !important; border: none !important; }
+        }
+    </style>
+</head>
+<body onload="loadData()">
+
+    <!-- MODAL -->
+    <div id="copyModal" class="modal-overlay">
+        <div class="modal-content">
+            <h3 style="margin-top:0; color:#3b312b; font-size: 14px; text-transform: uppercase;">Wybierz trening</h3>
+            <p style="font-size: 10px; color: #666; margin-bottom: 15px;">Wybierz plan do skopiowania (pobierze ostatnie wyniki jako cel).</p>
+            <div id="modalButtons" style="display:flex; flex-direction:column; gap:10px; max-height: 50vh; overflow-y:auto; margin-bottom: 15px;"></div>
+            <button class="btn" style="background:#eee; color:#333; margin:0 auto;" onclick="document.getElementById('copyModal').style.display='none'">Anuluj</button>
+        </div>
+    </div>
+
+    <div id="toast" class="save-toast">Skopiowano dane do schowka!</div>
+    <img src="https://raw.githubusercontent.com/rafalch37-project/CLI/main/szablony/logop.png" alt="Logo" class="watermark">
+
+    <div class="container">
+        <div class="header-main">Dziennik Treningowy PRO</div>
+        <div id="workouts-list"></div>
+
+        <div class="actions-footer">
+            <div class="btn-main-group">
+                <button class="btn btn-add-day" onclick="addWorkoutDay()">+ Nowy Dzień</button>
+                <button class="btn btn-add-day" style="background-color: #3b312b; color: #d4af37;" onclick="copyLastWorkout()">⚡ Kopiuj Trening</button>
+                <button class="btn btn-print" onclick="window.print()">Zapisz PDF</button>
+                <button class="btn" style="background-color: #217346; color: white;" onclick="exportExcel()">Eksport Excel</button>
+                <button class="btn btn-json" onclick="exportJSON()">Pobierz JSON</button>
+                <button class="btn btn-json" onclick="copyJSON()">Kopiuj KOD</button>
+            </div>
+            <button class="btn btn-reset" onclick="confirmReset()">Wyczyść wszystko</button>
+        </div>
+    </div>
+
+    <script>
+        function getWorkoutData() {
+            const data = [];
+            document.querySelectorAll('.workout-day').forEach(day => {
+                const dayData = {
+                    data: day.querySelector('.input-date').value,
+                    nazwa: day.querySelector('.input-name').value,
+                    cwiczenia: []
+                };
+                day.querySelectorAll('.exercise-block').forEach(ex => {
+                    const exData = { nazwa: ex.querySelector('.input-exercise-name').value, serie: [] };
+                    ex.querySelectorAll('.sets-body tr').forEach(row => {
+                        exData.serie.push({
+                            kg: row.querySelectorAll('input')[0].value,
+                            powt: row.querySelectorAll('input')[1].value,
+                            rir: row.querySelectorAll('input')[2].value,
+                            uwagi: row.querySelectorAll('input')[3].value,
+                            pKg: row.querySelectorAll('input')[0].getAttribute('placeholder'),
+                            pPowt: row.querySelectorAll('input')[1].getAttribute('placeholder')
+                        });
+                    });
+                    dayData.cwiczenia.push(exData);
+                });
+                data.push(dayData);
+            });
+            return data;
+        }
+
+        function saveData() {
+            const data = getWorkoutData();
+            const states = Array.from(document.querySelectorAll('.day-content')).map(c => c.classList.contains('collapsed'));
+            localStorage.setItem('workoutDataPro', JSON.stringify({data, states}));
+        }
+
+        function loadData() {
+            const saved = localStorage.getItem('workoutDataPro');
+            if (saved) {
+                const parsed = JSON.parse(saved);
+                parsed.data.forEach((dayData, i) => renderDay(dayData, parsed.states ? parsed.states[i] : false));
+            } else {
+                addWorkoutDay();
+            }
+        }
+
+        function toggleDay(header) {
+            const content = header.nextElementSibling;
+            content.classList.toggle('collapsed');
+            header.classList.toggle('collapsed');
+            saveData();
+        }
+
+        function renderDay(dayData = null, isCollapsed = false) {
+            const list = document.getElementById('workouts-list');
+            const dayDiv = document.createElement('div');
+            dayDiv.className = 'workout-day';
+            
+            dayDiv.innerHTML = `
+                <div class="day-header ${isCollapsed ? 'collapsed' : ''}" onclick="toggleDay(this)">
+                    <div class="day-title-info">
+                        <span class="arrow">▼</span>
+                        <span class="day-date">${dayData ? dayData.data : new Date().toISOString().split('T')[0]}</span>
+                        <span class="day-name-display">${dayData ? dayData.nazwa : 'Nowy Trening'}</span>
+                    </div>
+                    <button class="btn-remove" onclick="event.stopPropagation(); if(confirm('Usunąć dzień?')) { this.closest('.workout-day').remove(); saveData(); }">×</button>
+                </div>
+                <div class="day-content ${isCollapsed ? 'collapsed' : ''}">
+                    <div class="workout-header-inputs" onclick="event.stopPropagation()">
+                        <input type="date" class="input-date input-header" oninput="updateHeader(this)" value="${dayData ? dayData.data : new Date().toISOString().split('T')[0]}">
+                        <input type="text" class="input-name input-header" oninput="updateHeader(this)" placeholder="Nazwa treningu..." value="${dayData ? dayData.nazwa : ''}">
+                    </div>
+                    <div class="exercises-container"></div>
+                    <button class="btn btn-json" style="width:100%; margin-top:5px; font-size:9px;" onclick="addExercise(this.previousElementSibling)">+ Dodaj ćwiczenie</button>
+                </div>
+            `;
+            list.appendChild(dayDiv);
+
+            const container = dayDiv.querySelector('.exercises-container');
+            if (dayData && dayData.cwiczenia) {
+                dayData.cwiczenia.forEach(ex => renderExercise(container, ex));
+            } else {
+                renderExercise(container);
+            }
+        }
+
+        function updateHeader(input) {
+            const day = input.closest('.workout-day');
+            if (input.classList.contains('input-date')) {
+                day.querySelector('.day-date').innerText = input.value;
+            } else {
+                day.querySelector('.day-name-display').innerText = input.value || 'Nowy Trening';
+            }
+            saveData();
+        }
+
+        function renderExercise(container, exData = null) {
+            const exDiv = document.createElement('div');
+            exDiv.className = 'exercise-block';
+            exDiv.innerHTML = `
+                <div class="exercise-title-row">
+                    <input type="text" class="input-exercise-name" oninput="saveData()" placeholder="ĆWICZENIE..." value="${exData ? exData.nazwa : ''}">
+                    <button class="btn-remove" onclick="this.closest('.exercise-block').remove(); saveData();" style="color: #fff; opacity: 0.6;">×</button>
+                </div>
+                <table class="sets-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 25px;">S</th>
+                            <th style="width: 55px;">kg</th>
+                            <th style="width: 55px;">Powt.</th>
+                            <th style="width: 45px;">RIR</th>
+                            <th>Uwagi</th>
+                            <th style="width: 20px;"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="sets-body"></tbody>
+                </table>
+                <div class="tonnage-container">Objętość: <span class="tonnage-value">0</span> kg</div>
+                <button class="btn-add-set" onclick="addSetRow(this.previousElementSibling.previousElementSibling.querySelector('.sets-body'))">+ Dodaj serię</button>
+            `;
+            container.appendChild(exDiv);
+            const body = exDiv.querySelector('.sets-body');
+            if (exData && exData.serie) {
+                exData.serie.forEach((s, i) => addSetRow(body, i + 1, s));
+            } else {
+                addSetRow(body, 1);
+            }
+        }
+
+        function addSetRow(tbody, num = null, data = null) {
+            const tr = document.createElement('tr');
+            
+            // Obsługa podglądu (ghost text) poprzedniego treningu
+            let pKg = '0';
+            let pPowt = '0';
+            
+            if (data) {
+                if (data.pKg && data.pKg !== '0') pKg = data.pKg;
+                if (data.pPowt && data.pPowt !== '0') pPowt = data.pPowt;
+            }
+
+            tr.innerHTML = `
+                <td style="font-size: 10px; font-weight: 600;">${num || tbody.children.length + 1}</td>
+                <td><input type="number" step="any" class="input-set vol-kg" inputmode="decimal" oninput="this.value = this.value.replace(/[^0-9.,]/g, ''); calculateVolume(this); saveData()" placeholder="${pKg}" value="${data ? (data.kg || '') : ''}"></td>
+                <td><input type="number" class="input-set vol-powt" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, ''); calculateVolume(this); saveData()" placeholder="${pPowt}" value="${data ? (data.powt || '') : ''}"></td>
+                <td><input type="number" step="any" class="input-set" inputmode="decimal" oninput="this.value = this.value.replace(/[^0-9.,]/g, ''); saveData()" placeholder="RIR" value="${data ? (data.rir || '') : ''}"></td>
+                <td><input type="text" class="input-set" oninput="saveData()" placeholder="..." value="${data ? (data.uwagi || '') : ''}"></td>
+                <td><button class="btn-remove" onclick="removeRow(this)">×</button></td>
+            `;
+            tbody.appendChild(tr);
+            if (!data) saveData();
+            
+            setTimeout(() => calculateVolume(tr.querySelector('.vol-kg')), 10);
+        }
+
+        function removeRow(btn) {
+            const tbody = btn.closest('tbody');
+            const block = btn.closest('.exercise-block');
+            
+            if (tbody.children.length > 1) {
+                btn.closest('tr').remove();
+                Array.from(tbody.children).forEach((r, i) => r.cells[0].innerText = i + 1);
+                calculateVolumeBlock(block);
+                saveData();
+            }
+        }
+
+        function calculateVolumeBlock(block) {
+            if (!block) return;
+            let total = 0;
+            block.querySelectorAll('.sets-body tr').forEach(row => {
+                const kgStr = row.querySelector('.vol-kg').value.replace(',', '.');
+                const powtStr = row.querySelector('.vol-powt').value;
+                const kg = parseFloat(kgStr) || 0;
+                const powt = parseInt(powtStr) || 0;
+                total += kg * powt;
+            });
+            const volSpan = block.querySelector('.tonnage-value');
+            if (volSpan) {
+                volSpan.innerText = total.toFixed(1).replace('.0', '');
+            }
+        }
+
+        function calculateVolume(element) {
+            if (!element) return;
+            calculateVolumeBlock(element.closest('.exercise-block'));
+        }
+
+        function addWorkoutDay() {
+            renderDay();
+            saveData();
+        }
+
+        function copyLastWorkout() {
+            const allData = getWorkoutData();
+            if (allData.length === 0) {
+                alert("Brak zapisanych treningów do skopiowania.");
+                return;
+            }
+
+            const uniqueWorkouts = [];
+            const seenNames = new Set();
+            
+            for (let i = allData.length - 1; i >= 0; i--) {
+                const day = allData[i];
+                const nameKey = day.nazwa.trim() || 'Bez nazwy';
+                const displayName = day.nazwa.trim() ? day.nazwa : "Trening (bez nazwy)";
+                
+                if (!seenNames.has(nameKey)) {
+                    seenNames.add(nameKey);
+                    uniqueWorkouts.push({
+                        displayName: displayName + ` z ${day.data}`,
+                        dataObj: day
+                    });
+                }
+            }
+
+            if (uniqueWorkouts.length === 1) {
+                performCopy(uniqueWorkouts[0].dataObj);
+            } else {
+                const modal = document.getElementById('copyModal');
+                const container = document.getElementById('modalButtons');
+                container.innerHTML = '';
+                
+                uniqueWorkouts.forEach(uw => {
+                    const btn = document.createElement('button');
+                    btn.className = 'modal-btn';
+                    btn.innerText = uw.displayName;
+                    btn.onclick = () => {
+                        performCopy(uw.dataObj);
+                        modal.style.display = 'none';
+                    };
+                    container.appendChild(btn);
+                });
+                
+                modal.style.display = 'flex';
+            }
+        }
+
+        function performCopy(lastDay) {
+            const newDayData = {
+                data: new Date().toISOString().split('T')[0],
+                nazwa: lastDay.nazwa,
+                cwiczenia: lastDay.cwiczenia.map(ex => ({
+                    nazwa: ex.nazwa,
+                    serie: ex.serie.map(s => {
+                        const celKg = s.kg ? `Cel: ${s.kg}` : '0';
+                        const celPowt = s.powt ? `Cel: ${s.powt}` : '0';
+                        return { kg: '', powt: '', rir: '', uwagi: '', pKg: celKg, pPowt: celPowt };
+                    })
+                }))
+            };
+            renderDay(newDayData);
+            saveData();
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+
+        function addExercise(container) {
+            renderExercise(container);
+            saveData();
+        }
+
+        function exportJSON() {
+            const data = getWorkoutData();
+            const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `trening_pro_${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+        }
+
+        function exportExcel() {
+            const data = getWorkoutData();
+            if (data.length === 0) {
+                alert("Brak danych do wyeksportowania.");
+                return;
+            }
+
+            // UTF-8 BOM aby Excel prawidłowo czytał polskie znaki bez konieczności importu teksu
+            let csvContent = "\uFEFF"; 
+            csvContent += "Data;Trening;Ćwiczenie;Seria;Kg;Powtórzenia;RIR;Objętość;Uwagi\n";
+
+            data.forEach((day, indexDay) => {
+                const dateStr = day.data || "";
+                const workoutName = day.nazwa || "Bez nazwy";
+
+                day.cwiczenia.forEach(ex => {
+                    const exName = ex.nazwa || "Zestaw ćwiczeń";
+                    
+                    ex.serie.forEach((s, index) => {
+                        const setNum = index + 1;
+                        const kg = parseFloat(s.kg) || 0;
+                        const powt = parseInt(s.powt) || 0;
+                        const rir = s.rir || "";
+                        // Zamiana średników w uwagach żeby nie psuły struktury pliku CSV
+                        const uwagi = s.uwagi ? s.uwagi.replace(/;/g, ',') : "";
+                        const volume = kg * powt;
+
+                        csvContent += `${dateStr};${workoutName};${exName};${setNum};${s.kg || 0};${s.powt || 0};${rir};${volume.toFixed(1).replace('.', ',')};${uwagi}\n`;
+                    });
+                });
+                
+                // Pusty wiersz oddzielający poszczególne treningi dla lepszej czytelności
+                if (indexDay < data.length - 1) {
+                    csvContent += ";;;;;;;;\n";
+                }
+            });
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `dziennik_treningowy_${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+        }
+
+        function copyJSON() {
+            const data = getWorkoutData();
+            const text = JSON.stringify(data, null, 2);
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById('toast');
+                toast.style.display = 'block';
+                setTimeout(() => toast.style.display = 'none', 3000);
+            });
+        }
+
+        function confirmReset() {
+            if (confirm("Wyczyścić wszystko na nowy tydzień? (Dotyczy nowej wersji PRO)")) {
+                localStorage.removeItem('workoutDataPro');
+                location.reload();
+            }
+        }
+    </script>
+</body>
+</html>
