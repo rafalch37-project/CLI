@@ -22,15 +22,44 @@ def run_pipeline():
                     return item.get('odpowiedz')
         return None
 
-    # Obliczenia Celów
-    waga = float(get_ans("waga", "Waga") or 80)
-    wzrost = float(get_ans("wzrost", "Wzrost") or 180)
-    wiek = int(get_ans("wiek", "Wiek") or 30)
-    plec = str(get_ans("plec", "Płeć") or "Mężczyzna").lower()
-    cel = str(get_ans("cel", "Główny cel") or "utrzymanie").lower()
-    aktywnosc = str(get_ans("aktywnosc", "Aktywność") or "średnia").lower()
+    def validate_float(value, name, min_val, max_val, default):
+        try:
+            v = float(value)
+        except (TypeError, ValueError):
+            print(f"   [!] '{name}' ma nieprawidłową wartość ({value!r}) — używam domyślnej: {default}")
+            return default
+        if not (min_val <= v <= max_val):
+            print(f"   [!] '{name}' = {v} jest poza zakresem [{min_val}–{max_val}] — używam domyślnej: {default}")
+            return default
+        return v
 
-    pal = 1.6 if "średnia" in aktywnosc or "rekompozycja" in cel else (1.8 if "wysoka" in aktywnosc else 1.4)
+    def validate_int(value, name, min_val, max_val, default):
+        try:
+            v = int(value)
+        except (TypeError, ValueError):
+            print(f"   [!] '{name}' ma nieprawidłową wartość ({value!r}) — używam domyślnej: {default}")
+            return default
+        if not (min_val <= v <= max_val):
+            print(f"   [!] '{name}' = {v} jest poza zakresem [{min_val}–{max_val}] — używam domyślnej: {default}")
+            return default
+        return v
+
+    def validate_choice(value, name, valid_options, default):
+        v = str(value or "").lower().strip()
+        if not any(opt in v for opt in valid_options):
+            print(f"   [!] '{name}' = '{value}' — nieznana wartość (dopuszczalne: {valid_options}) — używam domyślnej: '{default}'")
+            return default
+        return v
+
+    # Obliczenia Celów
+    waga    = validate_float(get_ans("waga", "Waga"),         "waga",       30,  300, 80)
+    wzrost  = validate_float(get_ans("wzrost", "Wzrost"),     "wzrost",    100,  250, 180)
+    wiek    = validate_int  (get_ans("wiek", "Wiek"),         "wiek",       10,  100, 30)
+    plec      = validate_choice(get_ans("plec", "Płeć"),      "plec", ["m", "k"], "mężczyzna")
+    cel       = validate_choice(get_ans("cel", "Główny cel"), "cel",  ["redukcja", "masa", "budowa", "utrzymanie", "rekompozycja"], "utrzymanie")
+    aktywnosc = str(get_ans("aktywnosc", "Aktywność") or "").lower()  # wolny tekst z ankiety
+
+    pal = 1.8 if "wysoka" in aktywnosc else (1.6 if "średnia" in aktywnosc else 1.4)
     bmr = (10 * waga) + (6.25 * wzrost) - (5 * wiek) + (5 if "m" in plec else -161)
     tdee = bmr * pal
     final_kcal = tdee - 300 if "redukcja" in cel else (tdee + 300 if "masa" in cel or "budowa" in cel else tdee)

@@ -221,15 +221,29 @@
 
         .product-item {
             display: flex;
-            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
             padding: 10px 15px;
             border-bottom: 1px solid #efefef;
             font-size: 13px;
+            cursor: pointer;
+            transition: background 0.2s;
         }
 
         .product-item:last-child { border-bottom: none; }
         .product-item:hover { background-color: rgba(255, 255, 255, 1); }
+        .product-item.bought { background-color: #f5f5f5; opacity: 0.5; }
+        .product-item.bought .product-name { text-decoration: line-through; color: #aaa; }
 
+        .product-item input[type="checkbox"] {
+            width: 17px;
+            height: 17px;
+            flex-shrink: 0;
+            accent-color: var(--brown-main);
+            cursor: pointer;
+        }
+
+        .product-name { flex: 1; }
         .product-amount { font-weight: 600; color: var(--brown-main); }
 
         .flex-buttons { display: flex; gap: 15px; margin-bottom: 20px; }
@@ -334,10 +348,8 @@
         }
     });
 
-    document.getElementById('db-file').addEventListener('change', function(e) {
-        const file = e.target.files[0];
+    function processDbFile(file) {
         if (!file) return;
-
         const reader = new FileReader();
         reader.onload = function(evt) {
             try {
@@ -350,6 +362,21 @@
             }
         };
         reader.readAsText(file);
+    }
+
+    function processDietFile(file) {
+        if (!file) return;
+        dietFileName.innerText = file.name;
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+            sandbox.innerHTML = evt.target.result;
+            btnGenerate.disabled = false;
+        };
+        reader.readAsText(file);
+    }
+
+    document.getElementById('db-file').addEventListener('change', function(e) {
+        processDbFile(e.target.files[0]);
     });
 
     function updateDbStatusUI(isOk, count = 0) {
@@ -365,17 +392,7 @@
     }
 
     dietInput.addEventListener('change', function(e) {
-        const file = e.target.files[0];
-        if (!file) return;
-
-        dietFileName.innerText = file.name;
-        
-        const reader = new FileReader();
-        reader.onload = function(evt) {
-            sandbox.innerHTML = evt.target.result;
-            btnGenerate.disabled = false;
-        };
-        reader.readAsText(file);
+        processDietFile(e.target.files[0]);
     });
 
     btnGenerate.addEventListener('click', () => {
@@ -513,12 +530,13 @@
                     <div class="category-header">${categoryName}</div>`;
                 
                 items.forEach(itm => {
-                    let formattedAmount = itm.totalAmount > 0 
+                    let formattedAmount = itm.totalAmount > 0
                                           ? `${Number(itm.totalAmount.toFixed(1))} ${itm.unit}`
                                           : `wg uznania`;
-                    
-                    blockHtml += `<div class="product-item">
-                        <span>${itm.name}</span>
+
+                    blockHtml += `<div class="product-item" onclick="toggleBought(this)">
+                        <input type="checkbox" onclick="event.stopPropagation(); toggleBought(this.parentElement)">
+                        <span class="product-name">${itm.name}</span>
                         <span class="product-amount">${formattedAmount}</span>
                     </div>`;
                 });
@@ -526,6 +544,12 @@
                 outputArea.innerHTML += blockHtml;
             }
         }
+    }
+
+    function toggleBought(item) {
+        const cb = item.querySelector('input[type="checkbox"]');
+        item.classList.toggle('bought');
+        cb.checked = item.classList.contains('bought');
     }
 
     document.getElementById('btn-copy').addEventListener('click', () => {
@@ -601,11 +625,15 @@
             text-transform: uppercase; letter-spacing: 1px; font-size: 13px; text-align: center;
         }
         .product-item {
-            display: flex; justify-content: space-between; padding: 10px 20px;
-            border-bottom: 1px solid #f0f0f0; font-size: 13px;
+            display: flex; align-items: center; gap: 12px; padding: 10px 20px;
+            border-bottom: 1px solid #f0f0f0; font-size: 13px; cursor: pointer; transition: background 0.2s;
         }
         .product-item:last-child { border-bottom: none; }
-        .product-item span:first-child { font-weight: 600; color: #333; }
+        .product-item:hover { background-color: #fafafa; }
+        .product-item.bought { background-color: #f5f5f5; opacity: 0.5; }
+        .product-item.bought .product-name { text-decoration: line-through; color: #aaa; }
+        .product-item input[type="checkbox"] { width: 17px; height: 17px; flex-shrink: 0; accent-color: #3b312b; cursor: pointer; }
+        .product-name { flex: 1; font-weight: 600; color: #333; }
         .product-amount { font-weight: 700; color: #c5a059; }
     </style>
 </head>
@@ -616,6 +644,13 @@
     <div class="main-title">LISTA ZAKUPÓW</div>
     <div class="subtitle">PRZYGOTOWANA NA: ${days} DNI</div>
     ${outHtml}
+<${'script'}>
+    function toggleBought(item) {
+        var cb = item.querySelector('input[type="checkbox"]');
+        item.classList.toggle('bought');
+        cb.checked = item.classList.contains('bought');
+    }
+</${'script'}>
 </body>
 </html>`;
 
@@ -630,17 +665,13 @@
         URL.revokeObjectURL(url);
     });
 
-    const setupDragAndDrop = (id) => {
+    const setupDragAndDrop = (id, onFile) => {
         const dropArea = document.getElementById(id);
         const fileInput = dropArea.querySelector('input[type="file"]');
-        
-        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-            dropArea.addEventListener(eventName, preventDefaults, false);
-        });
 
-        function preventDefaults (e) {
-            e.preventDefault(); e.stopPropagation();
-        }
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, e => { e.preventDefault(); e.stopPropagation(); }, false);
+        });
 
         ['dragenter', 'dragover'].forEach(eventName => {
             dropArea.addEventListener(eventName, () => dropArea.classList.add('dragover'), false);
@@ -651,17 +682,13 @@
         });
 
         dropArea.addEventListener('drop', (e) => {
-            let dt = e.dataTransfer;
-            let files = dt.files;
-            if(files.length > 0 && !fileInput.disabled) {
-                fileInput.files = files;
-                fileInput.dispatchEvent(new Event('change'));
-            }
+            const file = e.dataTransfer.files[0];
+            if (file && !fileInput.disabled) onFile(file);
         });
-    }
+    };
 
-    setupDragAndDrop('db-upload-area');
-    setupDragAndDrop('diet-upload-area');
+    setupDragAndDrop('db-upload-area', processDbFile);
+    setupDragAndDrop('diet-upload-area', processDietFile);
 
 </script>
 </body>

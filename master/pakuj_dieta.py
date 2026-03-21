@@ -1,6 +1,7 @@
 import json
 import os
 import re
+import difflib
 
 def load_json(path):
     if os.path.exists(path):
@@ -15,16 +16,55 @@ def get_weight(ilosc_str):
         return float(match.group(1))
     return 0
 
+def _normalize(name):
+    """Usuwa nawiasy, znaki specjalne i normalizuje spacje"""
+    name = re.sub(r'\(.*?\)', '', name)  # usuwa dopiski w nawiasach np. "(ugotowany)"
+    name = re.sub(r'[^a-ząćęłńóśźż0-9\s]', ' ', name.lower())
+    return ' '.join(name.split())  # normalizuje wielokrotne spacje
+
 def find_product_in_db(name, db):
-    """Szuka produktu w bazie, ignorując wielkość liter i dopiski w nawiasach"""
-    name_low = name.lower().strip()
-    for p in db:
-        if p['Nazwa'].lower() == name_low:
+    """
+    Szuka produktu w bazie wg malejącej dokładności:
+    1. Dokładne dopasowanie (case-insensitive)
+    2. Dopasowanie po usunięciu nawiasów i normalizacji
+    3. Jeden ciąg zawiera się w drugim (substring)
+    4. Zbiór słów — wszystkie słowa z zapytania są w nazwie produktu
+    5. Fuzzy match (difflib) z progiem podobieństwa 0.6
+    """
+    name_clean = _normalize(name)
+    db_normalized = [(p, _normalize(p['Nazwa'])) for p in db]
+
+    # 1. Dokładne dopasowanie
+    for p, p_norm in db_normalized:
+        if p['Nazwa'].lower().strip() == name.lower().strip():
             return p
-    for p in db:
-        db_name_low = p['Nazwa'].lower()
-        if name_low in db_name_low or db_name_low in name_low:
+
+    # 2. Dopasowanie po normalizacji (bez nawiasów)
+    for p, p_norm in db_normalized:
+        if p_norm == name_clean:
             return p
+
+    # 3. Substring
+    for p, p_norm in db_normalized:
+        if name_clean in p_norm or p_norm in name_clean:
+            return p
+
+    # 4. Wszystkie słowa z zapytania są w nazwie produktu
+    query_words = set(name_clean.split())
+    for p, p_norm in db_normalized:
+        db_words = set(p_norm.split())
+        if query_words and query_words.issubset(db_words):
+            return p
+
+    # 5. Fuzzy match — zwraca najlepsze dopasowanie powyżej progu 0.6
+    all_norms = [p_norm for _, p_norm in db_normalized]
+    matches = difflib.get_close_matches(name_clean, all_norms, n=1, cutoff=0.6)
+    if matches:
+        for p, p_norm in db_normalized:
+            if p_norm == matches[0]:
+                return p
+
+    print(f"  ⚠️  Nie znaleziono w bazie: '{name}' (szukano: '{name_clean}')")
     return None
 
 def generate_diet_html(jadlospis, produkty_db):

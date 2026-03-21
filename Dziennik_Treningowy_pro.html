@@ -111,6 +111,8 @@
                 <button class="btn" style="background-color: #217346; color: white;" onclick="exportExcel()">Eksport Excel</button>
                 <button class="btn btn-json" onclick="exportJSON()">Pobierz JSON</button>
                 <button class="btn btn-json" onclick="copyJSON()">Kopiuj KOD</button>
+                <button class="btn btn-json" onclick="document.getElementById('importFileInput').click()">Wczytaj JSON</button>
+                <input type="file" id="importFileInput" accept=".json" style="display:none" onchange="importJSON(this)">
             </div>
             <button class="btn btn-reset" onclick="confirmReset()">Wyczyść wszystko</button>
         </div>
@@ -439,6 +441,36 @@
                 toast.style.display = 'block';
                 setTimeout(() => toast.style.display = 'none', 3000);
             });
+        }
+
+        function importJSON(input) {
+            const file = input.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const imported = JSON.parse(e.target.result);
+                    if (!Array.isArray(imported)) {
+                        alert('Nieprawidłowy format pliku JSON.');
+                        return;
+                    }
+                    const replace = confirm(`Znaleziono ${imported.length} treningów.\n\nOK — zastąp obecne dane\nAnuluj — dodaj do istniejących`);
+                    if (replace) {
+                        localStorage.removeItem('workoutDataPro');
+                        document.getElementById('workouts-list').innerHTML = '';
+                    }
+                    imported.forEach(dayData => renderDay(dayData));
+                    saveData();
+                    const toast = document.getElementById('toast');
+                    toast.innerText = `Wczytano ${imported.length} treningów!`;
+                    toast.style.display = 'block';
+                    setTimeout(() => { toast.style.display = 'none'; toast.innerText = 'Skopiowano dane do schowka!'; }, 3000);
+                } catch(err) {
+                    alert('Błąd odczytu pliku: ' + err.message);
+                }
+                input.value = '';
+            };
+            reader.readAsText(file);
         }
 
         function confirmReset() {

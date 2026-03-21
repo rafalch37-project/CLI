@@ -240,13 +240,17 @@
                     <select name="cel" required>
                         <option value="Budowa masy mięśniowej">Budowa masy mięśniowej</option>
                         <option value="Redukcja tkanki tłuszczowej">Redukcja tkanki tłuszczowej</option>
-                        <option value="Rekonstrukcja / Poprawa sylwetki">Rekompozycja / Poprawa sylwetki</option>
+                        <option value="Rekompozycja / Poprawa sylwetki">Rekompozycja / Poprawa sylwetki</option>
                         <option value="Budowa siły">Budowa siły</option>
                     </select>
                 </div>
                 <div class="input-group">
-                    <label>Aktualna aktywność fizyczna (ilość kroków, sport, praca)</label>
-                    <textarea name="aktywnosc" rows="3" placeholder="Opisz krótko swój tydzień..."></textarea>
+                    <label>Poziom aktywności fizycznej (poza siłownią)</label>
+                    <select name="aktywnosc" required>
+                        <option value="niska">Niska — praca siedząca, mało ruchu na co dzień</option>
+                        <option value="średnia" selected>Średnia — aktywna praca lub regularne spacery</option>
+                        <option value="wysoka">Wysoka — praca fizyczna lub bardzo aktywny tryb życia</option>
+                    </select>
                 </div>
                 <div class="input-group">
                     <label>Kontuzje lub przeciwwskazania medyczne</label>

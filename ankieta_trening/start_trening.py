@@ -22,13 +22,19 @@ def run_training_pipeline():
         if isinstance(ankieta, dict): return ankieta.get(key)
         return None
 
-    # Pobranie parametrów z ankiety
+    # Pobranie i walidacja parametrów z ankiety
+    raw_dni = get_val("dni")
     try:
-        dni = int(get_val("dni") or 3)
-    except:
+        dni = int(raw_dni)
+        if not (2 <= dni <= 6):
+            print(f"   [!] 'dni' = {dni} jest poza zakresem [2–6] — używam domyślnej: 3")
+            dni = 3
+    except (TypeError, ValueError):
+        print(f"   [!] 'dni' ma nieprawidłową wartość ({raw_dni!r}) — używam domyślnej: 3")
         dni = 3
-    
+
     priorytety = get_val("priorytet") or []
+
     # Mapowanie nazw z ankiety na klucze w bazie
     map_prio = {
         "Klatka piersiowa": "Klatka",
